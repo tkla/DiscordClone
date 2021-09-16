@@ -9,7 +9,11 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-
+node_modules/
+bundle.js
+bundle.js.map
+.DS_Store
+npm-debug.log
 # Used by dotenv library to load environment variables.
 # .env
 
