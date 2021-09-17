@@ -1,4 +1,4 @@
-A clone of Discord's browser version.
+A clone of Discord's web browser client.
 
 Minimal features to be added: 
     Servers
