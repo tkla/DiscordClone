@@ -1,0 +1,89 @@
+Started GET "/" for ::1 at 2021-09-27 09:09:24 -0700
+
+PG::ConnectionBad - could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?:
+
+Started POST "/__better_errors/53d88b90606689d0/variables" for ::1 at 2021-09-27 09:09:24 -0700
+Started GET "/" for ::1 at 2021-09-27 09:09:26 -0700
+
+PG::ConnectionBad - could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?:
+
+Started POST "/__better_errors/f4180ace430b687e/variables" for ::1 at 2021-09-27 09:09:27 -0700
+Started GET "/" for ::1 at 2021-09-27 09:09:28 -0700
+
+PG::ConnectionBad - could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?:
+
+Started POST "/__better_errors/97e1b3042fc11c34/variables" for ::1 at 2021-09-27 09:09:28 -0700
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE DATABASE "discord_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE "discord_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-09-27 09:10:16 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 09:10:17 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (1.3ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 09:10:19 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 09:10:26 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 09:10:29 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (1.3ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 09:13:14 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /home/tkla/clonedRepos/DiscordClone/app/assets/config
+  /home/tkla/clonedRepos/DiscordClone/app/assets/images
+  /home/tkla/clonedRepos/DiscordClone/app/assets/javascripts
+  /home/tkla/clonedRepos/DiscordClone/app/assets/stylesheets
+  /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.6/lib/assets/compiled
+  /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.6/app/assets/javascripts
+  /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.6/lib/assets/compiled
+  /home/tkla/clonedRepos/DiscordClone/node_modules:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___291716389147818469_47014678999740'
+
+Started POST "/__better_errors/484e8e10018d8db7/variables" for ::1 at 2021-09-27 09:13:14 -0700
+Started GET "/" for ::1 at 2021-09-27 09:16:29 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 1608ms (Views: 1606.9ms | ActiveRecord: 0.0ms)
+
+
