@@ -87,3 +87,499 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 1608ms (Views: 1606.9ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (96.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (26.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2988686663139197055)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210927190010)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (29.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "nickname" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210927190010_create_users.rb:3
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/migrate/20210927190010_create_users.rb:13
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20210927190010_create_users.rb:14
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/migrate/20210927190010_create_users.rb:15
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210927190010"]]
+  ↳ bin/rails:9
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (1.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-27 21:50:10.831783"], ["updated_at", "2021-09-27 21:50:10.831783"]]
+  ↳ bin/rails:9
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2988686663139197055)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tkla/.rbenv/versions/2.5.1/bin/annotate:23
+Started GET "/" for ::1 at 2021-09-27 21:04:14 -0700
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/c656c9fc34b1a469/variables" for ::1 at 2021-09-27 21:04:15 -0700
+Started GET "/" for ::1 at 2021-09-27 21:04:22 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/ac7e1542da1a4d84/variables" for ::1 at 2021-09-27 21:04:22 -0700
+Started GET "/" for ::1 at 2021-09-27 21:23:09 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/8bb6f68b88170f4e/variables" for ::1 at 2021-09-27 21:23:09 -0700
+Started GET "/" for ::1 at 2021-09-27 21:23:12 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/c99882e44cae7db0/variables" for ::1 at 2021-09-27 21:23:12 -0700
+Started GET "/" for ::1 at 2021-09-27 21:26:24 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/5397c0b58ce16726/variables" for ::1 at 2021-09-27 21:26:24 -0700
+Started GET "/" for ::1 at 2021-09-27 21:26:25 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/50e798187f7ab835/variables" for ::1 at 2021-09-27 21:26:25 -0700
+Started GET "/" for ::1 at 2021-09-27 21:26:38 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/3b6f5e7ddfc21713/variables" for ::1 at 2021-09-27 21:26:38 -0700
+Started GET "/" for ::1 at 2021-09-27 21:26:39 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/d05289d6f6a05d9c/variables" for ::1 at 2021-09-27 21:26:39 -0700
+Started GET "/" for ::1 at 2021-09-27 21:26:41 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/b867e7b80cf4e503/variables" for ::1 at 2021-09-27 21:26:41 -0700
+Started GET "/" for ::1 at 2021-09-27 21:29:40 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/102723e1cdae19f6/variables" for ::1 at 2021-09-27 21:29:40 -0700
+Started GET "/" for ::1 at 2021-09-27 21:33:54 -0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tkla/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/d9e67c84d8e239ad/variables" for ::1 at 2021-09-27 21:33:54 -0700
+Started GET "/" for ::1 at 2021-09-27 21:33:56 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/09b866a5ad255323/variables" for ::1 at 2021-09-27 21:33:56 -0700
+Started GET "/" for ::1 at 2021-09-27 21:33:58 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/24215bf841e84b8d/variables" for ::1 at 2021-09-27 21:33:58 -0700
+Started GET "/" for ::1 at 2021-09-27 21:37:55 -0700
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting keyword_end
+      resource :sessions only: [:create, :destroy]
+                         ^~~~
+/home/tkla/clonedRepos/DiscordClone/config/routes.rb:9: syntax error, unexpected keyword_end, expecting end-of-input
+   end
+   ^~~:
+  config/routes.rb:6:in `'
+
+Started POST "/__better_errors/e2685a7f56f6cc13/variables" for ::1 at 2021-09-27 21:37:55 -0700
+Started GET "/" for ::1 at 2021-09-27 21:38:03 -0700
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting keyword_end
+      resource :session only: [:create, :destroy]
+                        ^~~~
+/home/tkla/clonedRepos/DiscordClone/config/routes.rb:9: syntax error, unexpected keyword_end, expecting end-of-input
+   end
+   ^~~:
+  config/routes.rb:6:in `'
+
+Started POST "/__better_errors/a51b308d4125a642/variables" for ::1 at 2021-09-27 21:38:03 -0700
+Started GET "/" for ::1 at 2021-09-27 21:38:03 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-09-27 21:38:07 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-09-27 21:39:07 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-09-27 22:06:04 -0700
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting keyword_end
+      resource :session only: [:create, :destroy]
+                        ^~~~
+/home/tkla/clonedRepos/DiscordClone/config/routes.rb:8: syntax error, unexpected keyword_end, expecting end-of-input
+   end
+   ^~~:
+  config/routes.rb:7:in `'
+
+Started POST "/__better_errors/e8d66fd2af46b707/variables" for ::1 at 2021-09-27 22:06:04 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:14 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/8aeec627f02c4af9/variables" for ::1 at 2021-09-27 22:20:14 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:16 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/6e5e5c3d47c4b49f/variables" for ::1 at 2021-09-27 22:20:16 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:33 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/ed32d3540f4bcb13/variables" for ::1 at 2021-09-27 22:20:33 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:33 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/3c776a05cac8611e/variables" for ::1 at 2021-09-27 22:20:33 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:34 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/8270922ca46a107e/variables" for ::1 at 2021-09-27 22:20:34 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:37 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/99f7b02a73f78ba2/variables" for ::1 at 2021-09-27 22:20:37 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:38 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/e0f0d72e7dbeaec0/variables" for ::1 at 2021-09-27 22:20:38 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:38 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/0584d3824e69d127/variables" for ::1 at 2021-09-27 22:20:38 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:39 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/11e1377ee969a7b9/variables" for ::1 at 2021-09-27 22:20:39 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:39 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/0a4d3159db0b99b4/variables" for ::1 at 2021-09-27 22:20:39 -0700
+Started GET "/" for ::1 at 2021-09-27 22:20:39 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/62cd658d4606de9d/variables" for ::1 at 2021-09-27 22:20:39 -0700
+Started GET "/" for ::1 at 2021-09-27 22:21:44 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/916bd1b0ffe53901/variables" for ::1 at 2021-09-27 22:21:44 -0700
+Started GET "/" for ::1 at 2021-09-27 22:21:45 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/54ad410c96eb0990/variables" for ::1 at 2021-09-27 22:21:45 -0700
+Started GET "/" for ::1 at 2021-09-27 22:21:53 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/8a66c5e5b60e3416/variables" for ::1 at 2021-09-27 22:21:53 -0700
+Started GET "/" for ::1 at 2021-09-27 22:21:53 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/af05b75c09dd3fa8/variables" for ::1 at 2021-09-27 22:21:53 -0700
+Started GET "/" for ::1 at 2021-09-27 22:21:53 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/6d308da5ba92d6d1/variables" for ::1 at 2021-09-27 22:21:53 -0700
+Started GET "/" for ::1 at 2021-09-27 22:21:54 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/db8bf3b3244eeaad/variables" for ::1 at 2021-09-27 22:21:54 -0700
+Started GET "/" for ::1 at 2021-09-27 22:21:54 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/10cc2e95ac3c59ba/variables" for ::1 at 2021-09-27 22:21:54 -0700
+Started GET "/" for ::1 at 2021-09-27 22:21:59 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/65b102116ede7307/variables" for ::1 at 2021-09-27 22:21:59 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:00 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/d04bbb63e3c3bcbf/variables" for ::1 at 2021-09-27 22:22:00 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:01 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/86d46e3681a0d0d8/variables" for ::1 at 2021-09-27 22:22:01 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:01 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/a7cecef352ba5963/variables" for ::1 at 2021-09-27 22:22:01 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:24 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/cd214224776ece80/variables" for ::1 at 2021-09-27 22:22:24 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:24 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/160998ea81c57c8f/variables" for ::1 at 2021-09-27 22:22:24 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:25 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/53a7a484849c89d2/variables" for ::1 at 2021-09-27 22:22:25 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:25 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/b5af95eb2364ab93/variables" for ::1 at 2021-09-27 22:22:25 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:25 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/084ac35f184feb1f/variables" for ::1 at 2021-09-27 22:22:25 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:25 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/04328d5a186cb649/variables" for ::1 at 2021-09-27 22:22:25 -0700
+Started GET "/" for ::1 at 2021-09-27 22:22:26 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/6f2a93e046f61ee7/variables" for ::1 at 2021-09-27 22:22:26 -0700
+Started GET "/" for ::1 at 2021-09-27 22:25:25 -0700
+
+ActionController::RoutingError - Couldn't find Api::UsersHelper, expected it to be defined in helpers/api/users_helper.rb:
+
+Started POST "/__better_errors/4d13e8b39b4a08aa/variables" for ::1 at 2021-09-27 22:25:25 -0700
+Started GET "/" for ::1 at 2021-09-27 22:25:27 -0700
+
+ActionController::RoutingError - Couldn't find Api::UsersHelper, expected it to be defined in helpers/api/users_helper.rb:
+
+Started POST "/__better_errors/e41e1ad0dd465165/variables" for ::1 at 2021-09-27 22:25:27 -0700
+Started GET "/" for ::1 at 2021-09-27 22:25:43 -0700
+
+ActionController::RoutingError - undefined method `helper_methods' for ApplicationController:Class
+Did you mean?  helper_method
+               _helper_methods
+               _helper_methods?
+               _helper_methods=:
+
+Started POST "/__better_errors/e9165db7c3a9ae49/variables" for ::1 at 2021-09-27 22:25:43 -0700
+Started GET "/" for ::1 at 2021-09-27 22:25:44 -0700
+
+ActionController::RoutingError - undefined method `helper_methods' for ApplicationController:Class
+Did you mean?  helper_method
+               _helper_methods
+               _helper_methods?
+               _helper_methods=:
+
+Started POST "/__better_errors/7ef12efbd607dc31/variables" for ::1 at 2021-09-27 22:25:44 -0700
+Started GET "/" for ::1 at 2021-09-27 22:25:46 -0700
+
+ActionController::RoutingError - undefined method `helper_methods' for ApplicationController:Class
+Did you mean?  helper_method
+               _helper_methods
+               _helper_methods?
+               _helper_methods=:
+
+Started POST "/__better_errors/a7809de3cb817b0c/variables" for ::1 at 2021-09-27 22:25:46 -0700
+Started GET "/" for ::1 at 2021-09-27 22:26:43 -0700
+
+ActionController::RoutingError - undefined method `helper_methods' for ApplicationController:Class
+Did you mean?  helper_method
+               _helper_methods
+               _helper_methods?
+               _helper_methods=:
+
+Started POST "/__better_errors/6c53f1e3c6422db2/variables" for ::1 at 2021-09-27 22:26:43 -0700
+Started GET "/" for ::1 at 2021-09-27 22:26:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 825ms (Views: 824.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 22:27:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 14.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 22:27:20 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 23ms (Views: 22.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 22:27:21 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 30ms (Views: 28.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 22:27:21 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 22:27:21 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 27ms (Views: 26.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 22:27:28 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/54e819eb249b42a5/variables" for ::1 at 2021-09-27 22:27:28 -0700
+Started GET "/" for ::1 at 2021-09-27 22:27:31 -0700
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/cf5f3a6ab7998c0d/variables" for ::1 at 2021-09-27 22:27:31 -0700
+Started GET "/" for ::1 at 2021-09-27 22:28:30 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 331ms (Views: 330.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 22:28:50 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 22:29:03 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
