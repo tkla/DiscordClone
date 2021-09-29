@@ -1,0 +1,39 @@
+.sessionWindow {
+   width: 800px;
+   height: 400px;
+   background-color:rgb(68, 68, 68);
+}
+
+#loginContainer {
+   display: flex; 
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.sessionForm {
+   display: flex;
+   flex-direction: column;
+   margin: 30px;
+   // background-color: firebrick;
+   //margin-right: auto;
+}
+
+.sessionForm > * {
+   padding: 2px; 
+   margin: 2px;
+}
+
+.sessionForm > label {
+   margin-top: 10px;
+   margin-bottom: 2px;
+}
+
+
+#loginGreeting {
+   display: flex; 
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 30%;
+   margin: 30px;
+}

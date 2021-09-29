@@ -62,34 +62,43 @@ export default class SessionForm extends React.Component {
 
       if (this.props.formType === 'Log In') {
          form = (
-            <div>
-               <h1>Welcome back!</h1>
-               <span>We're so excited to see you again!</span>
+            <div id='loginContainer'>
+               <div className='sessionForm'>
+                  <h2>Welcome back!</h2>
+                  <span>We're so excited to see you again!</span>
 
-               <form onSubmit={this.handleSubmit}> 
-                  <label className='form'>EMAIL OR PHONE NUMBER
+                  <form onSubmit={this.handleSubmit}> 
+                     <label className='form'>EMAIL OR PHONE NUMBER
+                        <br/>
+                        <input type='text' 
+                        value={this.state.email} 
+                        onChange={this.handleInput('email')}/>
+                     </label>
                      <br/>
-                     <input type='text' 
-                     value={this.state.email} 
-                     onChange={this.handleInput('email')}/>
-                  </label>
-                  <br/>
 
-                  <label className='form'>PASSWORD
+                     <label className='form'>PASSWORD
+                        <br/>
+                        <input type='text' 
+                        value={this.state.password} 
+                        onChange={this.handleInput('password')}/>
+                     </label>
                      <br/>
-                     <input type='text' 
-                     value={this.state.password} 
-                     onChange={this.handleInput('password')}/>
-                  </label>
-                  <br/>
 
-                  <input className='submit' type='submit' value='Login'/>
-               </form>
+                     <input className='submit' type='submit' value='Login'/>
+                  </form>
+                  <span>Need an account? <Link to='/register'>Register</Link></span>
+               </div>
+
+               <div id='loginGreeting'>
+                  <h2>Discord Clone</h2>
+                  <p>A project aiming to copy the browser version of Discord by Kenny La</p>
+                  <a href='https://github.com/tkla/DiscordClone'>Github</a>
+               </div>
             </div>
          )
       } else {
          form = (
-            <div>
+            <div className='sessionForm'>
                <h1>Create an account</h1>
 
                <form onSubmit={this.handleSubmit}> 
@@ -119,10 +128,18 @@ export default class SessionForm extends React.Component {
 
                   <input className='submit' type='submit' value='Continue'/>
                </form>
+               <Link to='/login'>Already have an account?</Link>
             </div>
          )
       }
 
-      return form;
+      return (
+         <div className='sessionWindow'>
+
+            {form}
+         </div>
+         
+
+      )
    }
 }
