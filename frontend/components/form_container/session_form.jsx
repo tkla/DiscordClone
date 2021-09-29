@@ -63,6 +63,7 @@ export default class SessionForm extends React.Component {
       if (this.props.formType === 'Log In') {
          form = (
             <div id='loginContainer'>
+
                <div className='sessionForm'>
                   <h2>Welcome back!</h2>
                   <span>We're so excited to see you again!</span>
@@ -91,9 +92,10 @@ export default class SessionForm extends React.Component {
 
                <div id='loginGreeting'>
                   <h2>Discord Clone</h2>
-                  <p>A project aiming to copy the browser version of Discord by Kenny La</p>
+                  <p>A project aiming to replicate the browser version of Discord by Kenny La</p>
                   <a href='https://github.com/tkla/DiscordClone'>Github</a>
                </div>
+
             </div>
          )
       } else {
@@ -135,11 +137,8 @@ export default class SessionForm extends React.Component {
 
       return (
          <div className='sessionWindow'>
-
             {form}
          </div>
-         
-
       )
    }
 }

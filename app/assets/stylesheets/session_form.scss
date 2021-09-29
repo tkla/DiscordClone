@@ -7,6 +7,7 @@
 #loginContainer {
    display: flex; 
    flex-direction: row;
+   height: 100%;
    justify-content: space-between;
 }
 
@@ -23,17 +24,21 @@
    margin: 2px;
 }
 
-.sessionForm > label {
-   margin-top: 10px;
+.form {
+   margin-top: 30px;
    margin-bottom: 2px;
 }
-
 
 #loginGreeting {
    display: flex; 
    flex-direction: column;
+   text-align: center;
    justify-content: center;
    align-items: center;
    width: 30%;
    margin: 30px;
+}
+
+#loginGreeting > *{
+   margin: 10px;
 }

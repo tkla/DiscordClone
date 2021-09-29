@@ -17,7 +17,7 @@ const Debug = (props) => {
    }
 
    return (
-      <div> 
+      <div className='sessionWindow'> 
          <h1>Debug</h1>
          {link}
       </div>
