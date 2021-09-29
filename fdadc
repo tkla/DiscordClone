@@ -1,0 +1,18 @@
+=> [[32m#<User:0x0000561244b36828[0m
+  id: [1;34m1[0m,
+  username: [31m[1;31m"[0m[31mkenny[1;31m"[0m[31m[0m,
+  email: [31m[1;31m"[0m[31m123@fake.com[1;31m"[0m[31m[0m,
+  password_digest: [31m[1;31m"[0m[31m$2a$12$w1aZVBnfd9FovhICN.iB4e4lZKzFpUiaiB2r.1UNN1GyPwQXC7wCO[1;31m"[0m[31m[0m,
+  session_token: [31m[1;31m"[0m[31m82XngSo5w-bIx_uFw7vV8A[1;31m"[0m[31m[0m,
+  nickname: [1;36mnil[0m,
+  created_at: [1;34;4mTue[0m, [1;34m28[0m [1;34;4mSep[0m [1;34m2021[0m [1;34m17[0m:[1;34m13[0m:[1;34m43[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m28[0m [1;34;4mSep[0m [1;34m2021[0m [1;34m22[0m:[1;34m14[0m:[1;34m37[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<User:0x0000561244acf2e0[0m
+  id: [1;34m2[0m,
+  username: [31m[1;31m"[0m[31mkenny2[1;31m"[0m[31m[0m,
+  email: [31m[1;31m"[0m[31mkenny@gmail.com[1;31m"[0m[31m[0m,
+  password_digest: [31m[1;31m"[0m[31m$2a$12$5towvd8Pc6DwfbCVBzwim.NSK9ePr8lqWRPWIOLsF8Uye9TD1pOly[1;31m"[0m[31m[0m,
+  session_token: [31m[1;31m"[0m[31m9PXvC0Ho4Ki2rDJWEoPdpQ[1;31m"[0m[31m[0m,
+  nickname: [1;36mnil[0m,
+  created_at: [1;34;4mTue[0m, [1;34m28[0m [1;34;4mSep[0m [1;34m2021[0m [1;34m22[0m:[1;34m21[0m:[1;34m12[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mTue[0m, [1;34m28[0m [1;34;4mSep[0m [1;34m2021[0m [1;34m22[0m:[1;34m21[0m:[1;34m12[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m]

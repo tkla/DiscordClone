@@ -9,6 +9,21 @@ class Api::UsersController < ApplicationController
             render json: @user.errors.full_messages, status: 401
       end
    end 
+   
+   #Do later, for now just show first user
+   def index 
+      @user = User.find_by(id: 1)
+      render :show
+   end
+
+   def show 
+      @user = User.find_by(id: params[:id])
+      if @user 
+         render :show 
+      else 
+         render json: @user.errors.full_messages, status: 404
+      end
+   end
 
    private 
    def user_params
