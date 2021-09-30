@@ -40,21 +40,21 @@
    border-color: deepskyblue;
 }
 
-.registerForm input[type=text]{
+.registerForm input {
    background-color: #303339;
 }
 
-.registerForm input[type=password]{
-   color: black;
-   background-color: white;
-}
+// .registerForm input[type=password]{
+//    color: black;
+//    background-color: white;
+// }
 
 .registerForm input[type=submit]{
    background-color: #5865F2;
    margin-top: 30px;
    text-align: center;
    border: none;
-   height: 42px;
+   height: 45px;
    
 }
 
