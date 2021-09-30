@@ -15,6 +15,17 @@ export default class SessionForm extends React.Component {
       
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleInput = this.handleInput.bind(this);
+      this.submitDemoLogin = this.submitDemoLogin.bind(this);
+   }
+
+   submitDemoLogin(e) {
+      e.preventDefault(); 
+      let demo = {
+         username: 'demo',
+         password: '123456',
+         email: 'demodemo@test.com'
+      }
+      this.props.processForm(demo);
    }
 
    componentWillUnmount(){
@@ -77,7 +88,10 @@ export default class SessionForm extends React.Component {
                      <input className='submit' type='submit' value='Login'/>
                   </form>
 
-                  <span>Need an account? <Link to='/register'>Register</Link></span>
+                  <p>
+                     Need an account? <Link to='/register'>Register</Link> or login with a 
+                     <span> <a href='https://discord-tkla.herokuapp.com/?#/login' onClick={this.submitDemoLogin}>Demo Account.</a></span>
+                  </p>
                </div>
 
                <div id='loginGreeting'>
