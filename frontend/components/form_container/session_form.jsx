@@ -12,7 +12,7 @@ export default class SessionForm extends React.Component {
          password: '',
          email: '',
       }
-      
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleInput = this.handleInput.bind(this);
       this.submitDemoLogin = this.submitDemoLogin.bind(this);
@@ -32,7 +32,8 @@ export default class SessionForm extends React.Component {
       this.props.clearErrors();
    }
    
-   handleSubmit(){
+   handleSubmit(e){
+      e.preventDefault();
       this.props.processForm(this.state);
       this.setState({
          username: '',
