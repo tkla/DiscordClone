@@ -5,6 +5,7 @@
    border-radius: 5px;
    display: inline-block;
 }
+
 .registerForm > * {
    margin-top: 5px; 
    margin-bottom: 5px;
@@ -21,8 +22,15 @@
    //background-color: brown;
 }
 
+form > label {
+   display: inline-block;
+   width: 100%;
+   margin-top: 20px;
+}
+
 .registerForm input{
    box-sizing: border-box;
+   color:white;
    border-radius: 4px;
    width: 100%;
    margin-top: 5px;
@@ -43,11 +51,6 @@
 .registerForm input {
    background-color: #303339;
 }
-
-// .registerForm input[type=password]{
-//    color: black;
-//    background-color: white;
-// }
 
 .registerForm input[type=submit]{
    background-color: #5865F2;

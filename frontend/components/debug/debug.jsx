@@ -17,7 +17,7 @@ const Debug = (props) => {
    }
 
    return (
-      <div className='sessionWindow'> 
+      <div className='registerWindow' style={{display: 'flex', flexDirection: 'column' ,justifyContent: 'center', alignItems: 'center'}}> 
          <h1>Debug</h1>
          {link}
       </div>
