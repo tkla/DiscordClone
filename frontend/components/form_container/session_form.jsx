@@ -13,11 +13,12 @@ export default class SessionForm extends React.Component {
          email: '',
       }
 
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleInput = this.handleInput.bind(this);
       this.submitDemoLogin = this.submitDemoLogin.bind(this);
    }
-
+   
    submitDemoLogin(e) {
       e.preventDefault(); 
       let demo = {

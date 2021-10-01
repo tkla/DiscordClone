@@ -22,4 +22,8 @@ class Server < ApplicationRecord
 
    has_many :channels
 
+   def admins 
+      self.users.where('admin = true');
+   end
+
 end
