@@ -29,7 +29,15 @@ class Api::UsersController < ApplicationController
       @user = current_user 
 
       if @user 
-         @servers = @user.servers
+         @servers = @user.includes_server_users
+
+         # @users = Hash.new 
+         # @channels = Hash.new 
+         # @servers.each do |s|
+         #    @users[s.id] = s.users.map{ |u| u.id}
+         #    @channels[s.id] = s.channels.map{ |c| c.id}
+         # end
+
          render 'api/servers/index'
       else 
          render json: @user.errors.full_messages, status: 404

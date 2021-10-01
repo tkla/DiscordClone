@@ -31,6 +31,12 @@ class User < ApplicationRecord
    has_many :channels,
       foreign_key: :author_id
 
+
+   #Get this user's list of servers and their server's list of channels and members.
+   def includes_server_users
+      servers = self.servers.includes(:users, :channels)
+   end
+
    def self.find_by_credentials(username, password) 
       user = User.find_by(username: username) 
       if user && user.is_password?(password) 
