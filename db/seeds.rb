@@ -28,3 +28,12 @@ UserServer.create(user_id: 2, server_id: 3, admin: false)
 UserServer.create(user_id: 3, server_id: 1, admin: false)
 UserServer.create(user_id: 3, server_id: 2, admin: false)
 
+#Channels
+Channel.create(server_id: 1, name: 'League General', author_id: 1, voice_channel: false)
+Channel.create(server_id: 1, name: 'Theory Crafting', author_id: 2, voice_channel: false)
+
+Channel.create(server_id: 2, name: 'Hololive General', author_id: 1, voice_channel: false)
+Channel.create(server_id: 2, name: 'Glasses', author_id: 1, voice_channel: false)
+Channel.create(server_id: 2, name: 'Fubuki', author_id: 1, voice_channel: false)
+
+Channel.create(server_id: 3, name: 'Job Search', author_id: 2, voice_channel: false)
