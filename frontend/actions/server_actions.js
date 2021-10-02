@@ -8,7 +8,6 @@ const receiveServers = (servers) => ({
 })
 
 export const getUserServers = () => dispatch => {
-   console.log("Yo");
    return userServers()
       .then( (servers) => dispatch(receiveServers(servers)))
 }
