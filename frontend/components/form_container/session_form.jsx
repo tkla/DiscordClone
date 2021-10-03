@@ -134,7 +134,7 @@ export default class SessionForm extends React.Component {
 
                   <input className='submit' type='submit' value='Continue'/>
                </form>
-               <Link to='/login'>Already have an account?</Link>
+               <Link to='/'>Already have an account?</Link>
             </div>
          )
       }

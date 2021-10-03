@@ -7,7 +7,6 @@ export default class Channel extends React.Component{
       return(
          <div id='channel-container'>
             Channels
-            <i class="fab fa-discord"></i>   
          </div>
       )
    }

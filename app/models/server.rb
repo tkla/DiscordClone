@@ -15,12 +15,14 @@ class Server < ApplicationRecord
    belongs_to :author,
       class_name: :User
 
-   has_many :user_servers
+   has_many :user_servers,
+      dependent: :destroy
 
    has_many :users, 
       through: :user_servers
 
-   has_many :channels
+   has_many :channels,
+      dependent: :destroy
 
    def admins 
       self.users.where('admin = true');
