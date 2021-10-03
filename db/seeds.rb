@@ -39,5 +39,13 @@ Channel.create(server_id: 2, name: 'Fubuki', author_id: 1, voice_channel: false)
 Channel.create(server_id: 3, name: 'Job Search', author_id: 2, voice_channel: false)
 
 #Posts
-Post.create(server_id: 1, channel_id: 1, author_id: 1, body: "Sona good champion", original_body: "Sona good champion")
-Post.create(server_id: 1, channel_id: 1, author_id: 2, body: "No, bad", parent_id: 1, original_body: "Sona good champion")
+Post.create(server_id: 1, channel_id: 1, author_id: 1, 
+   body: "Sona good champion", original_body: "Sona good champion")
+Post.create(server_id: 1, channel_id: 1, author_id: 2, 
+   body: "No, bad", parent_id: 1, original_body: "Sona good champion") 
+
+Post.create(server_id: 3, channel_id: 6, author_id: 1, 
+   body: "Delete this post", original_body: "Delete this post")
+Post.create(server_id: 3, channel_id: 6, author_id: 3, 
+   body: "Boba?", original_body: "Boba?")
+

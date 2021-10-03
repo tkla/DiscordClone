@@ -16,4 +16,9 @@ class Post < ApplicationRecord
    validates :server_id, :channel_id, :author_id, presence: true 
 
    belongs_to :channel 
+   
+   belongs_to :server 
+
+   belongs_to :user,
+      foreign_key: :author_id
 end
