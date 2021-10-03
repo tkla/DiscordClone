@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
       if @user 
          render :show 
       else 
-         render json: @user.errors.full_messages, status: 404
+         render json: "User does not exist.", status: 404
       end
    end
 

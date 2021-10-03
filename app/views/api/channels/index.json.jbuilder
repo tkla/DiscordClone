@@ -2,6 +2,6 @@
    json.set! c.id do 
       json.partial! 'api/channels/channel', channel: c
 
-      json.comments c.posts.map{ |c| c.id }
+      json.posts c.posts.map{ |post| post.id }
    end 
 end

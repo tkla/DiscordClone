@@ -23,7 +23,8 @@ class User < ApplicationRecord
       class_name: :Server,
       foreign_key: :author_id 
 
-   has_many :user_servers
+   has_many :user_servers,
+      dependent: :destroy
 
    has_many :servers, 
       through: :user_servers 
@@ -37,6 +38,12 @@ class User < ApplicationRecord
       servers = self.servers.includes(:users, :channels)
    end
 
+   #Check if user is admin of server
+   def is_admin?(server_id) 
+      !self.user_servers.where('server_id = ? AND admin = TRUE', server_id).empty?
+   end
+
+   #User Auth
    def self.find_by_credentials(username, password) 
       user = User.find_by(username: username) 
       if user && user.is_password?(password) 
