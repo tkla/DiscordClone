@@ -1,4 +1,4 @@
-import { RECEIVE_SERVERS } from "../actions/server_actions";
+import { RECEIVE_SERVERS, RECEIVE_SERVER } from "../actions/server_actions";
 
 const DEFAULT_STATE = {
    byId: {},
