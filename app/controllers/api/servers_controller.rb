@@ -30,7 +30,7 @@ class Api::ServersController < ApplicationController
       @server  = Server.find_by(id: params[:id], author_id: current_user.id )
       
       if @server 
-         @server .destroy 
+         @server.destroy 
          render :show 
       else 
          render json: "Only the owner of the server is permitted to perform this action", status: 401

@@ -10,10 +10,17 @@ class Api::UsersController < ApplicationController
       end
    end 
    
-   #Do later, for now just show first user
+   #Return all users in server_id
    def index 
-      @users = User.all 
-      render :index
+      server = Server.find_by_id(params[:server_id])
+      
+
+      if server
+         @users = server.users
+         render :index 
+      else 
+         render json: "Unable to find server.", status: 404 
+      end
    end
 
    def show 
@@ -30,14 +37,6 @@ class Api::UsersController < ApplicationController
 
       if @user 
          @servers = @user.includes_server_users
-
-         # @users = Hash.new 
-         # @channels = Hash.new 
-         # @servers.each do |s|
-         #    @users[s.id] = s.users.map{ |u| u.id}
-         #    @channels[s.id] = s.channels.map{ |c| c.id}
-         # end
-
          render 'api/servers/index'
       else 
          render json: @user.errors.full_messages, status: 404

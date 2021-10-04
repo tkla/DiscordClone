@@ -23,10 +23,6 @@ class Api::ChannelsController < ApplicationController
    def create 
       @channel = Channel.new(channel_params)
       
-      # is_admin = 
-      #    current_user.user_servers.
-      #    where('server_id = ? AND admin = TRUE', params[:channel][:server_id] )
-
       if !current_user.is_admin?(params[:channel][:server_id])
          return render json: "Only a server admin may perform this action.", status: 401
       end
