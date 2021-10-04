@@ -1,1 +1,1 @@
-json.extract!, post, :id, :channel_id, :author_id, :parent_id, :body
+json.extract! post, :id, :channel_id, :author_id, :parent_id, :body

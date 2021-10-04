@@ -46,6 +46,10 @@ class User < ApplicationRecord
       !self.user_servers.where('server_id = ? AND admin = TRUE', server_id).empty?
    end
 
+   def is_member?(server_id)
+      !self.user_servers.where('server_id = ?', server_id).empty?
+   end
+
    #User Auth
    def self.find_by_credentials(username, password) 
       user = User.find_by(username: username) 

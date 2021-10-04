@@ -14,6 +14,7 @@
 #
 class Post < ApplicationRecord
    validates :server_id, :channel_id, :author_id, presence: true 
+   validate :check_same_channel
 
    belongs_to :channel 
    
@@ -21,4 +22,22 @@ class Post < ApplicationRecord
 
    belongs_to :user,
       foreign_key: :author_id
+
+   has_many :replies, 
+      foreign_key: :parent_id,
+      class_name: :Post 
+   
+
+   #Only reply to posts in the same channel.
+   def check_same_channel
+      return true if !self.parent_id 
+
+      parent = Post.find_by_id(self.parent_id) 
+      if !parent || parent.channel_id != self.channel_id
+         errors.add("#{self.parent_id}", ": Unable to find parent post.") 
+         return false 
+      end
+      
+      true 
+   end
 end
