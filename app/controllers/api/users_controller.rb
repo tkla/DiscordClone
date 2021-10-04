@@ -14,9 +14,8 @@ class Api::UsersController < ApplicationController
    def index 
       server = Server.find_by_id(params[:server_id])
       
-
       if server
-         @users = server.users
+         @users = server.users.includes(:servers)
          render :index 
       else 
          render json: "Unable to find server.", status: 404 

@@ -1,6 +1,6 @@
 class Api::ServersController < ApplicationController
    def index 
-      @servers = Server.all 
+      @servers = Server.all.includes(:users, :channels) 
 
       render :index 
    end
@@ -12,7 +12,7 @@ class Api::ServersController < ApplicationController
          UserServer.create(server_id: @server.id, user_id: current_user.id, admin: true)
          render :show 
       else 
-         render json: @server.errors.full_messages, status: 402 
+         render json: @server.errors.full_messages, status: 401 
       end 
    end
 

@@ -12,7 +12,7 @@ const receiveServers = (servers) => ({
 })
 
 const receiveServer = (server) => ({
-   type: RECEIVE_SERVERS,
+   type: RECEIVE_SERVER,
    server
 })
 
