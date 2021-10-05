@@ -1,6 +1,18 @@
 import { RECEIVE_CHANNEL, RECEIVE_CHANNELS, CREATE_CHANNEL, DELETE_CHANNEL }
    from '../actions/channel_actions'
 
+const DEFAULT_STATE = { 
+   1: {
+      id: null,
+      server_id: null,
+      name: "",
+      authorId: null,
+      posts: [],
+      voice_channel: false,
+      currentUsers: []
+   }
+}
+
 const channelsReducer = (state = {}, action) => {
    Object.freeze(state); 
    const newState = Object.assign({}, state);

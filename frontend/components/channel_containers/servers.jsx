@@ -5,15 +5,10 @@ export default class Servers extends React.Component {
 
    constructor(props){
       super(props);
-      this.loadChannels = this.loadChannels.bind(this);
    }
 
    componentDidMount(){
       this.props.getUserServers();
-   }
-
-   loadChannels(serverId){
-      this.props.getChannelsIndex(serverId);
    }
 
    render(){
@@ -39,9 +34,7 @@ export default class Servers extends React.Component {
                   <li  key={s}>
                      <Link 
                         className='server-item' 
-                        to={`/channels/${servers[s].id.toString().padStart(10, "0")}`}
-                        onClick={ () => this.loadChannels(servers[s].id) }
-                        > 
+                        to={`/channels/${servers[s].id.toString().padStart(10, "0")}`}> 
                         {servers[s].name}
                      </Link>
                   </li>
@@ -51,7 +44,7 @@ export default class Servers extends React.Component {
                <p className='server-item' id='explore-server'>Explore</p>
             </ul>
 
-            <p className='server-item' id='download-apps'>Download</p>
+            <a className='server-item' href='https://github.com/tkla/DiscordClone' id='download-apps'>G</a>
          </div>
       )
    }
