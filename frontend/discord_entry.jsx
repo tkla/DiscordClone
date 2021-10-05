@@ -23,9 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
    }
 
    //Debug
-   window.getState = store.getState;
-   window.getUser = (id) => store.dispatch(getUserShow(id));
-   window.getUsersIndex = (serverId) => store.dispatch(getUsersIndex(serverId)); 
+   window.getState = store.getState; 
    window.logout = () => store.dispatch(logout());
    //---
    ReactDOM.render(<Root store={store}/>, root);
