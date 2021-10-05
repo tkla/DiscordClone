@@ -7,11 +7,11 @@ const channelsReducer = (state = {}, action) => {
 
    switch (action.type) {
       case RECEIVE_CHANNEL:
-         newState[action.channel.id] = action.channel;
-         return newState; 
+         // = action.channel;
+         return { [action.channel.id]: action.channel}; 
 
       case RECEIVE_CHANNELS: 
-         return Object.assign({}, newState, action.channels)
+         return action.channels
 
       case CREATE_CHANNEL: 
          newState[action.channel.id] = action.channel; 
@@ -25,3 +25,5 @@ const channelsReducer = (state = {}, action) => {
          return state;
    }
 }
+
+export default channelsReducer;

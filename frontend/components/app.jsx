@@ -14,10 +14,10 @@ const App = () => (
       <AuthRoute exact path='/' component={LoginFormContainer}/>
       <AuthRoute exact path='/register' component={SignUpFormContainer}/>
       
-      <ProtRoute path='/channels/*' component={ServersContainer}/>
-      <ProtRoute path='/channels/*' component={ChannelsContainer}/>
-      <ProtRoute path='/channels/*' component={PostsContainer}/>
-      <ProtRoute path='/channels/*' component={UserListContainer}/>
+      <ProtRoute path='/channels/:id' component={ServersContainer}/>
+      <ProtRoute path='/channels/:id' component={ChannelsContainer}/>
+      <ProtRoute path='/channels/:id' component={PostsContainer}/>
+      <ProtRoute path='/channels/:id' component={UserListContainer}/>
       {/* <Redirect to='/' /> */}
 
    </div>
