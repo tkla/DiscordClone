@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Debug = (props) => {
    let link = '';
+   
    if (props.currentUser) {
       link = <button onClick={() => props.logout()}>Logout</button>
 

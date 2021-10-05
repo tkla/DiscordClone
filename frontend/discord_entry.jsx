@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Root from './components/root'
 import configureStore from './store/store'
+import {logout} from './actions/session_actions'
+import {getUserShow, getUsersIndex} from './actions/user_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
    const root = document.getElementById('root');
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
          entities: {
             users: { [window.currentUser.id]: window.currentUser }
          },
-         session: { id: window.currentUser.id }
+         session: { currentUserId: window.currentUser.id }
       };
       store = configureStore(preloadedState);
       delete window.currentUser;
@@ -20,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
       store = configureStore();
    }
 
-   window.getState = store.getState;
+   //Debug
+   window.getState = store.getState; 
+   window.logout = () => store.dispatch(logout());
+   //---
    ReactDOM.render(<Root store={store}/>, root);
 })

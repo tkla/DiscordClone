@@ -19,6 +19,38 @@ class User < ApplicationRecord
 
    attr_reader :password
 
+   has_many :servers_created,
+      class_name: :Server,
+      foreign_key: :author_id 
+
+   has_many :user_servers,
+      dependent: :destroy
+
+   has_many :servers, 
+      through: :user_servers 
+
+   has_many :channels,
+      foreign_key: :author_id
+
+   has_many :posts,
+      foreign_key: :author_id  
+   
+
+   #Get this user's list of servers and their server's list of channels and members.
+   def includes_server_users
+      servers = self.servers.includes(:users, :channels)
+   end
+
+   #Check if user is admin of server
+   def is_admin?(server_id) 
+      !self.user_servers.where('server_id = ? AND admin = TRUE', server_id).empty?
+   end
+
+   def is_member?(server_id)
+      !self.user_servers.where('server_id = ?', server_id).empty?
+   end
+
+   #User Auth
    def self.find_by_credentials(username, password) 
       user = User.find_by(username: username) 
       if user && user.is_password?(password) 

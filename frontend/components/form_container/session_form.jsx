@@ -13,11 +13,12 @@ export default class SessionForm extends React.Component {
          email: '',
       }
 
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleInput = this.handleInput.bind(this);
       this.submitDemoLogin = this.submitDemoLogin.bind(this);
    }
-
+   
    submitDemoLogin(e) {
       e.preventDefault(); 
       let demo = {
@@ -133,7 +134,7 @@ export default class SessionForm extends React.Component {
 
                   <input className='submit' type='submit' value='Continue'/>
                </form>
-               <Link to='/login'>Already have an account?</Link>
+               <Link to='/'>Already have an account?</Link>
             </div>
          )
       }
