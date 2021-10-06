@@ -11,7 +11,11 @@ Rails.application.routes.draw do
          end
       end
       
+      delete '/servers/:server_id/leave', to: 'servers#leave_server'
       resources :servers, only: [:index, :create, :show, :destroy] do 
+         collection do 
+            post ':id', to: 'servers#join_server'
+         end
          resources :channels, only: [:index]
          resources :users, only: [:index]
       end

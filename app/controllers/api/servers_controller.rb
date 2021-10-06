@@ -10,10 +10,42 @@ class Api::ServersController < ApplicationController
 
       if @server.save  
          UserServer.create(server_id: @server.id, user_id: current_user.id, admin: true)
+         Channel.create(server_id: @server.id, name: 'General', author_id: current_user.id, voice_channel: false)
          render :show 
       else 
          render json: @server.errors.full_messages, status: 401 
       end 
+   end
+
+   def join_server
+      @server = Server.find_by_id(params[:id]);
+      if !@server 
+         return render json: 'Unable to locate server.', status: 404 
+      end
+
+      joined = UserServer.new(server_id: @server.id, user_id: current_user.id, admin: false)
+      if joined.save
+         render :show 
+      else 
+         render json: 'Unable to join server.', status: 401
+      end
+
+   end
+
+   def leave_server
+      @server = Server.find_by_id(params[:server_id]);
+      if !@server 
+         return render json: 'Unable to locate server.', status: 404 
+      end
+
+      leave = UserServer.find_by(server_id: @server.id, user_id: current_user.id)
+      if leave
+         leave.destroy
+         render :show 
+      else 
+         render json: 'Error leaving server.', status: 404
+      end
+
    end
 
    def show 
@@ -22,7 +54,7 @@ class Api::ServersController < ApplicationController
       if @server 
          render :show 
       else 
-         render json: "Server does not exist", status: 404 
+         render json: "Unable to locate server.", status: 404 
       end 
    end
 

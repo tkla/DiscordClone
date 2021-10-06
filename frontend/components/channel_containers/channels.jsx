@@ -43,11 +43,13 @@ export default class Channel extends React.Component{
                <div className='collapse' id='text-channels'>
                   <ul className='text-channels-list'>{ 
                      Object.keys(channels).map( channelId=>  
-                        <li key={channels[channelId].name}>{channels[channelId] ? channels[channelId].name : "" }</li>
+                        <li key={channels[channelId].name}>
+                           {channels[channelId].name}
+                        </li>
                      )
                   }</ul>
                </div>
-               
+
             </div>
          </div>
       )

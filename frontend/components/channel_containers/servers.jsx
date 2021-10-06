@@ -21,8 +21,7 @@ export default class Servers extends React.Component {
       }
 
       let servers = this.props.servers;
-      let currentUserId = this.props.currentUserId;
-      let users = this.props.users;
+      let currentUser = this.props.currentUser;
 
       return(
          <div id='server-container'>
@@ -30,7 +29,7 @@ export default class Servers extends React.Component {
 
             <ul id='server-list'>
             {
-               users[currentUserId].allServers.map( s =>
+               currentUser.allServers.map( s =>
                   <li  key={s}>
                      <Link 
                         className='server-item' 
@@ -40,7 +39,7 @@ export default class Servers extends React.Component {
                   </li>
                )
             }
-               <p className='server-item' id='add-server'>+</p>
+               <a className='server-item' id='create-server' onClick={this.props.openCreateServer}>+</a>
                <p className='server-item' id='explore-server'>Explore</p>
             </ul>
 

@@ -50,6 +50,20 @@ export const serverDestroy = (id) => (
    })
 )
 
+export const serverJoin = (id) => (
+   $.ajax({
+      url: `/api/servers/${id}`,
+      method: 'POST'
+   })
+)
+
+export const serverLeave = (id) => (
+   $.ajax({
+      url: `/api/servers/${id}/leave`,
+      method: 'DELETE'
+   })
+)
+
 // ChannelsController
 export const channelsIndex = (serverId) => (
    $.ajax({

@@ -40,6 +40,7 @@ form > label {
    border-color: #222428;
    border-style: solid;
    border-width: 1px;
+   background-color: #303339;
 }
 
 .registerForm input:hover{
@@ -48,10 +49,6 @@ form > label {
 
 .registerForm input:focus{
    border-color: deepskyblue;
-}
-
-.registerForm input {
-   background-color: #303339;
 }
 
 .registerForm input[type=submit]{
