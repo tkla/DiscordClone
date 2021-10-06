@@ -1,6 +1,7 @@
 import Servers from './servers';
 import {connect} from 'react-redux';
 import { getUserServers, getServerShow } from '../../actions/server_actions';
+import { logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const mapState = (state) => ({
@@ -13,7 +14,9 @@ const mapDispatch = (dispatch) => ({
    getUserServers: () => dispatch(getUserServers()),
    openCreateServer: () => dispatch(openModal('createServer')),
    openJoinServer: () => dispatch(openModal('joinServer')),
-   getServerShow: (id) => dispatch(getServerShow(id))
+   getServerShow: (id) => dispatch(getServerShow(id)),
+   logout: () => dispatch(logout()),
+
 })
 
 export default connect(mapState, mapDispatch)(Servers);

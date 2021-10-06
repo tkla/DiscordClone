@@ -59,6 +59,7 @@ export default class Servers extends React.Component {
             </ul>
             
             <a className='server-item' href='https://github.com/tkla/DiscordClone' id='download-apps'>G</a>
+            <Link className='server-item' to='/' onClick={this.props.logout}>Logout</Link>
          </div>
       )
    }
