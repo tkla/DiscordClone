@@ -2,34 +2,35 @@ import {connect} from 'react-redux';
 import React from 'react'
 import { closeModal } from '../../actions/modal_actions';
 import { getServerJoin, getUserServers } from '../../actions/server_actions';
-import { Redirect } from 'react-router'
+// import { Redirect } from 'react-router'
 
 class JoinServer extends React.Component {
    constructor(props){
       super(props)
-      this.serverId = -1;
+      this.serverId = this.props.serverId;
       this.handleSubmit = this.handleSubmit.bind(this);
+
+      // Rework later, temporary workaround.
+      this.serverCount = this.props.currentUser.allServers.length;
    }
 
+   
    handleSubmit(e) {
       e.preventDefault();
       this.props.getServerJoin(this.serverId);
       this.props.getUserServers();
-      this.props.closeModal();
+   }
+
+   componentDidUpdate(){
+      if (this.serverCount !== this.props.currentUser.allServers.length) this.props.closeModal();
    }
 
    render(){ 
-      console.log(this.props.servers);
-      if (Object.keys(this.props.servers).length === 0){
+      if (!this.props.servers[this.serverId]){
          return (
             <div>
             </div>
          )
-      }
-
-      for (var k in this.props.servers) {
-         this.serverId = k;
-         break;
       }
 
       return(

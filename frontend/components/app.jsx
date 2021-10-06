@@ -20,7 +20,7 @@ import Modal from './modals/modal'
  
 const App = () => (
    <div id='root-app'>
-      <Modal/>
+      {/* <Modal/> */}
       <AuthRoute exact path='/' component={LoginFormContainer}/>
       <AuthRoute exact path='/register' component={SignUpFormContainer}/>
       

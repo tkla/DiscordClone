@@ -4,13 +4,14 @@ import { closeModal } from '../../actions/modal_actions'
 import CreateServerContainer from './create_server_container';
 import JoinServer from './join_server';
 
-function Modal({modal, closeModal}) {
-   if (!modal) return null;
-
+function Modal(props) {
+   if (!props.modal) return null;
    let component;
-   switch (modal) {
+
+   // For each modal component, pass in props as needed but keep it minimal.
+   switch (props.modal) {
       case 'joinServer':
-         component = <JoinServer />;
+         component = <JoinServer serverId={props.serverId}/>;
          break;
       case 'createServer':
          component = <CreateServerContainer/>;
@@ -20,7 +21,7 @@ function Modal({modal, closeModal}) {
    }
 
    return (
-      <div className="modal-background" onClick={closeModal}>
+      <div className="modal-background" onClick={props.closeModal}>
          <div className="modal-child" onClick={e => e.stopPropagation()}>
             { component }
          </div>

@@ -6,6 +6,7 @@ import { openModal } from '../../actions/modal_actions';
 const mapState = (state) => ({
    servers: state.entities.servers,
    currentUser: state.entities.users[state.session.currentUserId],
+   modal: state.ui.modal,
 })
 
 const mapDispatch = (dispatch) => ({
