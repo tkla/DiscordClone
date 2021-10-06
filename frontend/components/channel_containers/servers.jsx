@@ -6,6 +6,7 @@ export default class Servers extends React.Component {
    constructor(props){
       super(props);
       this.serverId;
+      this.currentUser = this.props.currentUser;
    }
 
    componentDidMount(){
@@ -15,12 +16,19 @@ export default class Servers extends React.Component {
 
    componentDidUpdate(){
       if (this.props.match.params.id !== "@me") {
-         console.log("Updating")
+         // Grab server id from params
          this.serverId = parseInt(this.props.match.params.id.substring(0,10)); 
+
+         // If server is not in state, dispatch ajax request
          if (!this.props.servers[this.serverId]){
             this.props.getServerShow(this.serverId);
             this.props.openJoinServer();
          }
+
+         // // If server is not in user's allServers open modal and server exists in state.
+         // if (!this.currentUser.allServers.includes(this.serverId) && this.props.servers[this.serverId]){
+         //    this.props.openJoinServer();
+         // }
       }
    }
 
@@ -34,9 +42,6 @@ export default class Servers extends React.Component {
       }
       //let serverId = parseInt(this.props.match.params.id.substring(0,10)); 
       let servers = this.props.servers;
-      let currentUser = this.props.currentUser;
-
-
       return(
          <div id='server-container'>
             <Modal serverId={this.serverId}/>
@@ -44,7 +49,7 @@ export default class Servers extends React.Component {
 
             <ul id='server-list'>
             {
-               currentUser.allServers.map( s =>
+               Object.keys(this.props.servers).map( s =>
                   <li  key={s}>
                      <Link 
                         className='server-item' 

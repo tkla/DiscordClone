@@ -1,7 +1,12 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { CREATE_SERVER, DESTROY_SERVER } from "../actions/server_actions";
-import { RECEIVE_USER, RECEIVE_USERS } from '../actions/user_actions'
+import { RECEIVE_USER, RECEIVE_USERS } from '../actions/user_actions';
 
+// const DEFAULT_STATE = {
+//    1: {
+
+//    }
+// }
 const usersReducer = (state = {}, action) =>{
    Object.freeze(state); 
    const newState = Object.assign({}, state);
@@ -21,11 +26,15 @@ const usersReducer = (state = {}, action) =>{
       case CREATE_SERVER:
          let currentUserId = action.server.allUsers[0];
          newState[currentUserId].allServers.push(action.server.id)
-         return state;
+         return newState;
 
-      // Do Later or maybe not. Thinking of removing this allServers later.
-      case DESTROY_SERVER:
-         return state;
+      // case DESTROY_SERVER:
+      //    currentUserId = action.server.allUsers[0];
+      //    console.log(currentUserId);
+      //    console.log(newState);
+      //    newState[currentUserId].allServers.push(action.server.id)
+      //    return newState;
+         
       default:
          return state;
    }

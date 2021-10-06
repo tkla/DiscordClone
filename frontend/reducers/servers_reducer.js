@@ -18,7 +18,7 @@ const serversReducer = (state = {}, action) => {
          delete newState[action.server.id];
          return newState;
 
-      // This action type will hit users reducer as well to update their all_servers
+      // This action type will hit users reducer as well to update their allServers
       case CREATE_SERVER:
          newState[action.server.id] = action.server;
          return newState;

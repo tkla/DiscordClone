@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import React from 'react'
 import { closeModal } from '../../actions/modal_actions';
-import { getServerJoin, getUserServers } from '../../actions/server_actions';
+import { getServerJoin, getUserServers, removeServerLocalState } from '../../actions/server_actions';
 // import { Redirect } from 'react-router'
 
 class JoinServer extends React.Component {
@@ -10,6 +10,7 @@ class JoinServer extends React.Component {
       this.serverId = this.props.serverId;
       this.handleSubmit = this.handleSubmit.bind(this);
 
+      this.joined =  false; 
       // Rework later, temporary workaround.
       this.serverCount = this.props.currentUser.allServers.length;
    }
@@ -17,12 +18,18 @@ class JoinServer extends React.Component {
    
    handleSubmit(e) {
       e.preventDefault();
+      this.joined = true;
       this.props.getServerJoin(this.serverId);
-      this.props.getUserServers();
    }
 
    componentDidUpdate(){
       if (this.serverCount !== this.props.currentUser.allServers.length) this.props.closeModal();
+   }
+
+   componentWillUnmount(){
+      if (!this.joined){
+         this.props.removeServerLocalState(this.serverId);
+      }
    }
 
    render(){ 
@@ -55,6 +62,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
    getServerJoin: serverId => dispatch(getServerJoin(serverId)),
    getUserServers: () => dispatch(getUserServers()),
+   removeServerLocalState: (serverId) => dispatch(removeServerLocalState(serverId)), 
    closeModal: () => dispatch(closeModal),
 })
 

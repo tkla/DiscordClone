@@ -1,11 +1,12 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 
 export default class Channel extends React.Component{
 
    constructor(props){
       super(props)
       this.serverId = -1;
+      this.leaveServer = this.leaveServer.bind(this);
    }
    
    componentDidMount(){
@@ -22,6 +23,11 @@ export default class Channel extends React.Component{
       }
    }
 
+   leaveServer(){
+      this.props.getUserServers();
+      this.props.getServerLeave(this.serverId)
+   }
+
    render(){
       let channels = this.props.channels;
       let server = this.props.servers[this.serverId];
@@ -34,11 +40,15 @@ export default class Channel extends React.Component{
             </div>
          )
       }
+      let isAuthor;
+      (this.props.currentUser.id === server.author_id)?  isAuthor = true :  isAuthor = false; 
 
       return(
          <div> 
             <div className='channel-container' id='channels-list'>
                <h3 className='channel-header'>{server.name}</h3>
+
+               <Link to='/channels/@me' onClick={this.leaveServer} hidden={isAuthor}>Leave Server</Link>
 
                <div className='collapse' id='text-channels'>
                   <ul className='text-channels-list'>{ 

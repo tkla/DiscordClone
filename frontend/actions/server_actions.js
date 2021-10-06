@@ -1,4 +1,3 @@
-import CreateServer from "../components/modals/create_server";
 import { userServers, serversIndex, serverCreate, serverShow, serverDestroy, serverJoin, serverLeave } 
    from "../util/server_api_util";
 
@@ -27,10 +26,19 @@ const destroyServer = (server) => ({
    server 
 })
 
+
 // const receiveErrors = (errors) => ({
 //    type: RECEIVE_SESSION_ERRORS,
 //    errors
 // })
+
+// Remove server from LOCAL state. Does nothing to rails backend.
+export const removeServerLocalState = (serverId) => dispatch => {
+   server = {
+      id: serverId 
+   }
+   return dispatch(destroyServer(server));
+}
 
 // Get all the current user's servers
 export const getUserServers = () => dispatch => (
