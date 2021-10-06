@@ -1,4 +1,5 @@
-import { userServers, serversIndex, serverCreate, serverShow, serverDestroy } 
+import CreateServer from "../components/modals/create_server";
+import { userServers, serversIndex, serverCreate, serverShow, serverDestroy, serverJoin, serverLeave } 
    from "../util/server_api_util";
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
@@ -58,5 +59,17 @@ export const getServerShow = (id) => dispatch => (
 // Delete a server
 export const getServerDestroy = (id) => dispatch => (
    serverDestroy(id)
+      .then( server => dispatch(destroyServer(server)))
+)
+
+// Join server
+export const getServerJoin = (id) => dispatch => (
+   serverJoin(id)
+      .then( server => dispatch(createServer(server)))
+)
+
+// Leave server.
+export const getServerLeave = (id) => dispatch => (
+   serverLeave(id)
       .then( server => dispatch(destroyServer(server)))
 )

@@ -1,0 +1,35 @@
+.base-modal{
+   width: 485px;
+   height: 575px;
+   background-color: white;
+   border-radius: 5px;
+   display: inline-block;
+   margin-left:auto;
+   margin-right: auto;
+   color: black;
+   padding-top: 20px;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+.base-modal > h1, .base-modal > p {
+   text-align: center;
+   margin: 5px;
+}
+
+.base-modal > form > label >input {
+   background-color: white;
+   color: black;
+}
+
+#avatar-placeholder {
+   text-align: center;
+   color: white;
+   background-color: #36393F;
+   height: 90px;
+   width: 90px;
+   margin-left: auto;
+   margin-right: auto;
+
+   border-radius: 50%;
+}

@@ -54,8 +54,8 @@ export default class SessionForm extends React.Component {
    render(){
       let form = '';
       let window = 'loginWindow';
-      let errors = ''
-      let errMsg = ''
+      let errors = '';
+      let errMsg = '';
       if (this.props.errors.length){
          errors = 'error'
          errMsg = " - " + this.props.errors.join(' ')

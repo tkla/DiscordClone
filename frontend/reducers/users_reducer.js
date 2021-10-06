@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
-import { CREATE_SERVER } from "../actions/server_actions";
+import { CREATE_SERVER, DESTROY_SERVER } from "../actions/server_actions";
 import { RECEIVE_USER, RECEIVE_USERS } from '../actions/user_actions'
 
 const usersReducer = (state = {}, action) =>{
@@ -23,6 +23,9 @@ const usersReducer = (state = {}, action) =>{
          newState[currentUserId].allServers.push(action.server.id)
          return state;
 
+      // Do Later or maybe not. Thinking of removing this allServers later.
+      case DESTROY_SERVER:
+         return state;
       default:
          return state;
    }
