@@ -11,6 +11,16 @@ export default class Servers extends React.Component {
       this.props.getUserServers();
    }
 
+   componentDidUpdate(){
+      if (this.props.match.params.id !== "@me") {
+         let serverId = parseInt(this.props.match.params.id.substring(0,10)); 
+         if (!this.props.servers[serverId]){
+            this.props.getServerShow(serverId);
+            this.props.openJoinServer();
+         }
+      }
+   }
+
    render(){
       if (Object.keys(this.props.servers).length === 0){
          return (
@@ -19,9 +29,29 @@ export default class Servers extends React.Component {
             </div>
          )
       }
-
+      
       let servers = this.props.servers;
       let currentUser = this.props.currentUser;
+
+      if (!servers[currentUser.allServers[0]]) {
+         return (
+            <div id='server-container'>
+               <ul id='server-list'>
+                  {
+                     Object.keys(servers).map( s =>
+                        <li  key={s}>
+                           <Link 
+                              className='server-item' 
+                              to=''> 
+                              {servers[s].name}
+                           </Link>
+                        </li>
+                     )
+                  }
+               </ul>
+            </div>
+         )
+      }
 
       return(
          <div id='server-container'>

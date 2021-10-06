@@ -3,13 +3,14 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions'
 import CreateServerContainer from './create_server_container';
 import JoinServer from './join_server';
+
 function Modal({modal, closeModal}) {
    if (!modal) return null;
 
    let component;
    switch (modal) {
       case 'joinServer':
-         component = <JoinServer/>;
+         component = <JoinServer />;
          break;
       case 'createServer':
          component = <CreateServerContainer/>;
