@@ -7,6 +7,7 @@ export default class Channel extends React.Component{
       super(props)
       this.serverId = -1;
       this.leaveServer = this.leaveServer.bind(this);
+      this.loadPosts = this.loadPosts.bind(this);
    }
    
    componentDidMount(){
@@ -21,6 +22,10 @@ export default class Channel extends React.Component{
          this.serverId = newId;
          this.props.getChannelsIndex(this.serverId);
       }
+   }
+
+   loadPosts(channelId) {
+      this.props.getPostsIndex(channelId);
    }
 
    leaveServer(){
@@ -40,6 +45,14 @@ export default class Channel extends React.Component{
             </div>
          )
       }
+
+      let firstChannelId = null;
+      Object.keys(channels).some( id =>{
+         firstChannelId = id;
+         return true;
+      })
+      if (firstChannelId) this.props.getPostsIndex(firstChannelId)
+      
       let isAuthor;
       (this.props.currentUser.id === server.author_id)?  isAuthor = true :  isAuthor = false; 
 
@@ -54,6 +67,7 @@ export default class Channel extends React.Component{
                   <ul className='text-channels-list'>{ 
                      Object.keys(channels).map( channelId=>  
                         <li key={channels[channelId].name}>
+                        
                            {channels[channelId].name}
                         </li>
                      )
