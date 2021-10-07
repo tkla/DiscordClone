@@ -41,7 +41,9 @@ export default class Servers extends React.Component {
          )
       }
       //let serverId = parseInt(this.props.match.params.id.substring(0,10)); 
+      //this.currentUser = this.props.currentUser;
       let servers = this.props.servers;
+      //console.log(this.currentUser.allServers.includes('3'));
       return(
          <div id='server-container'>
             <Modal serverId={this.serverId}/>
@@ -51,11 +53,14 @@ export default class Servers extends React.Component {
             {
                Object.keys(this.props.servers).map( s =>
                   <li  key={s}>
-                     <Link 
-                        className='server-item' 
-                        to={`/channels/${servers[s].id.toString().padStart(10, "0")}`}> 
-                        {servers[s].name}
-                     </Link>
+                     { (this.currentUser.allServers.includes(parseInt(s)))? 
+                        <Link 
+                           className='server-item' 
+                           to={`/channels/${servers[s].id.toString().padStart(10, "0")}`}> 
+                           {servers[s].name}
+                        </Link>
+                     : null
+                     }
                   </li>
                )
             }

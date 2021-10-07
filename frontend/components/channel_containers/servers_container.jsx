@@ -16,7 +16,6 @@ const mapDispatch = (dispatch) => ({
    openJoinServer: () => dispatch(openModal('joinServer')),
    getServerShow: (id) => dispatch(getServerShow(id)),
    logout: () => dispatch(logout()),
-
 })
 
 export default connect(mapState, mapDispatch)(Servers);
