@@ -33,13 +33,13 @@ export default class Servers extends React.Component {
    }
 
    render(){
-      if (Object.keys(this.props.servers).length === 0){
-         return (
-            <div id='server-container'>
-               <p className='server-item' id='home-channel'>Me</p>
-            </div>
-         )
-      }
+      // if (Object.keys(this.props.servers).length === 0){
+      //    return (
+      //       <div id='server-container'>
+      //          <p className='server-item' id='home-channel'>Me</p>
+      //       </div>
+      //    )
+      // }
       let servers = this.props.servers;
 
       return(

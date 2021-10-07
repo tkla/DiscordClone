@@ -68,7 +68,6 @@ export default class Channel extends React.Component{
          return true;
       })
       
-      
       let isAuthor;
       (this.props.currentUser.id === server.author_id)?  isAuthor = true :  isAuthor = false; 
 
@@ -87,12 +86,14 @@ export default class Channel extends React.Component{
                      Object.keys(channels).map( channelId=>  
                
                         <li key={channels[channelId].name} onClick={(e)=>this.clickChannel(e, channelId)}>
+
                            <input id={channelId} type='radio' name='channel-item' defaultChecked={this.selectedChannel===channelId} />
                            <label htmlFor={channelId}>{channels[channelId].name}
                               {isAuthor ? 
                                  <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>X</button>
                                  :null}
                            </label>
+                           
                         </li>
                         
                      )

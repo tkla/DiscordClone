@@ -13,6 +13,7 @@ export default class Posts extends React.Component{
          parent_id: null,
          body: '',
       }
+      
       this.channel_id = null;
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleInput = this.handleInput.bind(this);
@@ -22,7 +23,7 @@ export default class Posts extends React.Component{
       e.preventDefault();
       this.serverId = parseInt(this.props.match.params.id.substring(0,10));
       this.props.getPostCreate(this.state);
-
+      
       this.setState({
          server_id: this.serverId,
          channel_id: null,
@@ -41,8 +42,15 @@ export default class Posts extends React.Component{
    }
 
    render(){
-      let posts = this.props.posts; 
-      this.channel_id = Object.keys(posts)[0];
+      let posts;
+      if (this.props.posts.byId){
+         posts = this.props.posts.byId; 
+      } else {
+         // Just an empty object, the view will render nothing with this.
+         posts = this.props.posts;
+      }
+      this.channel_id = this.props.posts.currentChannelId;
+
       return(
          <div id='posts-container'>
 

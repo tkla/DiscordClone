@@ -24,7 +24,7 @@ const usersReducer = (state = {}, action) =>{
          return Object.assign({}, newState, action.users);
 
       case CREATE_SERVER:
-         let currentUserId = action.server.allUsers[1];
+         let currentUserId = action.server.currentUser.id;
          newState[currentUserId].allServers.push(action.server.id)
          return newState;
 

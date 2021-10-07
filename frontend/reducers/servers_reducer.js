@@ -1,6 +1,10 @@
 import { RECEIVE_SERVERS, RECEIVE_SERVER, DESTROY_SERVER, CREATE_SERVER } 
    from "../actions/server_actions";
 
+const DEFAULT_STATE = {
+
+}
+
 const serversReducer = (state = {}, action) => {
    Object.freeze(state);
    const newState = Object.assign({}, state);
