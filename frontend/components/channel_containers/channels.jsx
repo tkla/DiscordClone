@@ -6,8 +6,11 @@ export default class Channel extends React.Component{
    constructor(props){
       super(props)
       this.serverId = -1;
+      this.firstChannelId = null;
+
       this.leaveServer = this.leaveServer.bind(this);
       this.loadPosts = this.loadPosts.bind(this);
+      this.clickChannel = this.clickChannel.bind(this);
    }
    
    componentDidMount(){
@@ -33,6 +36,15 @@ export default class Channel extends React.Component{
       this.props.getServerLeave(this.serverId)
    }
 
+   clickChannel(e, id){
+      //e.currentTarget.className="channel-selected"
+      if (this.props.channels[id].voice_channel){
+         // todo
+      }else {
+         this.loadPosts(id);
+      }
+   }
+
    render(){
       let channels = this.props.channels;
       let server = this.props.servers[this.serverId];
@@ -40,18 +52,20 @@ export default class Channel extends React.Component{
       if (!server || !channels){
          return (
             <div> 
-               <div className='channel-container' id='channels-list'>
-               </div>
+               <div className='channel-container' id='channels-list'> </div>
             </div>
          )
       }
 
-      let firstChannelId = null;
+      // Grab the posts from the first channel in the server. Don't grab posts again on rerender if we aren't changing servers.
       Object.keys(channels).some( id =>{
-         firstChannelId = id;
+         if (this.firstChannelId != id){
+            this.firstChannelId = id;
+            this.props.getPostsIndex(id);
+         } 
          return true;
       })
-      if (firstChannelId) this.props.getPostsIndex(firstChannelId)
+      
       
       let isAuthor;
       (this.props.currentUser.id === server.author_id)?  isAuthor = true :  isAuthor = false; 
@@ -59,17 +73,20 @@ export default class Channel extends React.Component{
       return(
          <div> 
             <div className='channel-container' id='channels-list'>
-               <h3 className='channel-header'>{server.name}</h3>
+               <h1 className='channel-header'>{server.name}</h1>
 
                <Link to='/channels/@me' onClick={this.leaveServer} hidden={isAuthor}>Leave Server</Link>
 
                <div className='collapse' id='text-channels'>
+                  <h2>Text Channels</h2>
                   <ul className='text-channels-list'>{ 
                      Object.keys(channels).map( channelId=>  
-                        <li key={channels[channelId].name}>
-                        
-                           {channels[channelId].name}
+               
+                        <li key={channels[channelId].name} onClick={(e)=>this.clickChannel(e, channelId)}>
+                           <input id={channelId} type='radio' name='channel-item' />
+                           <label htmlFor={channelId}>{channels[channelId].name}</label>
                         </li>
+                        
                      )
                   }</ul>
                </div>

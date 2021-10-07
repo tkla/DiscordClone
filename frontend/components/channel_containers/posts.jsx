@@ -46,9 +46,8 @@ export default class Posts extends React.Component{
             
             }</ul>
 
-
             <form onSubmit={this.handleSubmit}>
-               <input id='post-input' type='text' value={this.state.body}/>
+               <input id='post-input' type='text' />
             </form>
          </div>
       )
