@@ -10,21 +10,25 @@ class Api::PostsController < ApplicationController
       end 
    end 
 
+   # Add error checking later. Or maybe not, sometimes returning and empty object is correct?
    def index 
-      @posts = Post.all.where('channel_id = ?', params[:channel_id])
+      @posts = Post.all.where('channel_id = ?', params[:channel_id]).includes(:user)
       
-      if !@posts.empty? 
-         render :index 
-      else 
-         render json: "Could not locate either posts or channel.", status: 404 
-      end 
+      render :index 
+      # if !@posts.empty? 
+      #    render :index 
+      # else 
+      #    render json: "Could not locate either posts or channel.", status: 404 
+      # end 
    end 
 
+   # There is not enough validations here. Need to check if server exists, channel exists, and if channel is part of server.
    def create
       if !current_user.is_member?(post_params[:server_id])
          return render json: "Only members of this server may create posts.", status: 401 
       end  
 
+      params[:post][:author_id] = current_user.id 
       @post = Post.new(post_params)
       
       if @post.save 
@@ -50,6 +54,6 @@ class Api::PostsController < ApplicationController
 
    private 
    def post_params 
-      params.require(:post).permit(:server_id, :channel_id, :author_id, :body, :original_body, :parent_id)
+      params.require(:post).permit(:server_id, :channel_id, :author_id, :body, :parent_id)
    end
 end

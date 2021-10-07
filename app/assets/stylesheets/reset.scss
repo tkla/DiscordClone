@@ -18,3 +18,7 @@ h1, h2, p, strong, em, a, ul, li, div, input{
 label {
    font-family: 'Pontano Sans', sans-serif;
 }
+
+input[type='radio']{
+   appearance: none;
+}

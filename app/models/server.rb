@@ -11,6 +11,7 @@
 class Server < ApplicationRecord
    validates :name, presence: true, uniqueness: true 
    validates :author_id, presence: true  
+   after_save :add_global_admin, :add_default_channel
 
    belongs_to :author,
       class_name: :User
@@ -30,4 +31,18 @@ class Server < ApplicationRecord
       self.users.where('admin = true');
    end
 
+   private 
+   def add_global_admin 
+      UserServer.create(user_id: global_admin.id, server_id: self.id, admin: true)
+   end
+
+   def add_default_channel 
+      Channel.create(server_id: self.id, name: 'General', author_id: global_admin.id, voice_channel: false)
+   end
+
+   def global_admin 
+      Rails.cache.fetch :global_admin, :expires_in => 7.days do
+         User.find_by(username: 'Admin')
+      end
+   end
 end

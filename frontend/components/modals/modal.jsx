@@ -3,7 +3,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions'
 import CreateServerContainer from './create_server_container';
 import JoinServer from './join_server';
-
+import CreateChannel from './create_channel';
 function Modal(props) {
    if (!props.modal) return null;
    let component;
@@ -15,6 +15,9 @@ function Modal(props) {
          break;
       case 'createServer':
          component = <CreateServerContainer/>;
+         break;
+      case 'createChannel':
+         component = <CreateChannel serverId={props.serverId}/>
          break;
       default:
          return null;

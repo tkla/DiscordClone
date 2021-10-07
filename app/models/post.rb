@@ -15,6 +15,7 @@
 class Post < ApplicationRecord
    validates :server_id, :channel_id, :author_id, presence: true 
    validate :check_same_channel
+   after_initialize :ensure_original_body
 
    belongs_to :channel 
    
@@ -40,4 +41,10 @@ class Post < ApplicationRecord
       
       true 
    end
+   
+   private
+   def ensure_original_body
+      self.original_body = self.body;
+   end
+
 end

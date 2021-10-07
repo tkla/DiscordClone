@@ -14,7 +14,7 @@ import FriendsContainer from './channel_containers/friends_container';
 // Auth = Require logged out. Redirects to /channels/@me which is currently the home page
 import { AuthRoute, ProtRoute } from '../util/route_util';
 // Modal component
-import Modal from './modals/modal'
+//import Modal from './modals/modal'
 
 
  

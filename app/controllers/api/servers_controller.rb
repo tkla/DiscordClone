@@ -10,7 +10,6 @@ class Api::ServersController < ApplicationController
 
       if @server.save  
          UserServer.create(server_id: @server.id, user_id: current_user.id, admin: true)
-         Channel.create(server_id: @server.id, name: 'General', author_id: current_user.id, voice_channel: false)
          render :show 
       else 
          render json: @server.errors.full_messages, status: 401 

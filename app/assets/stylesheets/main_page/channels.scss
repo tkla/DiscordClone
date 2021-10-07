@@ -6,3 +6,66 @@
    height: 100vh;
    background-color: #2F3136;
 }
+
+.channel-header{
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-left: 20px;
+   font-size: large;
+}
+
+#text-channels{
+   display: inline-block;
+   width: 100%;
+   //box-sizing: content-box;
+   //margin: 5px;
+   padding: 5px;
+}
+
+#text-channels > h2 {
+   margin-top: 10px;
+   font-size: large;
+   margin-bottom: 5px;
+   color: #B3B6BA;
+}
+
+
+
+.text-channels-list{
+   width: 95%;
+}
+
+// .text-channels-list > li {
+//    width: 88%;
+//    background-color: blanchedalmond;
+//    padding: 5px;
+//    margin: 2px;
+//    padding-left: 10px;
+// }
+
+input[type="radio"]:checked + label {
+   background-color: #393C43;
+}
+
+input[type="radio"] + label {
+   display: inline-block;
+   // background-color: #B3B6BA;
+   width: 93%;
+   height: 100%;
+   // width: 213px;
+   padding: 5px;
+   margin-top: 2px;
+   padding-left: 10px;
+}
+
+#destroy{
+   margin-left: 85px;
+}
+
+input[type="radio"] + label > button {
+   visibility: hidden;
+}
+
+input[type="radio"]:checked + label > button {
+   visibility: visible;
+}

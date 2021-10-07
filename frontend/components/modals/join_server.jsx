@@ -15,7 +15,6 @@ class JoinServer extends React.Component {
       this.serverCount = this.props.currentUser.allServers.length;
    }
 
-   
    handleSubmit(e) {
       e.preventDefault();
       this.joined = true;
@@ -28,7 +27,7 @@ class JoinServer extends React.Component {
 
    componentWillUnmount(){
       if (!this.joined){
-         this.props.removeServerLocalState(this.serverId);
+         //this.props.removeServerLocalState(this.serverId);
       }
    }
 

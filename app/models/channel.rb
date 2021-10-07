@@ -16,6 +16,7 @@ class Channel < ApplicationRecord
       message: ": Channel name has already been taken"
    } 
    validates :voice_channel, inclusion: [true, false]
+   after_save :welcome_post 
 
    belongs_to :server
 
@@ -24,4 +25,14 @@ class Channel < ApplicationRecord
 
    has_many :posts,
       dependent: :destroy
+
+   private 
+   def welcome_post 
+      global_admin = Rails.cache.fetch :global_admin, :expires_in => 7.days do
+         User.find_by(username: 'Admin')
+      end
+
+      Post.create(server_id: self.server_id, channel_id: self.id, author_id: global_admin.id, 
+      body: "Welcome to #{self.name} chat!")
+   end
 end

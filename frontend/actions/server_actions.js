@@ -34,7 +34,7 @@ const destroyServer = (server) => ({
 
 // Remove server from LOCAL state. Does nothing to rails backend.
 export const removeServerLocalState = (serverId) => dispatch => {
-   server = {
+   const server = {
       id: serverId 
    }
    return dispatch(destroyServer(server));
