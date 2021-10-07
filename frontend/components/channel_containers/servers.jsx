@@ -40,10 +40,8 @@ export default class Servers extends React.Component {
             </div>
          )
       }
-      //let serverId = parseInt(this.props.match.params.id.substring(0,10)); 
-      //this.currentUser = this.props.currentUser;
       let servers = this.props.servers;
-      //console.log(this.currentUser.allServers.includes('3'));
+
       return(
          <div id='server-container'>
             <Modal serverId={this.serverId}/>

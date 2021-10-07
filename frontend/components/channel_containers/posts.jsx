@@ -6,19 +6,37 @@ export default class Posts extends React.Component{
       super(props)
       this.serverId = parseInt(this.props.match.params.id.substring(0,10));
       
+      //Author id will be set by rails backend
       this.state ={
          server_id: this.serverId,
-         channel_id: null,
+         channel_id: 1,
          parent_id: null,
          body: '',
       }
 
+      this.handleSubmit = this.handleSubmit.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
    }
 
    handleSubmit(e) {
       e.preventDefault();
       this.serverId = parseInt(this.props.match.params.id.substring(0,10));
+      console.log(this.state);
+      this.props.getPostCreate(this.state);
+      this.setState({
+         server_id: this.serverId,
+         channel_id: 1,
+         parent_id: null,
+         body: '',
+      })
+   }
+
+   handleInput(input){
+      return (e) => {
+         this.setState({
+            [input] : e.currentTarget.value,
+         })
+      }
    }
 
    render(){
@@ -47,7 +65,7 @@ export default class Posts extends React.Component{
             }</ul>
 
             <form onSubmit={this.handleSubmit}>
-               <input id='post-input' type='text' />
+               <input id='post-input' type='text' value={this.state.body} onChange={this.handleInput('body')}/>
             </form>
          </div>
       )

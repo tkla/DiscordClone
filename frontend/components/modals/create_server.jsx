@@ -60,10 +60,10 @@ export default class CreateServer extends React.Component {
             </form>
 
             <p className='gray-text'>
-                  By creating a server, you agree to Discord's 
-                  <span> 
-                     <a href='https://discord.com/guidelines'> Community Guidelines.</a>
-                  </span>
+               By creating a server, you agree to Discord's 
+               <span> 
+                  <a href='https://discord.com/guidelines'> Community Guidelines.</a>
+               </span>
             </p>
             
          </div>

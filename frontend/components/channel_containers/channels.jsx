@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import Modal from '../modals/modal';
 export default class Channel extends React.Component{
 
    constructor(props){
       super(props)
       this.serverId = -1;
       this.firstChannelId = null;
+      this.selectedChannel = 0;
 
       this.leaveServer = this.leaveServer.bind(this);
       this.loadPosts = this.loadPosts.bind(this);
@@ -37,7 +38,7 @@ export default class Channel extends React.Component{
    }
 
    clickChannel(e, id){
-      //e.currentTarget.className="channel-selected"
+      this.selectedChannel = id;
       if (this.props.channels[id].voice_channel){
          // todo
       }else {
@@ -61,6 +62,7 @@ export default class Channel extends React.Component{
       Object.keys(channels).some( id =>{
          if (this.firstChannelId != id){
             this.firstChannelId = id;
+            this.selectedChannel = this.firstChannelId;
             this.props.getPostsIndex(id);
          } 
          return true;
@@ -72,6 +74,7 @@ export default class Channel extends React.Component{
 
       return(
          <div> 
+            <Modal serverId={this.serverId}/>
             <div className='channel-container' id='channels-list'>
                <h1 className='channel-header'>{server.name}</h1>
 
@@ -79,12 +82,17 @@ export default class Channel extends React.Component{
 
                <div className='collapse' id='text-channels'>
                   <h2>Text Channels</h2>
+                  <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>+</button>
                   <ul className='text-channels-list'>{ 
                      Object.keys(channels).map( channelId=>  
                
                         <li key={channels[channelId].name} onClick={(e)=>this.clickChannel(e, channelId)}>
-                           <input id={channelId} type='radio' name='channel-item' />
-                           <label htmlFor={channelId}>{channels[channelId].name}</label>
+                           <input id={channelId} type='radio' name='channel-item' defaultChecked={this.selectedChannel===channelId} />
+                           <label htmlFor={channelId}>{channels[channelId].name}
+                              {isAuthor ? 
+                                 <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>X</button>
+                                 :null}
+                           </label>
                         </li>
                         
                      )
