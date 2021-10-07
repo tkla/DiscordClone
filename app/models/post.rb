@@ -41,7 +41,8 @@ class Post < ApplicationRecord
       
       true 
    end
-
+   
+   private
    def ensure_original_body
       self.original_body = self.body;
    end

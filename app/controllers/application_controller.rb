@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base  
-   helper_method :current_user, :logged_in?, :auth_token
+   helper_method :current_user, :logged_in?, :auth_token, :global_admin
    skip_before_action :verify_authenticity_token
 
    #Probably not needed but keeping just in case.
@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
 
    def current_user 
       @current_user ||= User.find_by(session_token: session[:session_token])
+   end
+
+   # This global admin will auto join every server on creation and be set as admin.
+   def global_admin 
+      @global_admin ||= User.find_by(username: 'Admin')
    end
 
    def require_login

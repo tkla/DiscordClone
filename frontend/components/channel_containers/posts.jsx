@@ -9,23 +9,23 @@ export default class Posts extends React.Component{
       //Author id will be set by rails backend
       this.state ={
          server_id: this.serverId,
-         channel_id: 1,
+         channel_id: null,
          parent_id: null,
          body: '',
       }
-
+      this.channel_id = null;
       this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleInput = this.handleInput.bind(this);
    }
 
    handleSubmit(e) {
       e.preventDefault();
       this.serverId = parseInt(this.props.match.params.id.substring(0,10));
-      console.log(this.state);
       this.props.getPostCreate(this.state);
+
       this.setState({
          server_id: this.serverId,
-         channel_id: 1,
+         channel_id: null,
          parent_id: null,
          body: '',
       })
@@ -35,12 +35,14 @@ export default class Posts extends React.Component{
       return (e) => {
          this.setState({
             [input] : e.currentTarget.value,
+            channel_id: this.channel_id
          })
       }
    }
 
    render(){
       let posts = this.props.posts; 
+      this.channel_id = Object.keys(posts)[0];
       return(
          <div id='posts-container'>
 
