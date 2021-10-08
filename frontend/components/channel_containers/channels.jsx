@@ -112,7 +112,7 @@ export default class Channel extends React.Component{
                            <label htmlFor={channelId}>
                               {channels[channelId].name}
                               {isAuthor ? 
-                                 <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>
+                                 <button className='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>
                                     <i className="fas fa-trash"></i>
                                  </button>
                                  :null}
@@ -140,7 +140,7 @@ export default class Channel extends React.Component{
                            <label htmlFor={channelId}>
                               {channels[channelId].name}
                               {isAuthor ? 
-                                 <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>
+                                 <button className='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>
                                     <i className="fas fa-trash"></i>
                                  </button>
                                  :null}

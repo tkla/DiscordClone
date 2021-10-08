@@ -41,6 +41,11 @@ button:hover{
    color: white;
 }
 
+// Buttons which indicate removing something.
+.destroy:hover{
+   color: #ED4245;
+}
+
 input[type="submit"]{
    cursor: pointer;
 }
@@ -48,3 +53,23 @@ input[type="submit"]{
 button i {
    font-size: 75%;
 }
+
+/* width */
+::-webkit-scrollbar {
+   width: 8px;
+ }
+ 
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: #2E3338; 
+   border-radius: 5px;
+   margin-top: 10px;
+   margin-bottom: 40px;
+ }
+  
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: #202225; 
+   border-radius: 5px;
+ }
+ 

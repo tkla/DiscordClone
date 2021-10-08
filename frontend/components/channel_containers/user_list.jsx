@@ -10,6 +10,7 @@ export default class UserList extends React.Component{
       // let users = this.props.users;
       return(
          <div id='user-list-container'>
+            <h3>User list</h3>
 {/*             
             <ul>{
                Object.keys(posts).map( id => 

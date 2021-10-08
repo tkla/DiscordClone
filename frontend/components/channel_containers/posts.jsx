@@ -58,15 +58,15 @@ export default class Posts extends React.Component{
                Object.keys(posts).map( id => 
                   
                   <li className='post' key={id}>
-                     <div id='post-avatar'>Avatar</div>
+                     <div className='post-avatar'>Avatar</div>
 
-                     <div id='post-content'>
+                     <div className='post-content'>
 
-                        <p id='post-reply'>{(posts[id].parent_id)? 'reply: '+posts[posts[id].parent_id].body : ''}</p>
+                        <p className='post-reply'>{(posts[id].parent_id)? 'reply: '+posts[posts[id].parent_id].body : ''}</p>
 
                         <h4>{posts[id].username} <span>{ posts[id].created_at}</span></h4>
 
-                        <p id='post-body'>{posts[id].body}</p>
+                        <p className='post-body'>{posts[id].body}</p>
 
                      </div> 
                      
@@ -76,7 +76,13 @@ export default class Posts extends React.Component{
             }</ul>
 
             <form onSubmit={this.handleSubmit}>
-               <input id='post-input' type='text' value={this.state.body} onChange={this.handleInput('body')}/>
+               <input 
+                  id='post-input' 
+                  type='text' 
+                  value={this.state.body} 
+                  autocomplete="off" 
+                  onChange={this.handleInput('body')}
+               />
             </form>
          </div>
       )

@@ -4,22 +4,31 @@
    background-color: #36393F;
    display: flex;
    flex-direction: column;
+   //justify-content: space-between;
+   padding-right: 5px;
+   padding-left: 15px;
+   position: relative;
 }
-
 
 .posts-container {
-   padding: 10px; 
-   // height: 10%;
-   padding-bottom: 20px;
+   //padding: 10px; 
+   //Debug
+   //background-color: rgba(128, 128, 128, 0.438);
+   //padding-bottom: 20px;
    overflow:  auto;
+   height: 95%;
 }
 
+// Post is exactly 15px from edge of Post component container.
+// posts-component (4px) + Scrollbar width (8px) + post margin(3px)
 .post{
    display: flex;
+   box-sizing: border-box;
    align-items: center;
+   margin-right: 3px;
 }
 
-#post-avatar{
+.post-avatar{
    width: 50px;
    height: 50px; 
    border-radius: 50%;
@@ -29,14 +38,30 @@
 
    background-color: cadetblue;
 }
-#post-content{
-   background-color: burlywood;
+
+.post-content{
    display: inline-block;
+   padding-right: 10px;
+}
+
+#posts-component > form {
+   border-radius: 10px;
+   box-sizing: border-box;
+   width: 100%;
+   position: absolute;
+   top: 92%;
+   left: 15px;
+   padding-right: 30px;
 }
 
 // Input box
 #post-input {
-   // margin-top: auto;
+   box-sizing: border-box;
+   width: 100%;
+   padding: 10px;
+   padding-left: 20px; 
+   padding-right: 15px;
    background-color: #40444B;
-   border-radius: 5px;
+   border-radius: 10px;
+   
 }
