@@ -24,17 +24,12 @@ export default class Servers extends React.Component {
             this.props.getServerShow(this.serverId);
             this.props.openJoinServer();
          }
-
-         // // If server is not in user's allServers open modal and server exists in state.
-         // if (!this.currentUser.allServers.includes(this.serverId) && this.props.servers[this.serverId]){
-         //    this.props.openJoinServer();
-         // }
       }
    }
-//{parseInt(this.props.match.params.id)===servers[s].id}
+   
    render(){
       let servers = this.props.servers;
-      //console.log(this.props.match.url)
+      this.currentUser = this.props.currentUser;
       return(
          <div id='server-container'>
             <Modal serverId={this.serverId}/>
@@ -50,7 +45,8 @@ export default class Servers extends React.Component {
                         <Link 
                            current={(parseInt(this.props.match.params.id)===servers[s].id).toString()}
                            className='server-item' 
-                           to={`/channels/${servers[s].id.toString().padStart(10, "0")}`}> 
+                           onClick={()=>this.props.getUsersIndex(s)}
+                           to={`/channels/${s.padStart(10, "0")}`}> 
                            {servers[s].name[0]}
                         </Link>
                      : null

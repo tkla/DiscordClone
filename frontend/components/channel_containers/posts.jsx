@@ -93,7 +93,7 @@ export default class Posts extends React.Component{
                   id='post-input' 
                   type='text' 
                   value={this.state.body} 
-                  autocomplete="off" 
+                  autoComplete="off" 
                   onChange={this.handleInput('body')}
                />
             </form>

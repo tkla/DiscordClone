@@ -37,6 +37,7 @@
 
 #channel-header:hover{
    color: #DCDDD9;
+   cursor: pointer;
 }
 
 // Create channel button
@@ -58,6 +59,10 @@
    margin-left: 10px;
    margin-right: 5px;
    color: #8E9297;
+}
+
+input[type="radio"] + label:hover {
+   cursor: pointer;
 }
 
 input[type="radio"]:checked + label {

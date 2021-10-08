@@ -42,5 +42,12 @@
 #server-list {
    background:linear-gradient(#36393F,#36393F) bottom no-repeat;
    background-size:50% 1px;
+   overflow: auto;
 }
 
+
+/* width */
+#server-container ::-webkit-scrollbar {
+   width: 8px;
+   display: none;
+ }

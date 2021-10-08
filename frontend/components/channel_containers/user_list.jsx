@@ -4,33 +4,46 @@ import React from 'react'
 export default class UserList extends React.Component{
 
    componentDidMount(){
-      // this.props.getUsersIndex();
+      this.props.getUsersIndex(parseInt(this.props.match.params.id));
    }
+
    render(){
-      // let users = this.props.users;
+      let users = this.props.users;
+      let serverId = parseInt(this.props.match.params.id);
+
+      let currentUser = null;
+      if (this.props.currentUser.allServers.includes(serverId)){
+         currentUser = (
+            <div id='user-list-current-user'>
+               <p>
+                  <div id='current-avatar'className='post-avatar'><i className="fab fa-discord"></i></div> 
+                  { this.props.currentUser.username } 
+               </p>
+         </div> 
+         )
+      }
       return(
          <div id='user-list-container'>
-            <h3>User list</h3>
-{/*             
-            <ul>{
-               Object.keys(posts).map( id => 
-                  <li className='post-container' key={id}>
-                     <div id='post-avatar'>Avatar</div>
-
-                     <div id='post-content'>
-
-                        <p id='post-reply'>{(posts[id].parent_id)? 'reply: '+posts[posts[id].parent_id].body : ''}</p>
-
-                        <h4>{posts[id].username} <span>{ posts[id].created_at}</span></h4>
-
-                        <p id='post-body'>{posts[id].body}</p>
-
-                     </div> 
-                     
-                  </li>
-               )
+            <h3>Members List</h3>
             
-            }</ul> */}
+            <ul>
+            {currentUser}
+               {
+               
+               Object.keys(users).map( id => 
+                  <li className='user-container' key={id}> 
+
+                     <div id='post-content'>{(users[id].username==="Admin" || users[id].username === this.props.currentUser.username)? null: 
+                        <p>
+                           <div className='post-avatar'><i className="fab fa-discord"></i></div> 
+                           { users[id].username } 
+                        </p>
+                        
+                     }</div> 
+                  
+                  </li>
+               )          
+            }</ul>
 
          </div>
       )

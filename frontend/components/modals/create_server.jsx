@@ -46,8 +46,8 @@ export default class CreateServer extends React.Component {
                You can always change it later.
             </p>
             
-            <div id='avatar-placeholder'>
-               <h1>Avatar</h1>
+            <div className='avatar'>
+               <i className="far fa-save"></i>
             </div>
 
             <form className='registerForm' onSubmit={this.handleSubmit}>
