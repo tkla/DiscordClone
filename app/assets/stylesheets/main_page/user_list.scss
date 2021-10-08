@@ -10,7 +10,7 @@
 }
 
 
-.user-container > #post-content *{
+.user-container > #post-content * {
    display: inline-block;
    margin: 5px;
 }
@@ -21,3 +21,7 @@
    font-size: 150%;
 }
 
+#user-list-current-user * {
+   margin: 5px;
+   display: inline-block;
+}

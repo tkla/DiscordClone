@@ -9,11 +9,27 @@ export default class UserList extends React.Component{
 
    render(){
       let users = this.props.users;
+      let serverId = parseInt(this.props.match.params.id);
+
+      let currentUser = null;
+      if (this.props.currentUser.allServers.includes(serverId)){
+         currentUser = (
+            <div id='user-list-current-user'>
+               <p>
+                  <div id='current-avatar'className='post-avatar'><i className="fab fa-discord"></i></div> 
+                  { this.props.currentUser.username } 
+               </p>
+         </div> 
+         )
+      }
       return(
          <div id='user-list-container'>
             <h3>Members List</h3>
             
-            <ul>{
+            <ul>
+            {currentUser}
+               {
+               
                Object.keys(users).map( id => 
                   <li className='user-container' key={id}> 
 

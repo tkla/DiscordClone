@@ -30,7 +30,6 @@ export default class Servers extends React.Component {
    render(){
       let servers = this.props.servers;
       this.currentUser = this.props.currentUser;
-      console.log(parseInt(this.props.match.params.id));
       return(
          <div id='server-container'>
             <Modal serverId={this.serverId}/>
@@ -46,8 +45,8 @@ export default class Servers extends React.Component {
                         <Link 
                            current={(parseInt(this.props.match.params.id)===servers[s].id).toString()}
                            className='server-item' 
-                           onClick={()=>this.props.getUsersIndex(parseInt(this.props.match.params.id))}
-                           to={`/channels/${servers[s].id.toString().padStart(10, "0")}`}> 
+                           onClick={()=>this.props.getUsersIndex(s)}
+                           to={`/channels/${s.padStart(10, "0")}`}> 
                            {servers[s].name[0]}
                         </Link>
                      : null
