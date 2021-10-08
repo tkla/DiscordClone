@@ -28,7 +28,12 @@ Account registration and user logins are fully implemented. Users can make new a
 Account information will be saved on DB on Heroku, only salted and hashed passwords are stored on our DB.
 
 ## Basic User Guide of Currently Implemented Features
-
+1. Register for an account or use our Demo Login button for convenience.
+2. Once logged in you can create a server or join a server via direct url link. A server directory will be added in the future to allow for exploration.
+3. Select a server to open up the Community page. The first text channel will be selected by default.
+4. Choose a channel to display the posts and an input form will be shown to allow you to make your own posts.
+5. You can create a server by selected the + icon at the server navigation bar.
+6. Invite other people to join by sharing the url of your server.
 
 
 ## Planned Features
