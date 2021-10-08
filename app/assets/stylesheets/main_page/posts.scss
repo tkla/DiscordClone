@@ -11,10 +11,10 @@
 }
 
 .posts-container {
-   //padding: 10px; 
-   //Debug
-   //background-color: rgba(128, 128, 128, 0.438);
-   //padding-bottom: 20px;
+   box-sizing: border-box;
+   // display: flex;
+   // flex-direction: column;
+   // justify-content: flex-end;
    overflow:  auto;
    height: 95%;
 }
@@ -26,6 +26,9 @@
    box-sizing: border-box;
    align-items: center;
    margin-right: 3px;
+
+   margin-top: 10px;
+   margin-bottom: 30px;
 }
 
 .post-avatar{
@@ -41,6 +44,7 @@
 
 .post-content{
    display: inline-block;
+   max-width: 90%;
    padding-right: 10px;
 }
 
