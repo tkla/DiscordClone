@@ -3,9 +3,23 @@
    flex-direction: column;
    align-items: center;
    box-sizing: border-box;
-   width: 72px;
+   width: 100px;
    height: 100%;
    background-color: #202225;
+}
+
+#server-container a{
+   color: #FBFBFF;
+}
+
+#server-container a:hover {
+   color: white;
+   cursor: pointer;
+   text-decoration: none;
+}
+
+#server-container i {
+   font-size: 150%;
 }
 
 .server-item {
@@ -17,9 +31,17 @@
    height: 50px; 
    background-color: #36393F;
    margin: 8px;
+   transition: border-radius .1s;
 }
+
+.server-item:hover, a[current='true']  {
+   background-color: #5865F2;
+   border-radius: 30%;
+}
+
 
 #server-list {
    background:linear-gradient(#36393F,#36393F) bottom no-repeat;
    background-size:50% 1px;
 }
+

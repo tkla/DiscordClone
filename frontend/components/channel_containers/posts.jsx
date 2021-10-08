@@ -52,12 +52,12 @@ export default class Posts extends React.Component{
       this.channel_id = this.props.posts.currentChannelId;
 
       return(
-         <div id='posts-container'>
+         <div id='posts-component'>
 
-            <ul>{
+            <ul className='posts-container'>{
                Object.keys(posts).map( id => 
                   
-                  <li className='post-container' key={id}>
+                  <li className='post' key={id}>
                      <div id='post-avatar'>Avatar</div>
 
                      <div id='post-content'>

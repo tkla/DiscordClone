@@ -21,6 +21,7 @@ a {
 
 a:hover {
    text-decoration: underline;
+   cursor: pointer;
 }
 
 form > label {
@@ -33,8 +34,17 @@ button{
    color: #B9BBBE;
    font-size: large;
    font-weight: 600;
+   cursor: pointer;
 }
 
 button:hover{
    color: white;
+}
+
+input[type="submit"]{
+   cursor: pointer;
+}
+
+button i {
+   font-size: 50%;
 }
