@@ -33,3 +33,19 @@
 
    border-radius: 50%;
 }
+
+.avatar{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100px;
+   height: 100px; 
+   margin: 10px;
+   font-size: 400%;
+   margin-left: auto;
+   margin-right:auto;
+   border-radius: 50%;
+   text-align: center;
+   background-color: #40444B;
+
+}

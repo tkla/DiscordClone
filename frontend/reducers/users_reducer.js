@@ -21,7 +21,7 @@ const usersReducer = (state = {}, action) =>{
          return newState;
 
       case RECEIVE_USERS: 
-         return Object.assign({}, newState, action.users);
+         return action.users;
 
       case CREATE_SERVER:
          let currentUserId = action.server.currentUser.id;

@@ -97,7 +97,7 @@ export default class Channel extends React.Component{
                <Link to='/channels/@me' onClick={this.leaveServer} hidden={isAuthor}>Leave Server</Link>
 
                <div className='collapse' id='channels'>
-                  <div id='channel-header' onClick={()=> this.toggle('hideText')}>
+                  <div id='channel-header' onClick={(e)=> this.toggle('hideText')}>
                      <h2>Text Channels</h2>
                      <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>
                         <i className="fas fa-plus"></i>
