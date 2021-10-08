@@ -19,6 +19,11 @@ export default class Posts extends React.Component{
       this.handleInput = this.handleInput.bind(this);
    }
 
+   componentDidUpdate(){
+      var element = document.getElementById("offset");
+      element.scrollTop = element.scrollHeight;
+   }
+   
    handleSubmit(e) {
       e.preventDefault();
       this.serverId = parseInt(this.props.match.params.id.substring(0,10));
@@ -52,30 +57,45 @@ export default class Posts extends React.Component{
       this.channel_id = this.props.posts.currentChannelId;
 
       return(
-         <div id='posts-container'>
-
-            <ul>{
-               Object.keys(posts).map( id => 
-                  <li className='post-container' key={id}>
-                     <div id='post-avatar'>Avatar</div>
-
-                     <div id='post-content'>
-
-                        <p id='post-reply'>{(posts[id].parent_id)? 'reply: '+posts[posts[id].parent_id].body : ''}</p>
-
-                        <h4>{posts[id].username} <span>{ posts[id].created_at}</span></h4>
-
-                        <p id='post-body'>{posts[id].body}</p>
-
-                     </div> 
+         <div id='posts-component'>
+            <div id='offset'>
+               <ul className='posts-container'>{
+                  Object.keys(posts).map( id => 
                      
-                  </li>
-               )
-            
-            }</ul>
+                        <li className='post' key={id}>
+                           <div className='post-avatar'><i className="fab fa-discord"></i></div>
 
+                           <div className='post-content'>
+
+                              <p className='post-reply'>{(posts[id].parent_id)? 
+                                 <p className='username'>
+                                    <i className="fas fa-reply"></i>
+                                    {posts[posts[id].parent_id].username}
+                                    <span>{posts[posts[id].parent_id].body}</span>
+                                 </p>
+                              : ''}</p>
+
+                              <p className='username'>{posts[id].username} <span className='time'>{ posts[id].created_at}</span></p>
+
+                              <p className='post-body'>{posts[id].body}</p>
+
+                           </div> 
+                           
+                        </li>
+                     
+                  )
+               
+               }</ul>
+            </div>
+            
             <form onSubmit={this.handleSubmit}>
-               <input id='post-input' type='text' value={this.state.body} onChange={this.handleInput('body')}/>
+               <input 
+                  id='post-input' 
+                  type='text' 
+                  value={this.state.body} 
+                  autocomplete="off" 
+                  onChange={this.handleInput('body')}
+               />
             </form>
          </div>
       )

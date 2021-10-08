@@ -6,7 +6,7 @@ h1, h2, p, strong, em, a, ul, li, div, input{
    outline: 0;
    box-sizing: inherit;
    //font: inherit;
-   font-family: 'Pontano Sans', sans-serif;
+   font-family: 'Open Sans', sans-serif;
    text-decoration: inherit;
    text-align: inherit;
    color: inherit;
@@ -14,11 +14,21 @@ h1, h2, p, strong, em, a, ul, li, div, input{
    background: transparent;
 }
 
-// I don't think this changes anything, fix later.
+// I don't think this changes anything, check later.
 label {
-   font-family: 'Pontano Sans', sans-serif;
+   font-family: 'Open Sans', sans-serif;
 }
 
 input[type='radio']{
    appearance: none;
+}
+
+button {
+   background: none;
+   color: inherit;
+   border: none;
+   padding: 0;
+   font: inherit;
+   cursor: pointer;
+   outline: inherit;
 }

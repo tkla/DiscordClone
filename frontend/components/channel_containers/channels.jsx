@@ -12,8 +12,20 @@ export default class Channel extends React.Component{
       this.leaveServer = this.leaveServer.bind(this);
       this.loadPosts = this.loadPosts.bind(this);
       this.clickChannel = this.clickChannel.bind(this);
+
+      this.toggle = this.toggle.bind(this);
+
+      this.state = {
+         hideText: false,
+         hideVoice: false
+      }
    }
-   
+
+   toggle(bool){
+      this.setState({
+         [bool]: !this.state[bool]
+      })
+   }
    componentDidMount(){
       this.serverId = parseInt(this.props.match.params.id.substring(0,10)); 
       this.props.getChannelsIndex(this.serverId);
@@ -25,6 +37,10 @@ export default class Channel extends React.Component{
       if (this.serverId != newId) {
          this.serverId = newId;
          this.props.getChannelsIndex(this.serverId);
+         this.setState({
+            hideText: false,
+            hideVoice: false
+         })
       }
    }
 
@@ -74,29 +90,64 @@ export default class Channel extends React.Component{
       return(
          <div> 
             <Modal serverId={this.serverId}/>
+
             <div className='channel-container' id='channels-list'>
-               <h1 className='channel-header'>{server.name}</h1>
+               <h1 className='server-name-header'>{server.name}</h1>
 
                <Link to='/channels/@me' onClick={this.leaveServer} hidden={isAuthor}>Leave Server</Link>
 
-               <div className='collapse' id='text-channels'>
-                  <h2>Text Channels</h2>
-                  <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>+</button>
-                  <ul className='text-channels-list'>{ 
-                     Object.keys(channels).map( channelId=>  
-               
-                        <li key={channels[channelId].name} onClick={(e)=>this.clickChannel(e, channelId)}>
+               <div className='collapse' id='channels'>
+                  <div id='channel-header' onClick={()=> this.toggle('hideText')}>
+                     <h2>Text Channels</h2>
+                     <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>
+                        <i className="fas fa-plus"></i>
+                     </button>
+                  </div>
+                  
+                  <ul className='channels-list' hidden={this.state.hideText}>{ 
 
+                     Object.keys(channels).map( channelId=> (channels[channelId].voice_channel? null: 
+                        <li key={channels[channelId].name} onClick={(e)=>this.clickChannel(e, channelId)}>
                            <input id={channelId} type='radio' name='channel-item' defaultChecked={this.selectedChannel===channelId} />
-                           <label htmlFor={channelId}>{channels[channelId].name}
+                           <label htmlFor={channelId}>
+                              {channels[channelId].name}
                               {isAuthor ? 
-                                 <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>X</button>
+                                 <button className='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>
+                                    <i className="fas fa-trash"></i>
+                                 </button>
                                  :null}
                            </label>
-                           
                         </li>
-                        
-                     )
+                     ))
+
+                  }</ul>
+               </div>
+
+               <div className='collapse' id='channels'>
+
+                  <div id='channel-header' onClick={()=> this.toggle('hideVoice')}>
+                     <h2>Voice Channels</h2>
+                     <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>
+                        <i className="fas fa-plus"></i>
+                     </button>
+                  </div>
+
+                  <ul className='channels-list' hidden={this.state.hideVoice}>{ 
+
+                     Object.keys(channels).map( channelId=> (!channels[channelId].voice_channel? null: 
+                        <li key={channels[channelId].name} onClick={(e)=>this.clickChannel(e, channelId)}>
+                           <input id={channelId} type='radio' name='channel-item'/>
+                           <label htmlFor={channelId}>
+                              {channels[channelId].name}
+                              {isAuthor ? 
+                                 <button className='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>
+                                    <i className="fas fa-trash"></i>
+                                 </button>
+                                 :null}
+                           </label>
+                        </li>
+                     ))
+
                   }</ul>
                </div>
 

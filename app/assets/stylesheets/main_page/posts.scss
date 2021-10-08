@@ -1,5 +1,98 @@
-#posts-container {
+#posts-component {
    width: 100%;
    height: 100%;
    background-color: #36393F;
+   display: flex;
+   flex-direction: column;
+   //justify-content: space-between;
+   padding-right: 5px;
+   padding-left: 15px;
+   position: relative;
+}
+
+#offset{
+   padding-bottom: 40px;
+   overflow:  auto;
+   height: 90%;
+   overflow-wrap: anywhere;
+}
+
+// Post is exactly 15px from edge of Post component container.
+// posts-component (4px) + Scrollbar width (8px) + post margin(3px)
+.post {
+   display: flex;
+   box-sizing: border-box;
+   font-size: 14px;
+   margin-right: 3px;
+   margin-top: 15px;
+   padding-top: 2px;
+   padding-bottom: 2px;
+}
+
+.post-avatar {
+   width: 50px;
+   height: 50px; 
+   border-radius: 50%;
+   text-align: center;
+   line-height: 50px;
+   vertical-align: center;
+   font-size: 170%;
+   background-color: #5865F2;
+   margin-top: 2px;
+   margin-bottom: 2px;
+}
+
+.post-content{
+   display: inline-block;
+   max-width: 90%;
+   padding-right: 10px;
+}
+
+.post-content * {
+   margin: 5px;
+   margin-left: 10px;
+}
+
+.post-reply {
+   margin-left: 0px;
+   font-size: small;
+   color: #929497;
+}
+
+.post-reply span {
+   font-size: small;
+   color: #F9EFDF;
+   overflow:hidden;
+}
+
+.username {
+   font-weight: bold;
+}
+
+.username > span {
+   font-size: small;
+   font-weight: normal;
+   color: #70767D;
+}
+
+#posts-component > form {
+   border-radius: 10px;
+   box-sizing: border-box;
+   width: 100%;
+   position: absolute;
+   top: 92%;
+   left: 15px;
+   padding-right: 30px;
+}
+
+// Input box
+#post-input {
+   box-sizing: border-box;
+   width: 100%;
+   padding: 10px;
+   padding-left: 20px; 
+   padding-right: 15px;
+   background-color: #40444B;
+   border-radius: 10px;
+   
 }

@@ -31,43 +31,44 @@ export default class Servers extends React.Component {
          // }
       }
    }
-
+//{parseInt(this.props.match.params.id)===servers[s].id}
    render(){
-      // if (Object.keys(this.props.servers).length === 0){
-      //    return (
-      //       <div id='server-container'>
-      //          <p className='server-item' id='home-channel'>Me</p>
-      //       </div>
-      //    )
-      // }
       let servers = this.props.servers;
-
+      //console.log(this.props.match.url)
       return(
          <div id='server-container'>
             <Modal serverId={this.serverId}/>
-            <Link className='server-item' id='home-channel' to='/channels/@me'>Me</Link>
+            <Link className='server-item' id='home-channel' to='/channels/@me' 
+               current={(this.props.match.url==="/channels/@me").toString()}>
+               <i className="fab fa-discord"></i>
+            </Link>
 
-            <ul id='server-list'>
-            {
+            <ul id='server-list'>{
                Object.keys(this.props.servers).map( s =>
                   <li  key={s}>
                      { (this.currentUser.allServers.includes(parseInt(s)))? 
                         <Link 
+                           current={(parseInt(this.props.match.params.id)===servers[s].id).toString()}
                            className='server-item' 
                            to={`/channels/${servers[s].id.toString().padStart(10, "0")}`}> 
-                           {servers[s].name}
+                           {servers[s].name[0]}
                         </Link>
                      : null
                      }
                   </li>
-               )
-            }
-               <a className='server-item' id='create-server' onClick={this.props.openCreateServer}>+</a>
-               <p className='server-item' id='explore-server'>Explore</p>
+               )}
+               
+               <a className='server-item' id='create-server' onClick={this.props.openCreateServer}>
+                  <i className="fas fa-plus"></i>
+               </a>
             </ul>
             
-            <a className='server-item' href='https://github.com/tkla/DiscordClone' id='download-apps'>G</a>
-            <Link className='server-item' to='/' onClick={this.props.logout}>Logout</Link>
+            <a className='server-item' href='https://github.com/tkla/DiscordClone' id='download-apps'>
+               <i className="fab fa-github"></i>
+            </a>
+            <Link className='server-item' to='/' onClick={this.props.logout}>
+               <i className="fas fa-sign-out-alt"></i>
+            </Link>
          </div>
       )
    }
