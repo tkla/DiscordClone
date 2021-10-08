@@ -56,6 +56,7 @@ export default class Posts extends React.Component{
 
             <ul>{
                Object.keys(posts).map( id => 
+                  
                   <li className='post-container' key={id}>
                      <div id='post-avatar'>Avatar</div>
 

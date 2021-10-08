@@ -7,63 +7,92 @@
    background-color: #2F3136;
 }
 
-.channel-header{
+.server-name-header{
    margin-top: 10px;
    margin-bottom: 10px;
    margin-left: 20px;
    font-size: large;
 }
 
-#text-channels{
+#channels{
    display: inline-block;
    width: 100%;
-   //box-sizing: content-box;
-   //margin: 5px;
    padding: 5px;
 }
 
-#text-channels > h2 {
+#channel-header {
+   display: flex;
+   width: 100%;
+   box-sizing: border-box;
+   justify-content: space-between;
+   padding-right: 10px;
+   color: #8E9297;
+}
+
+#channel-header > h2 {
    margin-top: 10px;
-   font-size: large;
+   font-size: 18px;
    margin-bottom: 5px;
-   color: #B3B6BA;
 }
 
-
-
-.text-channels-list{
-   width: 95%;
+#channel-header:hover{
+   color: #DCDDD9;
 }
 
-// .text-channels-list > li {
-//    width: 88%;
-//    background-color: blanchedalmond;
-//    padding: 5px;
-//    margin: 2px;
-//    padding-left: 10px;
-// }
+// Create channel button
+#create-channel {
+   align-self: center;
+   margin-right: 15px;
+   font-size: larger;
+}
+
+// Delete channel button
+#destroy {
+   margin-right: 5px;
+}
+
+.channels-list > li {
+   font-size: medium;
+   display: flex;
+   margin-top: 2px;
+   margin-left: 10px;
+   margin-right: 5px;
+   color: #8E9297;
+}
 
 input[type="radio"]:checked + label {
    background-color: #393C43;
+   color:white;
+}
+
+input[type="radio"]:checked:hover + label {
+   color: white;
 }
 
 input[type="radio"] + label {
-   display: inline-block;
-   // background-color: #B3B6BA;
-   width: 93%;
-   height: 100%;
-   // width: 213px;
+   display: flex;
+   justify-content: space-between;
+   border-radius: 5px;
    padding: 5px;
-   margin-top: 2px;
-   padding-left: 10px;
+   width: 91%;
+   height: 100%;
 }
 
-#destroy{
-   margin-left: 85px;
+ul[hidden]{
+   display: none;
+}
+
+input[type="radio"] + label:hover {
+   background-color: #34373C;
+   color: #DCDDBF;
 }
 
 input[type="radio"] + label > button {
    visibility: hidden;
+}
+
+input[type="radio"] + label:hover > button {
+   visibility: visible;
 }
 
 input[type="radio"]:checked + label > button {
