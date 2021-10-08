@@ -99,7 +99,9 @@ export default class Channel extends React.Component{
                <div className='collapse' id='channels'>
                   <div id='channel-header' onClick={()=> this.toggle('hideText')}>
                      <h2>Text Channels</h2>
-                     <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>+</button>
+                     <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>
+                        <i className="fas fa-plus"></i>
+                     </button>
                   </div>
                   
                   <ul className='channels-list' hidden={this.state.hideText}>{ 
@@ -110,7 +112,9 @@ export default class Channel extends React.Component{
                            <label htmlFor={channelId}>
                               {channels[channelId].name}
                               {isAuthor ? 
-                                 <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>x</button>
+                                 <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>
+                                    <i className="fas fa-trash"></i>
+                                 </button>
                                  :null}
                            </label>
                         </li>
@@ -123,7 +127,9 @@ export default class Channel extends React.Component{
 
                   <div id='channel-header' onClick={()=> this.toggle('hideVoice')}>
                      <h2>Voice Channels</h2>
-                     <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>+</button>
+                     <button id='create-channel' onClick={()=>this.props.openNewChannel()} hidden={!isAuthor}>
+                        <i className="fas fa-plus"></i>
+                     </button>
                   </div>
 
                   <ul className='channels-list' hidden={this.state.hideVoice}>{ 
@@ -134,7 +140,9 @@ export default class Channel extends React.Component{
                            <label htmlFor={channelId}>
                               {channels[channelId].name}
                               {isAuthor ? 
-                                 <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>x</button>
+                                 <button id='destroy' onClick={()=>this.props.getChannelDestroy(channelId)}>
+                                    <i className="fas fa-trash"></i>
+                                 </button>
                                  :null}
                            </label>
                         </li>
