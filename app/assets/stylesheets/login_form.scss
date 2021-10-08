@@ -95,9 +95,10 @@
 #loginGreeting i {
    color: white;
    font-size: 700%;
+   transition: color .1s;
 }
 
 #loginGreeting i:hover {
-  
   color: #14191E;
+  transition: color .1s;
 }
