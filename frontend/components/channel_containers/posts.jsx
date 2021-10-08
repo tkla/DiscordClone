@@ -53,28 +53,36 @@ export default class Posts extends React.Component{
 
       return(
          <div id='posts-component'>
-
-            <ul className='posts-container'>{
-               Object.keys(posts).map( id => 
-                  
-                  <li className='post' key={id}>
-                     <div className='post-avatar'>Avatar</div>
-
-                     <div className='post-content'>
-
-                        <p className='post-reply'>{(posts[id].parent_id)? 'reply: '+posts[posts[id].parent_id].body : ''}</p>
-
-                        <h4>{posts[id].username} <span>{ posts[id].created_at}</span></h4>
-
-                        <p className='post-body'>{posts[id].body}</p>
-
-                     </div> 
+            <div id='offset'>
+               <ul className='posts-container'>{
+                  Object.keys(posts).map( id => 
                      
-                  </li>
-               )
-            
-            }</ul>
+                        <li className='post' key={id}>
+                           <div className='post-avatar'>Avatar</div>
 
+                           <div className='post-content'>
+
+                              <p className='post-reply'>{(posts[id].parent_id)? 
+                                 <p className='username'>
+                                    <i className="fas fa-reply"></i>
+                                    {posts[posts[id].parent_id].username}
+                                    <span>{posts[posts[id].parent_id].body}</span>
+                                 </p>
+                              : ''}</p>
+
+                              <p className='username'>{posts[id].username} <span className='time'>{ posts[id].created_at}</span></p>
+
+                              <p className='post-body'>{posts[id].body}</p>
+
+                           </div> 
+                           
+                        </li>
+                     
+                  )
+               
+               }</ul>
+            </div>
+            
             <form onSubmit={this.handleSubmit}>
                <input 
                   id='post-input' 

@@ -10,28 +10,38 @@
    position: relative;
 }
 
-.posts-container {
-   box-sizing: border-box;
-   // display: flex;
-   // flex-direction: column;
-   // justify-content: flex-end;
+#offset{
+   padding-bottom: 70px;
    overflow:  auto;
-   height: 95%;
+   height: 85%;
+   overflow-wrap: anywhere;
 }
+
+// .posts-container {
+//    //box-sizing: border-box;
+//    // what?
+//    //padding-top: 60%;
+//    // overflow:  auto;
+//    // height: 95%;
+// }
 
 // Post is exactly 15px from edge of Post component container.
 // posts-component (4px) + Scrollbar width (8px) + post margin(3px)
-.post{
+.post {
    display: flex;
    box-sizing: border-box;
-   align-items: center;
+   //align-items: center;
+   font-size: 14px;
    margin-right: 3px;
 
-   margin-top: 10px;
-   margin-bottom: 30px;
+   //background-color: rgb(44, 44, 44);
+   margin-top: 15px;
+   //margin-bottom: 30px;
+   padding-top: 2px;
+   padding-bottom: 2px;
 }
 
-.post-avatar{
+.post-avatar {
    width: 50px;
    height: 50px; 
    border-radius: 50%;
@@ -40,12 +50,43 @@
    vertical-align: center;
 
    background-color: cadetblue;
+   margin-top: 2px;
+   margin-bottom: 2px;
+
 }
 
 .post-content{
    display: inline-block;
+   //height: 50px;
    max-width: 90%;
    padding-right: 10px;
+}
+
+.post-content * {
+   margin: 5px;
+   margin-left: 10px;
+}
+
+.post-reply {
+   margin-left: 0px;
+   font-size: small;
+   color: #929497;
+}
+
+.post-reply span {
+   font-size: small;
+   color: #F9EFDF;
+   overflow:hidden;
+}
+
+.username {
+   font-weight: bold;
+}
+
+.username > span {
+   font-size: small;
+   font-weight: normal;
+   color: #70767D;
 }
 
 #posts-component > form {
