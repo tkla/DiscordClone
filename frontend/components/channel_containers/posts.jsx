@@ -63,7 +63,7 @@ export default class Posts extends React.Component{
                   Object.keys(posts).map( id => 
                      
                         <li className='post' key={id}>
-                           <div className='post-avatar'>Avatar</div>
+                           <div className='post-avatar'><i className="fab fa-discord"></i></div>
 
                            <div className='post-content'>
 
