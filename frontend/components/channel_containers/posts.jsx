@@ -19,6 +19,11 @@ export default class Posts extends React.Component{
       this.handleInput = this.handleInput.bind(this);
    }
 
+   componentDidUpdate(){
+      var element = document.getElementById("offset");
+      element.scrollTop = element.scrollHeight;
+   }
+   
    handleSubmit(e) {
       e.preventDefault();
       this.serverId = parseInt(this.props.match.params.id.substring(0,10));
