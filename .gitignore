@@ -16,6 +16,8 @@ bundle.js.map
 npm-debug.log
 /config/master.key
 log/
+package-lock.json
+
 # Used by dotenv library to load environment variables.
 # .env
 
