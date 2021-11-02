@@ -26,6 +26,7 @@ export default class Channel extends React.Component{
          [bool]: !this.state[bool]
       })
    }
+   
    componentDidMount(){
       this.serverId = parseInt(this.props.match.params.id.substring(0,10)); 
       this.props.getChannelsIndex(this.serverId);
@@ -108,6 +109,7 @@ export default class Channel extends React.Component{
 
                      Object.keys(channels).map( channelId=> (channels[channelId].voice_channel? null: 
                         <li key={channels[channelId].name} onClick={(e)=>this.clickChannel(e, channelId)}>
+
                            <input id={channelId} type='radio' name='channel-item' defaultChecked={this.selectedChannel===channelId} />
                            <label htmlFor={channelId}>
                               {channels[channelId].name}
@@ -117,6 +119,7 @@ export default class Channel extends React.Component{
                                  </button>
                                  :null}
                            </label>
+                           
                         </li>
                      ))
 

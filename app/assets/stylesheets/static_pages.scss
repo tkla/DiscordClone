@@ -47,6 +47,10 @@ button:hover{
    color: #ED4245;
 }
 
+ul[hidden='true']{
+   display: none;
+}
+
 input[type="submit"]{
    cursor: pointer;
    transition: color .1s;

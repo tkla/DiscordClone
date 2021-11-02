@@ -39,7 +39,7 @@ export default class Servers extends React.Component {
             </Link>
 
             <ul id='server-list'>{
-               Object.keys(this.props.servers).map( s =>
+               Object.keys(servers).map( s =>
                   <li  key={s}>
                      { (this.currentUser.allServers.includes(parseInt(s)))? 
                         <Link 

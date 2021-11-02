@@ -67,13 +67,13 @@ export default class Posts extends React.Component{
 
                            <div className='post-content'>
 
-                              <p className='post-reply'>{(posts[id].parent_id)? 
+                              <div className='post-reply'>{(posts[id].parent_id)? 
                                  <p className='username'>
                                     <i className="fas fa-reply"></i>
                                     {posts[posts[id].parent_id].username}
                                     <span>{posts[posts[id].parent_id].body}</span>
                                  </p>
-                              : ''}</p>
+                              : ''}</div>
 
                               <p className='username'>{posts[id].username} <span className='time'>{ posts[id].created_at}</span></p>
 
