@@ -15,10 +15,10 @@ export default class UserList extends React.Component{
       if (this.props.currentUser.allServers.includes(serverId)){
          currentUser = (
             <div id='user-list-current-user'>
-               <p>
+               <div>
                   <div id='current-avatar'className='post-avatar'><i className="fab fa-discord"></i></div> 
                   { this.props.currentUser.username } 
-               </p>
+               </div>
          </div> 
          )
       }
@@ -34,10 +34,10 @@ export default class UserList extends React.Component{
                   <li className='user-container' key={id}> 
 
                      <div id='post-content'>{(users[id].username==="Admin" || users[id].username === this.props.currentUser.username)? null: 
-                        <p>
+                        <div>
                            <div className='post-avatar'><i className="fab fa-discord"></i></div> 
                            { users[id].username } 
-                        </p>
+                        </div>
                         
                      }</div> 
                   
