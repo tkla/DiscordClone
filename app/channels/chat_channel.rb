@@ -17,7 +17,6 @@ class ChatChannel < ApplicationCable::Channel
          server_id: post.server_id, 
          username: post.user.username,
       }
-      puts socket
       ChatChannel.broadcast_to('chat_channel', socket)
     end
 
