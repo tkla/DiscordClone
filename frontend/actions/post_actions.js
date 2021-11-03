@@ -6,7 +6,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const CREATE_POST = 'CREATE_POST'
 export const DELETE_POST = 'DELETE_POST'
 
-const receivePost = post => ({
+export const receivePost = post => ({
    type: RECEIVE_POST,
    post
 })
