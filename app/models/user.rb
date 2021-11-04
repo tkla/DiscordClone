@@ -35,6 +35,7 @@ class User < ApplicationRecord
    has_many :posts,
       foreign_key: :author_id  
    
+   has_one_attached :avatar
 
    #Get this user's list of servers and their server's list of channels and members.
    def includes_server_users
