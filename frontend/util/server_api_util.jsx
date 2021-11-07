@@ -20,6 +20,14 @@ export const userShow = (id) => (
    })
 )
 
+export const userEdit = (userId, formUser) => (
+   $.ajax({
+   url: `/api/users/${userId}`,
+      method: "PATCH",
+      data: { user: formUser }
+   })
+)
+
 // ServersController 
 export const serversIndex = () => (
    $.ajax({

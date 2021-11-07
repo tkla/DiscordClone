@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
    namespace :api, defaults: {format: :json} do 
       
-      resources :users, only: [:create, :show] do 
+      resources :users, only: [:create, :show, :update] do 
          collection do 
             get 'current_user_servers', to: 'users#get_servers'
          end

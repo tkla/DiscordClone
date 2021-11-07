@@ -1,3 +1,4 @@
+
 class Api::SessionsController < ApplicationController
    def create
       # Find user by credentials

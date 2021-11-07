@@ -65,6 +65,10 @@ export default class Servers extends React.Component {
             <Link className='server-item' to='/' onClick={this.props.logout}>
                <i className="fas fa-sign-out-alt"></i>
             </Link>
+            
+            <a className='server-item' id='user-settings' onClick={this.props.openUserSettings}>
+               <i className="fas fa-cog"></i>
+            </a>
          </div>
       )
    }

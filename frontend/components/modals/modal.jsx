@@ -4,6 +4,8 @@ import { closeModal } from '../../actions/modal_actions'
 import CreateServerContainer from './create_server_container';
 import JoinServer from './join_server';
 import CreateChannel from './create_channel';
+import EditUser from './edit_user';
+
 function Modal(props) {
    if (!props.modal) return null;
    let component;
@@ -19,6 +21,9 @@ function Modal(props) {
       case 'createChannel':
          component = <CreateChannel serverId={props.serverId}/>
          break;
+      case 'userSettings':
+            component = <EditUser/>;
+            break;
       default:
          return null;
    }
