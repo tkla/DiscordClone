@@ -1,4 +1,4 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions'
 import CreateServerContainer from './create_server_container';
@@ -13,30 +13,31 @@ function Modal(props) {
    // For each modal component, pass in props as needed but keep it minimal.
    switch (props.modal) {
       case 'joinServer':
-         component = <JoinServer serverId={props.serverId}/>;
+         component = <JoinServer serverId={props.serverId} />;
          break;
       case 'createServer':
-         component = <CreateServerContainer/>;
+         component = <CreateServerContainer />;
          break;
       case 'createChannel':
-         component = <CreateChannel serverId={props.serverId}/>
+         component = <CreateChannel serverId={props.serverId} />
          break;
       case 'userSettings':
-            component = <EditUser/>;
-            break;
+         component = <EditUser />;
+         break;
       default:
          return null;
    }
 
    return (
-      <div className="modal-background" onClick={props.closeModal}>
+      <div className="modal-background">
+         <div className="modal-close" onClick={props.closeModal} />
          <div className="modal-child" onClick={e => e.stopPropagation()}>
-            { component }
+            {component}
          </div>
       </div>
    );
- }
- 
+}
+
 const mapStateToProps = state => ({
    modal: state.ui.modal
 });
@@ -44,6 +45,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
    closeModal: () => dispatch(closeModal)
 })
- 
- 
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

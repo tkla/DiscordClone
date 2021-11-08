@@ -31,6 +31,7 @@ export const getUsersIndex = (serverId) => dispatch => (
 export const getUserEdit = (userId, formUser) => dispatch => (
    userEdit(userId, formUser)
       .then( 
-         user => dispatch(receiveUser(user),
-         errors => dispatch(receiveErrors(errors))))
+         user => dispatch(receiveUser(user)),
+         errors => dispatch(receiveErrors(errors))
+      )
 )

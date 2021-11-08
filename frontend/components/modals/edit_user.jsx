@@ -49,7 +49,7 @@ class EditUser extends React.Component {
             <div className='base-modal'>
                <div className='registerForm'>
                   <h2>Edit</h2>
-
+                  
                   <form onSubmit={this.handleSubmit}> 
                      <label className={errors}>Username
                         <span className='errorMessage'>{errMsg}</span> 
