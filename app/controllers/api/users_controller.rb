@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
       if @user.update(user_params)
          render :show
       else 
-         render json: "Something went wrong!", status: 400
+         render json: ["Unable to save settings."], status: 400
       end
    end
 

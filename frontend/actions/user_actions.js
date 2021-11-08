@@ -1,9 +1,10 @@
 import { usersIndex, userShow, userEdit } 
    from "../util/server_api_util";
+   
+import { receiveErrors } from "./session_actions";
 
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
-export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
 const receiveUser = (user) => ({
    type: RECEIVE_USER,
@@ -13,11 +14,6 @@ const receiveUser = (user) => ({
 const receiveUsers = (users) => ({
    type: RECEIVE_USERS,
    users
-})
-
-const receiveErrors = (errors) => ({
-   type: RECEIVE_SESSION_ERRORS,
-   errors
 })
 
 export const getUserShow = (id) => dispatch => (

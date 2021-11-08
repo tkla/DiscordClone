@@ -1,17 +1,19 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import React from 'react'
 import { closeModal } from '../../actions/modal_actions';
-import {clearErrors} from '../../actions/session_actions';
+import { clearErrors } from '../../actions/session_actions';
 import { getUserEdit } from '../../actions/user_actions';
 class EditUser extends React.Component {
-   constructor(props){
+   constructor(props) {
       super(props)
       this.handleInput = this.handleInput.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleFile = this.handleFile.bind(this);
 
       this.state = {
          username: this.props.currentUser.username,
          avatar: this.props.currentUser.avatar,
+         imageFile: '',
          submit: false,
       }
    }
@@ -19,56 +21,83 @@ class EditUser extends React.Component {
    handleSubmit(e) {
       e.preventDefault();
       this.props.clearErrors();
-      // this.props.closeModal();
-      this.props.getUserEdit(this.props.currentUser.id, this.state);
+      const formData = new FormData();
+
+      formData.append('user[username]', this.state.username);
+
+      if (this.state.imageFile) {
+         formData.append('user[avatar]', this.state.imageFile);
+      }
+
+      this.props.getUserEdit(this.props.currentUser.id, formData);
+
       this.setState({
          submit: true,
       })
    }
 
-   componentDidUpdate(){
-      if (this.state.submit && this.props.errors.length === 0) this.props.closeModal();
+   componentDidUpdate(prevProps) {
+      if (this.state.submit && prevProps.currentUser !== this.props.currentUser) this.props.closeModal();
    }
-   
-   handleInput(input){
+
+   handleInput(input) {
       return (e) => {
          this.setState({
-            [input] : e.currentTarget.value,
+            [input]: e.currentTarget.value,
          })
       }
    }
 
-   render(){ 
+   handleFile(e) {
+      const reader = new FileReader();
+      const file = e.currentTarget.files[0];
+
+      reader.onloadend = () => {
+         this.setState({ 
+            avatar: reader.result, 
+            imageFile: file 
+         });
+      }
+
+      if (file) {
+         reader.readAsDataURL(file);
+      } else {
+         this.setState({ avatar: "", imageFile: null });
+      }
+   }
+
+   render() {
       let errors = '';
       let errMsg = '';
-      if (this.props.errors.length){
+      if (this.props.errors.length) {
          errors = 'error'
          errMsg = " - " + this.props.errors.join(' ')
       }
-      return(
-            <div className='base-modal'>
-               <div className='registerForm'>
-                  <h2>Edit</h2>
-                  
-                  <form onSubmit={this.handleSubmit}> 
-                     <label className={errors}>Username
-                        <span className='errorMessage'>{errMsg}</span> 
-                        <input type='text' 
-                        value={this.state.username} 
-                        onChange={this.handleInput('username')}/>
-                     </label>
+      return (
+         <div className='base-modal'>
+            <div className='registerForm'>
+               <h2>Edit</h2>
 
-                     <label className={errors}>Profile Picture
-                        <span className='errorMessage'>{errMsg}</span> 
-                        <input type='file' 
-                        value={this.state.avatar} 
-                        onChange={this.handleInput('avatar')}/>
-                     </label>
+               <form onSubmit={this.handleSubmit}>
+                  <img src={this.state.avatar} alt={this.state.avatar} className='profile-picture' />
+                  <label className={errors}>Username
+                     <span className='errorMessage'>{errMsg}</span>
+                     <input type='text'
+                        value={this.state.username}
+                        onChange={this.handleInput('username')} />
+                  </label>
 
-                     <input className='submit' type='submit' value='Continue'/>
-                  </form>
-               </div>
+                  <label className={errors}>Profile Picture
+                     <span className='errorMessage'>{errMsg}</span>
+                     <input type='file'
+                        value=''
+                        onChange={this.handleFile} />
+                  </label>
+
+                  <input className='submit' type='submit' value='Save' />
+               </form>
             </div>
+         </div>
       )
    }
 }
@@ -76,7 +105,7 @@ class EditUser extends React.Component {
 const mapStateToProps = state => ({
    currentUser: state.entities.users[state.session.currentUserId],
    errors: state.errors.session,
-   
+
 })
 
 const mapDispatchToProps = dispatch => ({

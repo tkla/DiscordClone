@@ -22,9 +22,11 @@ export const userShow = (id) => (
 
 export const userEdit = (userId, formUser) => (
    $.ajax({
-   url: `/api/users/${userId}`,
+      url: `/api/users/${userId}`,
       method: "PATCH",
-      data: { user: formUser }
+      data: formUser,
+      contentType: false,
+      processData: false
    })
 )
 
