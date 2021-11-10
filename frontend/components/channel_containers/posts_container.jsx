@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { receivePost, getPostsIndex, getPostCreate, getPostDestroy } from '../../actions/post_actions'
 const mapState = (state) => ({
    posts: state.entities.posts,
+   users: state.entities.users,
    currentUser: state.entities.users[state.session.currentUserId]
 })
 

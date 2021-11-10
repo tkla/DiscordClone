@@ -12,8 +12,8 @@ class EditUser extends React.Component {
 
       this.state = {
          username: this.props.currentUser.username,
-         avatar: this.props.currentUser.avatar,
-         imageFile: '',
+         avatar_url: this.props.currentUser.avatar,
+         avatar: '',
          submit: false,
       }
    }
@@ -25,8 +25,8 @@ class EditUser extends React.Component {
 
       formData.append('user[username]', this.state.username);
 
-      if (this.state.imageFile) {
-         formData.append('user[avatar]', this.state.imageFile);
+      if (this.state.avatar) {
+         formData.append('user[avatar]', this.state.avatar);
       }
 
       this.props.getUserEdit(this.props.currentUser.id, formData);
@@ -54,15 +54,15 @@ class EditUser extends React.Component {
 
       reader.onloadend = () => {
          this.setState({ 
-            avatar: reader.result, 
-            imageFile: file 
+            avatar_url: reader.result, 
+            avatar: file 
          });
       }
 
       if (file) {
          reader.readAsDataURL(file);
       } else {
-         this.setState({ avatar: "", imageFile: null });
+         this.setState({ avatar_url: "", avatar: null });
       }
    }
 
@@ -79,7 +79,7 @@ class EditUser extends React.Component {
                <h2>Edit</h2>
 
                <form onSubmit={this.handleSubmit}>
-                  <img src={this.state.avatar} alt={this.state.avatar} className='profile-picture' />
+                  <img src={this.state.avatar_url} alt={this.state.avatar_url} className='profile-picture' />
                   <label className={errors}>Username
                      <span className='errorMessage'>{errMsg}</span>
                      <input type='text'

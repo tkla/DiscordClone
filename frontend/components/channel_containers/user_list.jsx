@@ -4,6 +4,7 @@ import React from 'react'
 export default class UserList extends React.Component{
 
    componentDidMount(){
+      console.log(parseInt(this.props.match.params.id))
       this.props.getUsersIndex(parseInt(this.props.match.params.id));
    }
 
@@ -16,7 +17,7 @@ export default class UserList extends React.Component{
          currentUser = (
             <div id='user-list-current-user'>
                <div>
-                  <div id='current-avatar'className='post-avatar'><i className="fab fa-discord"></i></div> 
+                  <div id='current-avatar'className='default-avatar'><i className="fab fa-discord"></i></div> 
                   { this.props.currentUser.username } 
                </div>
          </div> 
@@ -35,7 +36,7 @@ export default class UserList extends React.Component{
 
                      <div id='post-content'>{(users[id].username==="Admin" || users[id].username === this.props.currentUser.username)? null: 
                         <div>
-                           <div className='post-avatar'><i className="fab fa-discord"></i></div> 
+                           <div className='default-avatar'><i className="fab fa-discord"></i></div> 
                            { users[id].username } 
                         </div>
                         

@@ -74,24 +74,29 @@ export default class Posts extends React.Component {
          <div id='posts-component'>
             <div id='offset'>
                <ul className='posts-container'>{
-                  Object.keys(posts).map(id =>
+                  Object.values(posts).map(p =>
 
-                     <li className='post' key={id}>
-                        <div className='post-avatar'><i className="fab fa-discord"></i></div>
+                     <li className='post' key={p.id}>
+                        {this.props.users[p.author_id] ? 
+                           this.props.users[p.author_id].avatar ?
+                              <div className='post-avatar'><img src={this.props.users[p.author_id].avatar}/></div>
+                              :<div className='default-avatar'><i className="fab fa-discord"></i></div>
+                           : null
+                        }
 
                         <div className='post-content'>
 
-                           <div className='post-reply'>{(posts[id].parent_id) ?
+                           <div className='post-reply'>{(p.parent_id) ?
                               <p className='username'>
                                  <i className="fas fa-reply"></i>
-                                 {posts[posts[id].parent_id].username}
-                                 <span>{posts[posts[id].parent_id].body}</span>
+                                 {posts[p.parent_id].username}
+                                 <span>{posts[p.parent_id].body}</span>
                               </p>
                               : ''}</div>
 
-                           <p className='username'>{posts[id].username} <span className='time'>{posts[id].created_at}</span></p>
+                           <p className='username'>{p.username} <span className='time'>{p.created_at}</span></p>
 
-                           <p className='post-body'>{posts[id].body}</p>
+                           <p className='post-body'>{p.body}</p>
 
                         </div>
 
