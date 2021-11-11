@@ -69,13 +69,12 @@ export default class Posts extends React.Component {
          posts = this.props.posts;
       }
       this.channel_id = this.props.posts.currentChannelId;
-
+      let currentUser = this.props.currentUser;
       return (
          <div id='posts-component'>
             <div id='offset'>
                <ul className='posts-container'>{
                   Object.values(posts).map(p =>
-
                      <li className='post' key={p.id}>
                         {this.props.users[p.author_id] ? 
                            this.props.users[p.author_id].avatar ?
@@ -85,7 +84,6 @@ export default class Posts extends React.Component {
                         }
 
                         <div className='post-content'>
-
                            <div className='post-reply'>{(p.parent_id) ?
                               <p className='username'>
                                  <i className="fas fa-reply"></i>
@@ -93,17 +91,20 @@ export default class Posts extends React.Component {
                                  <span>{posts[p.parent_id].body}</span>
                               </p>
                               : ''}</div>
-
                            <p className='username'>{p.username} <span className='time'>{p.created_at}</span></p>
-
                            <p className='post-body'>{p.body}</p>
-
                         </div>
 
+                        
+                        {p.author_id === currentUser.id ? 
+                           <div className='post-edit'>
+                              <i id='post-update' className="fas fa-edit"></i>  
+                              <i id='post-delete' className="far fa-trash-alt" onClick={()=>this.props.getPostDestroy(p.id)}></i>
+                           </div>
+                        :''}
+                        
                      </li>
-
                   )
-
                }</ul>
             </div>
 

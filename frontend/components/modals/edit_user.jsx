@@ -3,6 +3,7 @@ import React from 'react'
 import { closeModal } from '../../actions/modal_actions';
 import { clearErrors } from '../../actions/session_actions';
 import { getUserEdit } from '../../actions/user_actions';
+
 class EditUser extends React.Component {
    constructor(props) {
       super(props)
