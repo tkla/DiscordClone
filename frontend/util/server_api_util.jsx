@@ -127,6 +127,14 @@ export const postCreate = (formPost) => (
    })
 )
 
+export const postEdit = (id, formPost) => (
+   $.ajax({
+      url: `/api/posts/${id}`,
+      method: 'POST',
+      data: {post: formPost}
+   })
+)
+
 export const postDestroy = (id) => (
    $.ajax({
       url: `/api/posts/${id}`,

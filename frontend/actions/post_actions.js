@@ -1,5 +1,6 @@
 import * as postAPI  
    from "../util/server_api_util";
+import { receiveErrors } from "./session_actions";
 
 export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
@@ -36,9 +37,20 @@ export const getPostsIndex = channelId => dispatch => (
       .then( posts => dispatch(receivePosts(posts)))
 )
 
-export const getPostCreate = formpost => dispatch => (
-   postAPI.postCreate(formpost)
-      .then( post => dispatch(createPost(post)))
+export const getPostCreate = formPost => dispatch => (
+   postAPI.postCreate(formPost)
+      .then( 
+         post => dispatch(receivePost(post)),
+         errors => dispatch(receiveErrors(errors))
+      )
+)
+
+export const getPostEdit = (id, formPost) => dispatch => (
+   postAPI.postEdit(id, formPost)
+      .then( 
+         post => dispatch(createPost(post)),
+         errors => dispatch(receiveErrors(errors))
+      )
 )
 
 export const getPostDestroy = id => dispatch => (

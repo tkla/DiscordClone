@@ -9,19 +9,30 @@
    flex-direction: column;
 }
 
-
-.user-container > #post-content * {
-   display: inline-block;
-   margin: 5px;
+#server-users > div {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
 }
 
-.user-container > #post-content .post-avatar{
-   height: 50px;
-   width: 50px;
-   font-size: 150%;
+#user-list-current-user {
+   width: 100%; 
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   border-bottom: 1px solid #4d5257;
+   padding-bottom: 4px;
 }
 
-#user-list-current-user * {
+.list-username {
+   text-align: center;
+   max-width: 120px;
+   height: 100%;
    margin: 5px;
-   display: inline-block;
+   overflow-wrap: anywhere;
+}
+
+.members-list-item {
+   margin: 5px;
 }

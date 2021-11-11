@@ -38,6 +38,23 @@ class Api::PostsController < ApplicationController
       end 
    end 
 
+   def update 
+      @post = Post.find_by_id(params[:id])
+      if !@post 
+         return render json: "Unable to find post", status: 404
+      end 
+
+      if current_user.id != @post.author_id 
+         return render json: ["You are not the post author"], status: 401
+      end
+
+      if @post.update(post_params)
+         render :show
+      else 
+         render json: @post.errors.full_messages, status: 400
+      end
+   end
+
    def destroy 
       @post = Post.find_by_id(params[:id])
       if !@post 

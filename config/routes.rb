@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       end
       
       delete '/servers/:server_id/leave', to: 'servers#leave_server'
-      resources :servers, only: [:index, :create, :show, :destroy] do 
+      resources :servers, only: [:index, :create, :show, :update, :destroy] do 
          collection do 
             post ':id', to: 'servers#join_server'
          end
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
          resources :posts, only: [:index]
       end
 
-      resources :posts, only: [:create, :show, :destroy]
+      resources :posts, only: [:create, :show, :destroy, :update]
 
       resource :session, only: [:create, :destroy]
    end

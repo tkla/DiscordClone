@@ -4,7 +4,6 @@
    background-color: #36393F;
    display: flex;
    flex-direction: column;
-   //justify-content: space-between;
    padding-right: 5px;
    padding-left: 15px;
    position: relative;
@@ -31,32 +30,6 @@
 
 .post:hover {
    background-color: #32353B;
-}
-
-.post-avatar > img {
-   width: 50px;
-   height: 50px; 
-   border-radius: 50%;
-   text-align: center;
-   line-height: 50px;
-   vertical-align: center;
-   font-size: 170%;
-   background: none;
-   margin-top: 2px;
-   margin-bottom: 2px;
-}
-
-.default-avatar {
-   width: 50px;
-   height: 50px; 
-   border-radius: 50%;
-   text-align: center;
-   line-height: 50px;
-   vertical-align: center;
-   font-size: 170%;
-   background-color: #5865F2;
-   margin-top: 2px;
-   margin-bottom: 2px;
 }
 
 .post-content{
@@ -111,5 +84,4 @@
    padding-right: 15px;
    background-color: #40444B;
    border-radius: 10px;
-   
 }

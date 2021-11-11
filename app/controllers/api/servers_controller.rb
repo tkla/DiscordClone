@@ -16,6 +16,20 @@ class Api::ServersController < ApplicationController
       end 
    end
 
+   def update 
+      @server = Server.find_by_id(params[:id])
+      if !@server 
+         render json: "Unable to find server", status: 404
+         return 
+      end 
+
+      if @server.update(server_params)
+         render :show
+      else 
+         render json: @server.errors.full_messages, status: 401
+      end
+   end
+
    def join_server
       @server = Server.find_by_id(params[:id]);
       if !@server 
@@ -70,6 +84,6 @@ class Api::ServersController < ApplicationController
 
    private 
    def server_params 
-      params.require(:server).permit(:name, :author_id)
+      params.require(:server).permit(:name, :author_id, :avatar, :description)
    end
 end
