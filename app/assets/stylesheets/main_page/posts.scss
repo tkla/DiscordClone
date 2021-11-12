@@ -40,11 +40,20 @@
 
 .post-edit * {
    margin-right: 10px;
+   color: #B9BBBE;
 }
 
 .post:hover > .post-edit {
    visibility: visible;
    cursor: pointer;
+}
+
+#post-delete:hover {
+   color: red;
+}
+
+#post-update:hover {
+   color: #DCDDD9;
 }
 
 .post-content{
@@ -56,6 +65,25 @@
 .post-content * {
    margin: 5px;
    margin-left: 10px;
+}
+
+.show-edit-help * {
+   margin-left: 0px;
+}
+
+.show-edit-help {
+   font-size: small;
+   color: #929497;
+   display: none;
+}
+
+.show-edit-help > span {
+   color: deepskyblue;
+}
+
+.show-edit-help > span:hover{
+   cursor: pointer;
+   text-decoration: underline;
 }
 
 .post-reply {

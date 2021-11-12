@@ -130,7 +130,7 @@ export const postCreate = (formPost) => (
 export const postEdit = (id, formPost) => (
    $.ajax({
       url: `/api/posts/${id}`,
-      method: 'POST',
+      method: 'PATCH',
       data: {post: formPost}
    })
 )
