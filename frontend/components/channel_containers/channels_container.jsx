@@ -16,7 +16,8 @@ const mapDispatch = (dispatch) => ({
    getUserServers: () => dispatch(getUserServers()),
    getPostsIndex: channelId => dispatch(getPostsIndex(channelId)),
    getChannelDestroy: channelId => dispatch(getChannelDestroy(channelId)),
-   openNewChannel: () => dispatch(openModal('createChannel'))
+   openNewChannel: () => dispatch(openModal('createChannel')),
+   openServerEdit: (id, formServer) => dispatch(openModal('editServer')),
 })
 
 export default connect(mapState, mapDispatch)(Channels);

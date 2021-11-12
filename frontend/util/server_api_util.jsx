@@ -53,6 +53,14 @@ export const serverShow = (id) => (
    })
 )
 
+export const serverEdit = (id, formServer) => (
+   $.ajax({
+      url: `/api/servers/${id}`,
+      method: "PATCH",
+      data: formServer,
+   })
+)
+
 export const serverDestroy = (id) => (
    $.ajax({
       url: `/api/servers/${id}`,

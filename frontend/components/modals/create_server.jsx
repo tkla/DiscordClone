@@ -6,9 +6,15 @@ export default class CreateServer extends React.Component {
 
       this.state = {
          name: '',
-         author_id: this.props.currentUser.id
+         author_id: this.props.currentUser.id,
+         description: '',
       }
 
+      if (this.props.form === 'edit') {
+         this.state = {
+            name: this.props.servers[this.props.serverId].name,
+         }
+      }
       this.handleInput = this.handleInput.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
    }
@@ -54,6 +60,10 @@ export default class CreateServer extends React.Component {
                <label className={errors}>SERVER NAME
                   <span className='errorMessage'>{errMsg}</span>
                   <input type='text' value={this.state.name} onChange={this.handleInput('name')}/>
+               </label>
+
+               <label className={errors}>DESCRIPTION
+                  <input type='text' value={this.state.description} onChange={this.handleInput('description')}/>
                </label>
 
                <input className='submit' type='submit' value='Create' />

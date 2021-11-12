@@ -16,7 +16,10 @@ function Modal(props) {
          component = <JoinServer serverId={props.serverId} />;
          break;
       case 'createServer':
-         component = <CreateServerContainer />;
+         component = <CreateServerContainer form='create'/>;
+         break;
+      case 'editServer':
+         component = <CreateServerContainer form='edit' serverId={props.serverId}/>
          break;
       case 'createChannel':
          component = <CreateChannel serverId={props.serverId} />
