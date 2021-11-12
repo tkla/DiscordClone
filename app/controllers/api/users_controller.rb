@@ -10,6 +10,21 @@ class Api::UsersController < ApplicationController
       end
    end 
    
+   def update 
+      @user = current_user
+      if !@user 
+         render json: "Please sign in to edit user settings", status: 404
+         return 
+      end 
+
+      if @user.update(user_params)
+         render :show
+      else 
+         render json: @user.errors.full_messages, status: 400
+      end
+   end
+
+
    #Return all users in server_id
    def index 
       server = Server.find_by_id(params[:server_id])
@@ -44,6 +59,6 @@ class Api::UsersController < ApplicationController
 
    private 
    def user_params
-      params.require(:user).permit(:username, :password, :email)
+      params.require(:user).permit(:username, :password, :email, :avatar, :nickname)
    end
 end

@@ -20,6 +20,16 @@ export const userShow = (id) => (
    })
 )
 
+export const userEdit = (userId, formUser) => (
+   $.ajax({
+      url: `/api/users/${userId}`,
+      method: "PATCH",
+      data: formUser,
+      contentType: false,
+      processData: false
+   })
+)
+
 // ServersController 
 export const serversIndex = () => (
    $.ajax({
@@ -40,6 +50,14 @@ export const serverShow = (id) => (
    $.ajax({
       url: `/api/servers/${id}`,
       method: 'GET'
+   })
+)
+
+export const serverEdit = (id, formServer) => (
+   $.ajax({
+      url: `/api/servers/${id}`,
+      method: "PATCH",
+      data: formServer,
    })
 )
 
@@ -113,6 +131,14 @@ export const postCreate = (formPost) => (
    $.ajax({
       url: `/api/posts`,
       method: 'POST',
+      data: {post: formPost}
+   })
+)
+
+export const postEdit = (id, formPost) => (
+   $.ajax({
+      url: `/api/posts/${id}`,
+      method: 'PATCH',
       data: {post: formPost}
    })
 )

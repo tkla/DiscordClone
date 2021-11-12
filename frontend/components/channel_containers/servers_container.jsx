@@ -15,6 +15,7 @@ const mapDispatch = (dispatch) => ({
    getUserServers: () => dispatch(getUserServers()),
    openCreateServer: () => dispatch(openModal('createServer')),
    openJoinServer: () => dispatch(openModal('joinServer')),
+   openUserSettings: () => dispatch(openModal('userSettings')),
    getServerShow: (id) => dispatch(getServerShow(id)),
    logout: () => dispatch(logout()),
    getUsersIndex: (serverId) => dispatch(getUsersIndex(serverId))

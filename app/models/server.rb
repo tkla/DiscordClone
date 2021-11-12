@@ -13,6 +13,8 @@ class Server < ApplicationRecord
    validates :author_id, presence: true  
    after_save :add_global_admin, :add_default_channel
 
+   has_one_attached :avatar
+   
    belongs_to :author,
       class_name: :User
 

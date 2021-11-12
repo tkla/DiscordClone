@@ -70,7 +70,7 @@ export default class SessionForm extends React.Component {
                   <p>We're so excited to see you again!</p>
 
                   <form onSubmit={this.handleSubmit}> 
-                     <label className={errors}>EMAIL OR PHONE NUMBER 
+                     <label className={errors}>EMAIL
                         <span className='errorMessage'>{errMsg}</span>
                         
                         <input type='text' 

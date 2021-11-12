@@ -34,6 +34,24 @@ class Api::ChannelsController < ApplicationController
       end
    end 
 
+   def update 
+      @channel = Channel.find_by_id(params[:id])
+      if !@channel 
+         render json: "Unable to find channel", status: 404
+         return 
+      end 
+
+      if !current_user.is_admin?(params[:channel][:server_id])
+         return render json: "Only a server admin may perform this action.", status: 401
+      end
+      
+      if @channel.update(channel_params)
+         render :show
+      else 
+         render json: @channel.errors.full_messages, status: 401
+      end
+   end
+
    def destroy 
       @channel = Channel.find_by_id(params[:id])
     

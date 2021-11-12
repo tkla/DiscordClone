@@ -17,6 +17,7 @@ export default class Posts extends React.Component {
       this.channel_id = null;
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleInput = this.handleInput.bind(this);
+      this.handleEdit = this.handleEdit.bind(this);
    }
 
    componentDidMount() {
@@ -60,6 +61,39 @@ export default class Posts extends React.Component {
       }
    }
 
+   handleEdit(id){
+      let post = document.getElementById('post-' + id);
+      let originalText = post.innerHTML;
+      post.contentEditable = true;
+      post.style.background = '#40444B';
+      post.focus();
+      let helper = document.getElementById('helper-'+id);
+      helper.style.display = 'block';
+
+      post.addEventListener('keydown', e => {
+         switch(e.key) {
+            case 'Escape':
+               post.innerHTML = originalText;
+               post.blur();
+               post.style.background = 'none';
+               post.contentEditable = false;
+               helper.style.display = 'none';
+               return;
+            case 'Enter': 
+               post.blur();
+               post.style.background = 'none';
+               post.contentEditable = false;
+               const editState = Object.assign({}, this.state);
+               editState.body = post.innerHTML;
+               editState.channel_id = this.channel_id;
+               this.props.getPostEdit(id, editState);
+               helper.style.display = 'none';
+               return;
+            default: return 
+         }
+      })
+   }
+
    render() {
       let posts;
       if (this.props.posts.byId) {
@@ -69,36 +103,43 @@ export default class Posts extends React.Component {
          posts = this.props.posts;
       }
       this.channel_id = this.props.posts.currentChannelId;
+      let currentUser = this.props.currentUser;
 
       return (
          <div id='posts-component'>
             <div id='offset'>
                <ul className='posts-container'>{
-                  Object.keys(posts).map(id =>
-
-                     <li className='post' key={id}>
-                        <div className='post-avatar'><i className="fab fa-discord"></i></div>
+                  Object.values(posts).map(p =>
+                     <li className='post' key={p.id}>
+                        {this.props.users[p.author_id] ? 
+                           this.props.users[p.author_id].avatar ?
+                              <div className='post-avatar'><img src={this.props.users[p.author_id].avatar}/></div>
+                              :<div className='default-avatar'><i className="fab fa-discord"></i></div>
+                           : null
+                        }
 
                         <div className='post-content'>
-
-                           <div className='post-reply'>{(posts[id].parent_id) ?
+                           <div className='post-reply'>{(p.parent_id) ?
                               <p className='username'>
                                  <i className="fas fa-reply"></i>
-                                 {posts[posts[id].parent_id].username}
-                                 <span>{posts[posts[id].parent_id].body}</span>
+                                 {posts[p.parent_id].username}
+                                 <span>{posts[p.parent_id].body}</span>
                               </p>
                               : ''}</div>
-
-                           <p className='username'>{posts[id].username} <span className='time'>{posts[id].created_at}</span></p>
-
-                           <p className='post-body'>{posts[id].body}</p>
-
+                           <p className='username'>{p.username} <span className='time'>{p.created_at}</span></p>
+                           <p id={'post-'+ p.id} className='post-body' contentEditable={false}>{p.body}</p>
+                           <p id={'helper-'+p.id} className='show-edit-help'>Press <span id='edit-escape'>Escape</span>to cancel. <span id='edit-confirm'>Enter</span>to save.</p>
                         </div>
 
+                        {p.author_id === currentUser.id ? 
+                           <div className='post-edit'>
+                              <i id='post-update' className="fas fa-edit" onClick={()=>this.handleEdit(p.id)}></i>  
+                              <i id='post-delete' className="far fa-trash-alt" onClick={()=>this.props.getPostDestroy(p.id)}></i>
+                           </div>
+                        :''}
+                        
                      </li>
-
                   )
-
                }</ul>
             </div>
 
@@ -109,7 +150,17 @@ export default class Posts extends React.Component {
                   value={this.state.body}
                   autoComplete="off"
                   onChange={this.handleInput('body')}
+                  onKeyDown={(e) =>{ if (e.key ==='Escape') e.currentTarget.blur()}}
+                  onFocus={() => {
+                     let helper = document.getElementById('submit-helper');
+                     helper.style.display = 'block';
+                  }}
+                  onBlur={()=>{
+                     let helper = document.getElementById('submit-helper');
+                     helper.style.display = 'none';
+                  }}
                />
+               <p id='submit-helper' className='show-edit-help'>Press <span id='edit-escape'>Escape </span>to cancel. <span id='edit-confirm'>Enter </span>to save.</p>
             </form>
          </div>
       )

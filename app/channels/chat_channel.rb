@@ -3,7 +3,7 @@ class ChatChannel < ApplicationCable::Channel
       # stream_from "some_channel"
       stream_for 'chat_channel'
    end
-   
+
    # Implement error checking and validations later.
    def speak(data)
       post = Post.create(data.slice('server_id', 'channel_id', 'parent_id', 'body', 'author_id'))
@@ -18,7 +18,7 @@ class ChatChannel < ApplicationCable::Channel
          username: post.user.username,
       }
       ChatChannel.broadcast_to('chat_channel', socket)
-    end
+   end
 
    def unsubscribed
       # Any cleanup needed when channel is unsubscribed
