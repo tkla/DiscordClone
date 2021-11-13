@@ -42,7 +42,9 @@ export const serverCreate = (formServer) => (
    $.ajax({
       url: '/api/servers',
       method: 'POST',
-      data: {server: formServer}
+      data: formServer,
+      contentType: false,
+      processData: false
    })
 )
 
@@ -58,6 +60,8 @@ export const serverEdit = (id, formServer) => (
       url: `/api/servers/${id}`,
       method: "PATCH",
       data: formServer,
+      contentType: false,
+      processData: false
    })
 )
 

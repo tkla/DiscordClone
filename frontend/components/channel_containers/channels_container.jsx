@@ -1,7 +1,7 @@
 import Channels from './channels'
 import {connect} from 'react-redux'
 import { getChannelDestroy, getChannelsIndex } from '../../actions/channel_actions';
-import { getServerLeave, getUserServers } from '../../actions/server_actions';
+import { getServerLeave, getUserServers, getServerDestroy } from '../../actions/server_actions';
 import { getPostsIndex } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
 const mapState = (state) => ({
@@ -13,6 +13,7 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => ({
    getChannelsIndex: (serverId) => dispatch(getChannelsIndex(serverId)),
    getServerLeave: serverId => dispatch(getServerLeave(serverId)),
+   getServerDestroy: serverId => dispatch(getServerDestroy(serverId)),
    getUserServers: () => dispatch(getUserServers()),
    getPostsIndex: channelId => dispatch(getPostsIndex(channelId)),
    getChannelDestroy: channelId => dispatch(getChannelDestroy(channelId)),

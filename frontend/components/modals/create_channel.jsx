@@ -41,7 +41,7 @@ class CreateChannel extends React.Component {
             <form className='registerForm' onSubmit={this.handleSubmit}>
                <label>CHANNEL TYPE</label>
 
-               <div id='test'>
+               <div >
                   <input type='radio' id='select-text' value='false' onClick={this.handleInput('voice_channel')}/>
                   <label htmlFor='select-text'>Text Channel</label>
 
