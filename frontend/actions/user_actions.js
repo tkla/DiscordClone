@@ -1,8 +1,6 @@
 import { usersIndex, userShow, userEdit } 
-   from "../util/server_api_util";
-   
+   from "../util/server_api_util"; 
 import { receiveErrors } from "./session_actions";
-
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 

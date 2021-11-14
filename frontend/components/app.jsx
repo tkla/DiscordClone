@@ -20,7 +20,6 @@ import { AuthRoute, ProtRoute } from '../util/route_util';
  
 const App = () => (
    <div id='root-app'>
-      {/* <Modal/> */}
       <AuthRoute exact path='/' component={LoginFormContainer}/>
       <AuthRoute exact path='/register' component={SignUpFormContainer}/>
       

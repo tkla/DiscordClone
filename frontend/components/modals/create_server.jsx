@@ -96,7 +96,7 @@ export default class CreateServer extends React.Component {
    render() {
       let errors = '';
       let errMsg = '';
-      let avatar = <div className='avatar' id='display-profile' onClick={() => this.file_input.click()}><i className="far fa-save"></i></div>;
+      let avatar = <div className='avatar' id='display-profile' onClick={() => this.file_input.click()}><i id='to' className="far fa-save"></i></div>;
       if (this.state.avatar_url) avatar = <img
          className='profile-picture'
          id='display-profile'

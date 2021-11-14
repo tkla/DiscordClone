@@ -13,7 +13,7 @@ export default class Channel extends React.Component {
       this.clickChannel = this.clickChannel.bind(this);
       this.handleDestroy = this.handleDestroy.bind(this);
       this.toggle = this.toggle.bind(this);
-
+   
       this.state = {
          hideText: false,
          hideVoice: false
@@ -49,8 +49,7 @@ export default class Channel extends React.Component {
    }
 
    leaveServer() {
-      this.props.getUserServers();
-      this.props.getServerLeave(this.serverId)
+      this.props.getServerLeave(this.serverId);
    }
 
    clickChannel(e, id) {
@@ -108,7 +107,7 @@ export default class Channel extends React.Component {
 
       return (
          <div>
-            <Modal serverId={this.serverId} />
+            {/* <Modal serverId={this.serverId} /> */}
 
             <div className='channel-container' id='channels-list'>
                <div className='dropdown'>

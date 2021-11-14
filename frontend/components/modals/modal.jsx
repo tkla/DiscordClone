@@ -13,7 +13,7 @@ function Modal(props) {
    // For each modal component, pass in props as needed but keep it minimal.
    switch (props.modal) {
       case 'joinServer':
-         component = <JoinServer serverId={props.serverId} />;
+         component = <JoinServer serverId={props.serverId}/>;
          break;
       case 'createServer':
          component = <CreateServerContainer form='create'/>;

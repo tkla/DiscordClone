@@ -2,17 +2,15 @@ import {connect} from 'react-redux';
 import React from 'react'
 import { closeModal } from '../../actions/modal_actions';
 import { getServerJoin, getUserServers, removeServerLocalState } from '../../actions/server_actions';
-// import { Redirect } from 'react-router'
+import { withRouter } from "react-router";
 
 class JoinServer extends React.Component {
    constructor(props){
       super(props)
       this.serverId = this.props.serverId;
-      this.handleSubmit = this.handleSubmit.bind(this);
-
       this.joined =  false; 
-      // Rework later, temporary workaround.
-      this.serverCount = this.props.currentUser.allServers.length;
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.history = this.props.history;
    }
 
    handleSubmit(e) {
@@ -22,12 +20,13 @@ class JoinServer extends React.Component {
    }
 
    componentDidUpdate(){
-      if (this.serverCount !== this.props.currentUser.allServers.length) this.props.closeModal();
+      if (this.props.currentUser.allServers.includes(this.serverId)) this.props.closeModal();
    }
 
    componentWillUnmount(){
       if (!this.joined){
-         //this.props.removeServerLocalState(this.serverId);
+         this.props.removeServerLocalState(this.serverId);
+         this.history.push('/channels/@me');
       }
    }
 
@@ -38,13 +37,21 @@ class JoinServer extends React.Component {
             </div>
          )
       }
+      let server = this.props.servers[this.serverId];
+      let avatar = <div className='avatar' id='avatar-placeholder'>{server.name[0]}</div>;
+      if (server.avatar) avatar = <img
+         className='profile-picture'
+         id='display-profile'
+         src={server.avatar}
+         alt={server.avatar}
+      />
 
-      return(
+      return (
          <div className='base-modal'>
             { <h1>{this.props.servers[this.serverId].name}</h1> }
-            
-            <h1 id='avatar-placeholder'>Avatar</h1>
-
+            <i className="fas fa-times" id='exit' onClick={this.props.closeModal}></i>
+            {avatar}
+            <p className='gray-text'>{server.description}</p>
             <form className='registerForm' onSubmit={this.handleSubmit}>
                <input type='submit' value='Join'/>
             </form>
@@ -65,4 +72,4 @@ const mapDispatchToProps = dispatch => ({
    closeModal: () => dispatch(closeModal),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(JoinServer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(JoinServer));

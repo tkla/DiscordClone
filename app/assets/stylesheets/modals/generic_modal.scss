@@ -103,9 +103,11 @@
 #avatar-placeholder {
    text-align: center;
    color: white;
-   background-color: #36393F;
-   height: 90px;
-   width: 90px;
+   font-size: 32px;
+   user-select: none;
+   background-color: #5c616b;
+   height: 100px;
+   width: 100px;
    margin-left: auto;
    margin-right: auto;
    border-radius: 50%;
@@ -146,5 +148,5 @@
 .img-wrap:hover .img-text{
    visibility: visible;
    cursor: pointer;
-   opacity: 80%;
+   opacity: 85%;
 }
