@@ -1,0 +1,150 @@
+.base-modal {
+   width: 485px;
+   height: 100%;
+   position: relative;
+   background-color: #36393F;
+   border-radius: 5px;
+   display: inline-block;
+   margin-left:auto;
+   margin-right: auto;
+   color: black;
+   padding-top: 20px;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-bottom: 20px;
+}
+
+#exit {
+   position: absolute;
+   top: 20px;
+   // left: 20px;
+   right: 20px;
+   color: #8E9297;
+}
+
+#exit:hover {
+   color: white;
+   cursor: pointer;
+}
+
+.base-modal > h1, .base-modal > p {
+   text-align: center;
+   margin: 5px;
+}
+
+.base-modal > p {
+   margin-bottom: 20px;
+}
+
+.base-modal > h1 {
+   color: white;
+}
+
+.base-modal input:hover{
+   border-color: black;
+}
+
+.base-modal input:focus{
+   border-color: deepskyblue;
+}
+
+.generic-form > * {
+   margin-top: 5px; 
+   margin-bottom: 5px;
+   margin-left: 2px;
+   margin-right: 2px;
+}
+
+.generic-form {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin: 30px;
+   align-items: center;
+}
+
+.generic-form label {
+   color: white;
+}
+
+.generic-form input[type=submit]{
+   background-color: #5865F2;
+   margin-top: 30px;
+   text-align: center;
+   border: none;
+   height: 45px;
+}
+
+.generic-form input[type=submit]:hover{
+   background-color: #4752C4;
+}
+
+.generic-form input[type=submit]:active{
+   background-color: #3C45A5;
+}
+
+.generic-form input {
+   box-sizing: border-box;
+   color:white;
+   border-radius: 4px;
+   width: 100%;
+   margin-top: 5px;
+   padding: 10px;
+   border-color: #222428;
+   border-style: solid;
+   border-width: 1px;
+   background-color: #303339;
+}
+
+.generic-form input[type=file]{
+   display:none;
+}
+
+#avatar-placeholder {
+   text-align: center;
+   color: white;
+   background-color: #36393F;
+   height: 90px;
+   width: 90px;
+   margin-left: auto;
+   margin-right: auto;
+   border-radius: 50%;
+}
+
+#display-profile {
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.img-wrap{
+   position:relative;
+   height: 100px;
+   width: 100px;
+   margin-left: auto; 
+   margin-right: auto;
+   display: flex;
+   align-items: center; 
+   justify-content: center;
+}
+
+.img-text {
+   color: white;
+   user-select: none;
+   text-align: center;
+   font-size: small;
+   line-height: 100px;
+   position: absolute;
+   border-radius: 50%;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-color: #474b52;
+   visibility: hidden;
+}
+
+.img-wrap:hover .img-text{
+   visibility: visible;
+   cursor: pointer;
+   opacity: 80%;
+}

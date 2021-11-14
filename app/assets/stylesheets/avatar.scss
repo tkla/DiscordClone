@@ -44,3 +44,19 @@
    margin-top: 2px;
    margin-bottom: 2px;
 }
+
+// Server Avatar create/edit page.
+.avatar {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100px;
+   height: 100px; 
+   margin: 10px;
+   font-size: 400%;
+   margin-left: auto;
+   margin-right:auto;
+   border-radius: 50%;
+   text-align: center;
+   background-color: white;
+}

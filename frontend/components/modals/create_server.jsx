@@ -22,14 +22,19 @@ export default class CreateServer extends React.Component {
             author_id: this.props.currentUser.id,
             description: '',
             avatar: '',
+            avatar_url: null,
             submit: false,
          }
       }
-
+      this.file_input = null;
       this.handleInput = this.handleInput.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleFile = this.handleFile.bind(this);
    }
 
+   componentDidMount() {
+      this.file_input = document.querySelector("input[type=file]");
+   }
 
    componentDidUpdate(prevProps) {
       // If prev server prop does not equal current server, assume server has updated successfully and close modal.
@@ -74,60 +79,66 @@ export default class CreateServer extends React.Component {
       const reader = new FileReader();
       const file = e.currentTarget.files[0];
 
-      if (file) {
-         reader.readAsDataURL(file);
-      } else {
-         this.setState({ avatar_url: "", avatar: null });
-      }
-
       reader.onloadend = () => {
          this.setState({
             avatar_url: reader.result,
             avatar: file
          });
       }
+
+      if (file) {
+         reader.readAsDataURL(file);
+      } else {
+         this.setState({ avatar_url: "", avatar: null });
+      }
    }
 
    render() {
       let errors = '';
       let errMsg = '';
+      let avatar = <div className='avatar' id='display-profile' onClick={() => this.file_input.click()}><i className="far fa-save"></i></div>;
+      if (this.state.avatar_url) avatar = <img
+         className='profile-picture'
+         id='display-profile'
+         src={this.state.avatar_url}
+         alt={this.state.avatar_url}
+      />
+
       if (this.props.errors.length) {
          errors = 'error'
          errMsg = " - " + this.props.errors.join(' ')
       }
 
-      let header = '';
-      let subHeader = '';
+      let header = <h1>Server Settings</h1>;
+      let subHeader = <p className='gray-text'>Edit server information.</p>;
       let footer = '';
       if (this.props.form === 'create') {
          header = <h1>Create your server</h1>;
-         subHeader = 
+         subHeader =
             <p className='gray-text'>
                Give your new server a personality with a name and an icon.
                You can always change it later.
             </p>
-         footer = 
+         footer =
             <p className='gray-text'>
                By creating a server, you agree to Discord's
                <span>
                   <a href='https://discord.com/guidelines'> Community Guidelines.</a>
                </span>
             </p>
-      } else {
-         header = <h1>Server Settings</h1>;
-         subHeader = <p className='gray-text'>Edit server information.</p>
-      }
+      } 
 
       return (
          <div className='base-modal'>
             {header}
+            <i className="fas fa-times" id='exit' onClick={this.props.closeModal}></i>
             {subHeader}
-
-            <div className='avatar'>
-               <i className="far fa-save"></i>
+            <div className='img-wrap' onClick={() => this.file_input.click()}>
+               <p className='img-text'>Change Avatar</p>
+               {avatar}
             </div>
-
-            <form className='registerForm' onSubmit={this.handleSubmit}>
+            
+            <form className='generic-form' onSubmit={this.handleSubmit}>
                <label className={errors}>SERVER NAME
                   <span className='errorMessage'>{errMsg}</span>
                   <input type='text' value={this.state.name} onChange={this.handleInput('name')} />
@@ -137,7 +148,9 @@ export default class CreateServer extends React.Component {
                   <input type='text' value={this.state.description} onChange={this.handleInput('description')} />
                </label>
 
-               <input className='submit' type='submit' value={this.props.form==='create' ? 'Create':'Save'} />
+               <input type='file' onChange={this.handleFile} />
+
+               <input className='submit' type='submit' value={this.props.form === 'create' ? 'Create' : 'Save'} />
             </form>
             {footer}
          </div>

@@ -17,6 +17,11 @@ class EditUser extends React.Component {
          avatar: '',
          submit: false,
       }
+      this.file_input = null;
+   }
+
+   componentDidMount() {
+      this.file_input = document.querySelector("input[type=file]");
    }
 
    handleSubmit(e) {
@@ -54,9 +59,9 @@ class EditUser extends React.Component {
       const file = e.currentTarget.files[0];
 
       reader.onloadend = () => {
-         this.setState({ 
-            avatar_url: reader.result, 
-            avatar: file 
+         this.setState({
+            avatar_url: reader.result,
+            avatar: file
          });
       }
 
@@ -76,28 +81,25 @@ class EditUser extends React.Component {
       }
       return (
          <div className='base-modal'>
-            <div className='registerForm'>
-               <h2>Edit</h2>
+            <h1>Edit Profile</h1>
+            <i className="fas fa-times" id='exit' onClick={this.props.closeModal}></i>
+            <form className='generic-form' onSubmit={this.handleSubmit}>
+               <div className='img-wrap' onClick={() => this.file_input.click()}>
+                  <p className='img-text'>Change Avatar</p>
+                  <img src={this.state.avatar_url} alt={this.state.avatar_url} className='profile-picture' id='display-profile'/>
+               </div>
+               
+               <label className={errors}>Username
+                  <span className='errorMessage'>{errMsg}</span>
+                  <input type='text'
+                     value={this.state.username}
+                     onChange={this.handleInput('username')} />
+               </label>
 
-               <form onSubmit={this.handleSubmit}>
-                  <img src={this.state.avatar_url} alt={this.state.avatar_url} className='profile-picture' />
-                  <label className={errors}>Username
-                     <span className='errorMessage'>{errMsg}</span>
-                     <input type='text'
-                        value={this.state.username}
-                        onChange={this.handleInput('username')} />
-                  </label>
+               <input type='file'onChange={this.handleFile} />
 
-                  <label className={errors}>Profile Picture
-                     <span className='errorMessage'>{errMsg}</span>
-                     <input type='file'
-                        value=''
-                        onChange={this.handleFile} />
-                  </label>
-
-                  <input className='submit' type='submit' value='Save' />
-               </form>
-            </div>
+               <input className='submit' type='submit' value='Save' />
+            </form>
          </div>
       )
    }
