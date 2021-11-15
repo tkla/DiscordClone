@@ -20,7 +20,10 @@ class JoinServer extends React.Component {
    }
 
    componentDidUpdate(){
-      if (this.props.currentUser.allServers.includes(this.serverId)) this.props.closeModal();
+      if (this.props.currentUser.allServers.includes(this.serverId)) {
+         this.joined = true;
+         this.props.closeModal();
+      }
    }
 
    componentWillUnmount(){
