@@ -4,7 +4,6 @@ import React from 'react'
 export default class UserList extends React.Component{
 
    componentDidMount(){
-      console.log(parseInt(this.props.match.params.id))
       this.props.getUsersIndex(parseInt(this.props.match.params.id));
    }
 

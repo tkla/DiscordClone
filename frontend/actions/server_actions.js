@@ -6,6 +6,7 @@ export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
 export const DESTROY_SERVER = 'DESTROY_SERVER';
 export const CREATE_SERVER = 'CREATE_SERVER';
+export const CLEAR_SERVERS = 'CLEAR_SERVERS';
 
 const receiveServers = (servers) => ({
    type: RECEIVE_SERVERS,
@@ -25,6 +26,10 @@ const createServer = (server) => ({
 const destroyServer = (server) => ({
    type: DESTROY_SERVER,
    server 
+})
+
+export const clearServers = () => ({
+   type: CLEAR_SERVERS,
 })
 
 

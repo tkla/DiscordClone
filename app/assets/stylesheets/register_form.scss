@@ -1,3 +1,4 @@
+// This should be replaced with the generic modal styling.
 .registerWindow{
    width: 485px;
    height: auto;
@@ -21,7 +22,6 @@
    justify-content: center;
    margin: 30px;
    align-items: center;
-   //background-color: brown;
 }
 
 .registerForm input{
@@ -51,12 +51,10 @@
    text-align: center;
    border: none;
    height: 45px;
-   
 }
 
 .registerForm input[type=submit]:hover{
    background-color: #4752C4;
-   //on click = #3C45A5
 }
 
 .registerForm input[type=submit]:active{

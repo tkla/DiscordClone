@@ -13,9 +13,9 @@ User.create(username: 'Third', email: 'third3@test.com', password: '123456')
 User.create(username: 'Admin', email: 'AllSeeingEye@test.com', password: '123456')
 
 #Servers
-Server.create(name: 'League', author_id: '1')
-Server.create(name: 'Hololive', author_id: '1')
-Server.create(name: 'Work', author_id: '3')
+Server.create(name: 'League', author_id: '1', description: 'We play and talk League here. Everyday. 24 hours. What do you mean outside?')
+Server.create(name: 'Hololive', author_id: '1', description: 'Hololive is hololive.')
+Server.create(name: 'Work', author_id: '3', description: 'All manner of work related things. Ask about job hunting tips or career advice from hopefully well qualified peers.')
 Server.create(name: 'Empty', author_id: '3')
 
 #User's Servers (A joins table representing the servers they are a member of)

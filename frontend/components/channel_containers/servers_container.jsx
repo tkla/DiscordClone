@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { getUserServers, getServerShow } from '../../actions/server_actions';
 import { logout } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
-import { getUsersIndex } from '../../actions/user_actions';
+import { getUsersIndex, getUserShow } from '../../actions/user_actions';
 
 const mapState = (state) => ({
    servers: state.entities.servers,
@@ -18,7 +18,8 @@ const mapDispatch = (dispatch) => ({
    openUserSettings: () => dispatch(openModal('userSettings')),
    getServerShow: (id) => dispatch(getServerShow(id)),
    logout: () => dispatch(logout()),
-   getUsersIndex: (serverId) => dispatch(getUsersIndex(serverId))
+   getUsersIndex: serverId => dispatch(getUsersIndex(serverId)),
+   getUserShow: userId => dispatch(getUserShow(userId)),
 })
 
 

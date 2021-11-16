@@ -1,0 +1,94 @@
+.server-directory {
+   display: flex; 
+   flex-direction: column;
+   align-items: flex-start;
+   width: 100%;
+   height: 100vh;
+   background-color: #36393F;
+   box-sizing: border-box;
+   padding: 20px;
+   overflow: auto;
+}
+
+.server-directory::-webkit-scrollbar-track {
+   margin: 5px;
+}
+
+.server-directory > h1{
+   margin-bottom: 20px;
+   font-size: 36px;
+}
+
+.server-display-card {
+   display: flex; 
+   width: 750px;
+   margin-left: 10px;
+   padding-top: 20px;
+   padding-bottom: 19px;
+   border-bottom: 1px solid #585d68;
+}
+
+.server-display-card:hover {
+   cursor: pointer;
+}
+
+.server-banner-avatar {
+   width: 180px;
+   height: 140px;
+   border-radius: 10px;
+   background: none;
+   object-fit: cover; /* Do not scale the image */
+   object-position: center; /* Center the image within the element */
+}
+
+#server-banner-default {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 180px;
+   height: 140px;
+   border-radius: 10px;
+   font-size: 350%;
+   background-color: #5865F2;
+}
+
+.server-display-details {
+   display: flex; 
+   flex-direction: column;
+   margin-left: 20px;
+   max-width: 100%;
+   height: 140px;
+}
+
+.server-display-details * {
+   margin-bottom: 10px; 
+   font-weight: normal;
+}
+
+.server-description {
+   color: #bebebe;
+   font-size: 15px;
+}
+
+.server-description {
+   overflow:  auto;
+   overflow-wrap: anywhere;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.server-description::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.server-description {
+   -ms-overflow-style: none;
+   scrollbar-width: none; /* Firefox */
+}
+
+.server-member-count {
+   color: #70767D;
+   font-size: small;
+   margin-top: auto;
+   margin-bottom: 0px;
+}

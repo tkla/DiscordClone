@@ -42,6 +42,7 @@ export default class Posts extends React.Component {
 
    handleSubmit(e) {
       e.preventDefault();
+      if (!this.state.body.trim()) return;
       this.serverId = parseInt(this.props.match.params.id.substring(0, 10));
       App.cable.subscriptions.subscriptions[1].speak(this.state);
       this.setState({
