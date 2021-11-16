@@ -86,7 +86,7 @@ class EditUser extends React.Component {
             <form className='generic-form' onSubmit={this.handleSubmit}>
                <div className='img-wrap' onClick={() => this.file_input.click()}>
                   <p className='img-text'>Change Avatar</p>
-                  <img src={this.state.avatar_url} alt={this.state.avatar_url} className='profile-picture' id='display-profile'/>
+                  <img className='profile-picture' id='display-profile' src={this.state.avatar_url} alt={this.state.avatar_url} />
                </div>
                
                <label className={errors}>Username

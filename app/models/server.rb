@@ -2,14 +2,17 @@
 #
 # Table name: servers
 #
-#  id         :bigint           not null, primary key
-#  name       :string           not null
-#  author_id  :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint           not null, primary key
+#  name        :string           not null
+#  author_id   :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
 #
 class Server < ApplicationRecord
    validates :name, presence: true, uniqueness: true 
+   validates :name, length: {minimum: 2, maximum: 100}
+   validates :description, length: {maximum: 500}, allow_nil: true
    validates :author_id, presence: true  
    after_save :add_global_admin, :add_default_channel
 
