@@ -16,14 +16,12 @@ import { AuthRoute, ProtRoute } from '../util/route_util';
 // Modal component
 //import Modal from './modals/modal'
 
-
- 
 const App = () => (
    <div id='root-app'>
       <AuthRoute exact path='/' component={LoginFormContainer}/>
       <AuthRoute exact path='/register' component={SignUpFormContainer}/>
       
-      <ProtRoute path='/channels/:id' component={ServersContainer}/>
+      <ProtRoute path='/channels/:id/:invite?' component={ServersContainer}/>
       <ProtRoute exact path='/channels/@me' component={ServerDirectoryContainer}/>
       <ProtRoute path='/channels/:id(\d+)' component={ChannelsContainer}/>
       <ProtRoute path='/channels/:id(\d+)' component={PostsContainer}/>

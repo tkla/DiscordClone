@@ -5,7 +5,7 @@ import { clearServers, getServersIndex, getUserServers, getServerJoin } from '..
 const mapState = (state) => ({
    servers: state.entities.servers,
    users: state.entities.users,
-   currentUserId: state.session.currentUserId
+   currentUser: state.entities.users[state.session.currentUserId],
 })
 
 const mapDispatch = dispatch => ({

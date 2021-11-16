@@ -10,11 +10,12 @@
 #  description :text
 #
 class Server < ApplicationRecord
-   validates :name, presence: true, uniqueness: true 
+   validates :name, :invite_url, presence: true, uniqueness: true 
    validates :name, length: {minimum: 2, maximum: 100}
    validates :description, length: {maximum: 500}, allow_nil: true
    validates :author_id, presence: true  
    after_save :add_global_admin, :add_default_channel
+   after_initialize :generate_invite_url
 
    has_one_attached :avatar
    
@@ -49,5 +50,9 @@ class Server < ApplicationRecord
       Rails.cache.fetch :global_admin, :expires_in => 7.days do
          User.find_by(username: 'Admin')
       end
+   end
+
+   def generate_invite_url 
+      self.invite_url ||= SecureRandom::urlsafe_base64
    end
 end

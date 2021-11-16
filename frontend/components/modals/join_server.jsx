@@ -22,14 +22,15 @@ class JoinServer extends React.Component {
    componentDidUpdate(){
       if (this.props.currentUser.allServers.includes(this.serverId)) {
          this.joined = true;
+         this.history.push(`/channels/${this.serverId}`);
          this.props.closeModal();
       }
    }
 
    componentWillUnmount(){
       if (!this.joined){
-         this.props.removeServerLocalState(this.serverId);
-         this.history.push('/channels/@me');
+         // this.props.removeServerLocalState(this.serverId);
+         this.history.push(`/channels/${this.serverId}`);
       }
    }
 

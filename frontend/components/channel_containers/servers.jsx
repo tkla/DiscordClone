@@ -11,16 +11,23 @@ export default class Servers extends React.Component {
 
    componentDidMount() {
       this.props.getUserServers();
-      this.serverId = parseInt(this.props.match.params.id.substring(0, 10));
+      this.serverId = parseInt(this.props.match.params.id);
    }
 
-   componentDidUpdate() {
+   componentDidUpdate(prevProps) {
+      // if (this.props.match.params.id === '@me') this.props.getUserShow();
       if (this.props.match.params.id !== "@me") {
+         
          // Grab server id from params
-         this.serverId = parseInt(this.props.match.params.id.substring(0, 10));
+         this.serverId = parseInt(this.props.match.params.id);
+         
+         // If directly routing to url without invite link, just show the server but not join modal.
+         // Also get server into state if not present.
+          if (!this.props.servers[this.serverId]) this.props.getServerShow(this.serverId); 
 
-         // If server is not in state, dispatch ajax request
-         if (!this.currentUser.allServers.includes(this.serverId)) {
+         if (prevProps.match.url === this.props.match.url) return;
+         // Open join server modal if invite url is present in params and join modal is not already open.
+         if (this.props.match.params.invite && !this.props.modal) {
             this.props.getServerShow(this.serverId);
             this.props.openJoinServer();
          }
@@ -48,7 +55,7 @@ export default class Servers extends React.Component {
                            id={servers[s].avatar? 'server-item-avatar' : null}
                            className='server-item'
                            onClick={() => this.props.getUsersIndex(s)}
-                           to={`/channels/${s.padStart(10, "0")}`}>
+                           to={`/channels/${s}`}>
                            {servers[s].avatar ? <img className='profile-picture' id='display-profile' src={servers[s].avatar} alt={servers[s].avatar}/> 
                               : servers[s].name[0]}
                         </Link>

@@ -3,6 +3,12 @@ import React from 'react'
 
 export default class ServerDirectory extends React.Component {
 
+   constructor(props){
+      super(props)
+
+      this.navigateToServer = this.navigateToServer.bind(this);
+   }
+
    componentDidMount() {
       this.props.getServersIndex();
    }
@@ -12,10 +18,20 @@ export default class ServerDirectory extends React.Component {
    //    this.props.getUserServers();
    // }
 
+
+   navigateToServer(serverId, inviteUrl){
+      if (this.props.currentUser.allServers.includes(serverId)){ // Navigate to normal non-invite server url if user is member.
+         this.props.history.push(`/channels/${serverId}`);
+      } else {
+         this.props.history.push(`/channels/${serverId}/${inviteUrl}`); // Otherwise navigate to server invite url.
+      }
+      
+   }
+
    // TODO seperate server profile picture into Server Icon and Server Banner.
    render() {
       let servers = Object.values(this.props.servers).map(server => (
-         <div className='server-display-card'>
+         <div className='server-display-card' key={server.id} onClick={()=> this.navigateToServer(server.id, server.invite_url)} >
             <div className='server-banner'>
                {server.avatar ?
                   <img
