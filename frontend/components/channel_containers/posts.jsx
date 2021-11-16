@@ -87,7 +87,7 @@ export default class Posts extends React.Component {
                const editState = Object.assign({}, this.state);
                editState.body = post.innerHTML;
                editState.channel_id = this.channel_id;
-               this.props.getPostEdit(id, editState);
+               this.props.getPostEdit(id, editState); // Todo Error handling
                helper.style.display = 'none';
                return;
             default: return 

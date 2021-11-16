@@ -8,30 +8,21 @@ class JoinServer extends React.Component {
    constructor(props){
       super(props)
       this.serverId = this.props.serverId;
-      this.joined =  false; 
       this.handleSubmit = this.handleSubmit.bind(this);
       this.history = this.props.history;
    }
 
+   // Todo error handling for failed join.
    handleSubmit(e) {
       e.preventDefault();
-      this.joined = true;
-      this.props.getServerJoin(this.serverId);
-   }
-
-   componentDidUpdate(){
-      if (this.props.currentUser.allServers.includes(this.serverId)) {
-         this.joined = true;
-         this.history.push(`/channels/${this.serverId}`);
+      this.props.getServerJoin(this.serverId).then(() =>{
+         // if (this.props.currentUser.allServers.includes(this.serverId))
          this.props.closeModal();
-      }
+      });
    }
 
-   componentWillUnmount(){
-      if (!this.joined){
-         // this.props.removeServerLocalState(this.serverId);
-         this.history.push(`/channels/${this.serverId}`);
-      }
+   componentWillUnmount() {
+      this.history.push(`/channels/${this.serverId}`);
    }
 
    render(){ 

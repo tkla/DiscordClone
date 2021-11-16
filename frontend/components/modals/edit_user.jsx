@@ -35,7 +35,7 @@ class EditUser extends React.Component {
          formData.append('user[avatar]', this.state.avatar);
       }
 
-      this.props.getUserEdit(this.props.currentUser.id, formData);
+      this.props.getUserEdit(this.props.currentUser.id, formData); //TODO rewrite to use .then 
 
       this.setState({
          submit: true,
