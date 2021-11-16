@@ -7,13 +7,18 @@ export default class Servers extends React.Component {
       super(props);
       this.serverId;
       this.currentUser = this.props.currentUser;
+      this.inviteServer = false;
    }
 
    componentDidMount() {
       this.props.getUserServers();
       this.serverId = parseInt(this.props.match.params.id);
+      if (this.props.match.params.invite) this.inviteServer = true;
    }
 
+   // We check if we need to invite user to server 2 ways,
+   // 1. When directly routing to the server via an invite url in browser search bar, componentDidMount will trigger and update this.inviteServer flag
+   // 2. When clicking on server on the discover page user is routed to an invite url.
    componentDidUpdate(prevProps) {
       // if (this.props.match.params.id === '@me') this.props.getUserShow();
       if (this.props.match.params.id !== "@me") {
@@ -25,11 +30,14 @@ export default class Servers extends React.Component {
          // Also get server into state if not present.
           if (!this.props.servers[this.serverId]) this.props.getServerShow(this.serverId); 
 
-         if (prevProps.match.url === this.props.match.url) return;
-         // Open join server modal if invite url is present in params and join modal is not already open.
-         if (this.props.match.params.invite && !this.props.modal) {
+         // If the previous url and this url are different, assume user was redirected to this page from elsewhere.
+         // Update invite flag to true to enable further checks if we need to invite user.
+         if (prevProps.match.url !== this.props.match.url) this.inviteServer = true;
+         // Open join server modal if invite url param is present and join modal is not already open.
+         if (this.props.match.params.invite && !this.props.modal && this.inviteServer) {
             this.props.getServerShow(this.serverId);
             this.props.openJoinServer();
+            this.inviteServer = false;
          }
       }
    }
