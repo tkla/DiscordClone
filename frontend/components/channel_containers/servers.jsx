@@ -39,6 +39,8 @@ export default class Servers extends React.Component {
             this.props.openJoinServer();
             this.inviteServer = false;
          }
+      } else {
+         if (this.props.match.params.id === '@me' && prevProps.match.url !== this.props.match.url) this.props.getUserShow(this.props.currentUser.id);
       }
    }
 
