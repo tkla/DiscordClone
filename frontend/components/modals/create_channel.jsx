@@ -18,6 +18,7 @@ class CreateChannel extends React.Component {
       }
    }
 
+   // TODO error handling
    handleSubmit(e) {
       e.preventDefault();
       this.props.getChannelCreate(this.state);

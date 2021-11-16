@@ -49,7 +49,7 @@ export default class Channel extends React.Component {
    }
 
    leaveServer() {
-      this.props.getServerLeave(this.serverId);
+      this.props.getServerLeave(this.serverId).then(() => this.props.getUserShow(this.props.currentUser.id));
    }
 
    clickChannel(e, id) {

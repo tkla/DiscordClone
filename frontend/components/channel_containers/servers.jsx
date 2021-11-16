@@ -26,10 +26,10 @@ export default class Servers extends React.Component {
          // Grab server id from params
          this.serverId = parseInt(this.props.match.params.id);
          
-         // If directly routing to url without invite link, just show the server but not join modal.
-         // Also get server into state if not present.
-          if (!this.props.servers[this.serverId]) this.props.getServerShow(this.serverId); 
-
+         // Get server into state if not present.
+         if (!this.props.servers[this.serverId]) this.props.getServerShow(this.serverId); 
+         // Do nothing if user is already member
+         if (this.props.currentUser.allServers.includes(this.serverId)) return;
          // If the previous url and this url are different, assume user was redirected to this page from elsewhere.
          // Update invite flag to true to enable further checks if we need to invite user.
          if (prevProps.match.url !== this.props.match.url) this.inviteServer = true;
@@ -39,9 +39,7 @@ export default class Servers extends React.Component {
             this.props.openJoinServer();
             this.inviteServer = false;
          }
-      } else {
-         if (this.props.match.params.id === '@me' && prevProps.match.url !== this.props.match.url) this.props.getUserShow(this.props.currentUser.id);
-      }
+      } 
    }
 
    render() {
