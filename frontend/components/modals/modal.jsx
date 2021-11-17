@@ -21,8 +21,11 @@ function Modal(props) {
       case 'editServer':
          component = <CreateServerContainer form='edit' serverId={props.serverId}/>
          break;
-      case 'createChannel':
-         component = <CreateChannel serverId={props.serverId} />
+      case 'createTextChannel':
+         component = <CreateChannel serverId={props.serverId} type='text' />
+         break;
+      case 'createVoiceChannel':
+         component = <CreateChannel serverId={props.serverId} type='voice'/>
          break;
       case 'userSettings':
          component = <EditUser />;

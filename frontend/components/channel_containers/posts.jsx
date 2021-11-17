@@ -43,7 +43,7 @@ export default class Posts extends React.Component {
             server_id: this.serverId,
          })
       }
-      element.scrollTop = element.scrollHeight;
+      if (element) element.scrollTop = element.scrollHeight;
       if (this.state.author_id !== this.props.currentUser.id) this.setState({author_id: this.props.currentUser.id});
    }
 
@@ -114,6 +114,27 @@ export default class Posts extends React.Component {
       let isMember = false;
       let input = document.getElementById('post-input')
 
+      // If channel was deleted check server has other text channels.
+      // If it has other text channels render deleted channel text
+      // If it has no other text channels render nothing
+      let textChannels = Object.values(this.props.channels).filter( channel => !channel.voice_channel);
+      if (textChannels.length <= 0) {
+         return (
+            <div id='posts-component'>
+               <h2 className='empty-post'>This server has no Text Channels.</h2>
+               <i id='ghost-icon' className="fas fa-ghost"></i>
+               <form onSubmit={this.handleSubmit}>
+                  <input
+                     id='post-input'
+                     readOnly
+                     className= 'post-input-deny'
+                     type='text'
+                     value='No available text channels'
+                  />
+               </form>
+            </div>
+         ) 
+      }
       // Check if current user is server member.
       if (currentUser.allServers.includes(this.state.server_id)) {
          isMember = true;

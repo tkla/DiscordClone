@@ -10,7 +10,7 @@
 #  description :text
 #
 class Server < ApplicationRecord
-   validates :name, :invite_url, presence: true, uniqueness: true 
+   validates :name, :invite_url, presence: true, uniqueness: { case_sensitive: false }
    validates :name, length: {minimum: 2, maximum: 100}
    validates :description, length: {maximum: 500}, allow_nil: true
    validates :author_id, presence: true  

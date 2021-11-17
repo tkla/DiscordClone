@@ -1,6 +1,6 @@
 import { channelsIndex, channelShow, channelCreate, channelDestroy } 
    from "../util/server_api_util";
-
+import { receiveErrors } from "./session_actions";
 export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL'
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS'
 export const CREATE_CHANNEL = 'CREATE_CHANNEL'
@@ -37,8 +37,10 @@ export const getChannelsIndex = serverId => dispatch => (
 )
 
 export const getChannelCreate = formChannel => dispatch => (
-   channelCreate(formChannel)
-      .then( channel => dispatch(createChannel(channel)))
+   channelCreate(formChannel).then( 
+      channel => dispatch(createChannel(channel)),
+      errors => dispatch(receiveErrors(errors))
+   )
 )
 
 export const getChannelDestroy = id => dispatch => (
