@@ -103,8 +103,10 @@ export default class Channel extends React.Component {
       Object.keys(channels).some(id => {
          if (this.firstChannelId != id) {
             this.firstChannelId = id;
-            this.selectedChannelId = this.firstChannelId;
-            this.props.getPostsIndex(id);
+            if (!channels[this.selectedChannelId]){
+               this.selectedChannelId = this.firstChannelId;
+               this.props.getPostsIndex(id);
+            }
          }
          return true;
       })
