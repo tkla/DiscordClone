@@ -15,6 +15,7 @@
 class Post < ApplicationRecord
    validates :server_id, :channel_id, :author_id, presence: true 
    validate :check_same_channel
+   validate :check_belong_server # Check if user belongs to server
    after_initialize :ensure_original_body
 
    belongs_to :channel 
@@ -47,4 +48,12 @@ class Post < ApplicationRecord
       self.original_body = self.body;
    end
 
+   def check_belong_server 
+      user = User.find_by_id(self.author_id)
+      
+      return false if !user 
+      if !user.is_member?(self.server_id) 
+         errors.add(:user, "You are not a member of this server.")
+      end
+   end
 end

@@ -26,14 +26,14 @@ class Api::PostsController < ApplicationController
    def create
       if !current_user.is_member?(post_params[:server_id])
          return render json: "Only members of this server may create posts.", status: 401 
-      end  
+      end
 
       params[:post][:author_id] = current_user.id 
       @post = Post.new(post_params)
       
       if @post.save 
          render :show 
-      else 
+      else
          render json: @post.errors.full_messages, status: 404
       end 
    end 

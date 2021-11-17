@@ -43,7 +43,7 @@ export default class Posts extends React.Component {
    handleSubmit(e) {
       e.preventDefault();
       if (!this.state.body.trim()) return;
-      this.serverId = parseInt(this.props.match.params.id.substring(0, 10));
+      this.serverId = parseInt(this.props.match.params.id);
       App.cable.subscriptions.subscriptions[1].speak(this.state);
       this.setState({
          server_id: this.serverId,
@@ -105,7 +105,17 @@ export default class Posts extends React.Component {
       }
       this.channel_id = this.props.posts.currentChannelId;
       let currentUser = this.props.currentUser;
+      let isMember = false;
+      let input = document.getElementById('post-input')
 
+      if (currentUser.allServers.includes(this.state.server_id)) {
+         isMember = true;
+         if (input) input.removeAttribute('readonly');
+      } else {
+         
+         if (input) input.setAttribute('readonly', '');
+      }
+      
       return (
          <div id='posts-component'>
             <div id='offset'>
