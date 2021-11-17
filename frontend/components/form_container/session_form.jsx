@@ -4,7 +4,7 @@ import { Redirect } from 'react-router';
 
 export default class SessionForm extends React.Component {
 
-   constructor(props){
+   constructor(props) {
       super(props)
 
       this.state = {
@@ -18,9 +18,9 @@ export default class SessionForm extends React.Component {
       this.handleInput = this.handleInput.bind(this);
       this.submitDemoLogin = this.submitDemoLogin.bind(this);
    }
-   
+
    submitDemoLogin(e) {
-      e.preventDefault(); 
+      e.preventDefault();
       let demo = {
          username: 'demo',
          password: '123456',
@@ -29,11 +29,11 @@ export default class SessionForm extends React.Component {
       this.props.processForm(demo);
    }
 
-   componentWillUnmount(){
+   componentWillUnmount() {
       this.props.clearErrors();
    }
-   
-   handleSubmit(e){
+
+   handleSubmit(e) {
       e.preventDefault();
       this.props.processForm(this.state);
       this.setState({
@@ -43,24 +43,51 @@ export default class SessionForm extends React.Component {
       })
    }
 
-   handleInput(input){
+   handleInput(input) {
       return (e) => {
          this.setState({
-            [input] : e.currentTarget.value,
+            [input]: e.currentTarget.value,
          })
       }
    }
 
-   render(){
+   render() {
       let form = '';
       let window = 'loginWindow';
-      let errors = '';
-      let errMsg = '';
-      if (this.props.errors.length){
-         errors = 'error'
-         errMsg = " - " + this.props.errors.join(' ')
+
+      let usernameErr = false;
+      let usernameMsg = ' ';
+
+      let emailErr = false;
+      let emailMsg = ' ';
+
+      let passwordErr = false;
+      let passwordMsg = ' ';
+
+      if (this.props.errors.length) {
+         // errors = 'error'
+         // errMsg = " - " + this.props.errors.join(' ')
+         for (let i = 0; i < this.props.errors.length; i++) {
+            if (this.props.errors[i].includes('Username')) {
+               usernameErr = true;
+               if (usernameMsg.length > 1) usernameMsg += ', ';
+               usernameMsg += this.props.errors[i];
+            }
+
+            if (this.props.errors[i].includes('Email')) {
+               emailErr = true;
+               if (emailMsg.length > 1) emailMsg += ', ';
+               emailMsg += this.props.errors[i] + ' ';
+            }
+
+            if (this.props.errors[i].includes('Password')) {
+               passwordErr = true;
+               if (passwordMsg.length > 1) passwordMsg += ', ';
+               passwordMsg += this.props.errors[i] + ' ';
+            }
+         }
       }
-      
+
       if (this.props.formType === 'Log In') {
          form = (
             <div id='loginContainer'>
@@ -69,29 +96,29 @@ export default class SessionForm extends React.Component {
                   <h2>Welcome back!</h2>
                   <p>We're so excited to see you again!</p>
 
-                  <form onSubmit={this.handleSubmit}> 
-                     <label className={errors}>EMAIL
-                        <span className='errorMessage'>{errMsg}</span>
-                        
-                        <input type='text' 
-                        value={this.state.email} 
-                        onChange={this.handleInput('email')}/>
-                     </label>
-                     
-                     <label className={errors}>PASSWORD
-                        <span className='errorMessage'>{errMsg}</span>
+                  <form onSubmit={this.handleSubmit}>
+                     <label className={emailErr ? 'error' : ''}>EMAIL
+                        <span className='errorMessage'>{emailMsg}</span>
 
-                        <input type='password' 
-                        value={this.state.password} 
-                        onChange={this.handleInput('password')}/>
+                        <input type='text'
+                           value={this.state.email}
+                           onChange={this.handleInput('email')} />
                      </label>
-                     
 
-                     <input className='submit' type='submit' value='Login'/>
+                     <label className={passwordErr ? 'error' : ''}>PASSWORD
+                        <span className='errorMessage'>{passwordMsg}</span>
+
+                        <input type='password'
+                           value={this.state.password}
+                           onChange={this.handleInput('password')} />
+                     </label>
+
+
+                     <input className='submit' type='submit' value='Login' />
                   </form>
 
                   <p>
-                     Need an account? <Link to='/register'>Register</Link> or login with a 
+                     Need an account? <Link to='/register'>Register</Link> or login with a
                      <span> <a href='https://discord-tkla.herokuapp.com/?#/login' onClick={this.submitDemoLogin}>Demo Account.</a></span>
                   </p>
                </div>
@@ -110,29 +137,29 @@ export default class SessionForm extends React.Component {
             <div className='registerForm'>
                <h2>Create an account</h2>
 
-               <form onSubmit={this.handleSubmit}> 
-                  <label className={errors}>EMAIL
-                     <span className='errorMessage'>{errMsg}</span>   
-                     <input type='text' 
-                     value={this.state.email} 
-                     onChange={this.handleInput('email')}/>
+               <form onSubmit={this.handleSubmit}>
+                  <label className={emailErr ? 'error' : ''}>EMAIL
+                     <span className='errorMessage'>{emailMsg}</span>
+                     <input type='text'
+                        value={this.state.email}
+                        onChange={this.handleInput('email')} />
                   </label>
 
-                  <label className={errors}>USERNAME
-                     <span className='errorMessage'>{errMsg}</span> 
-                     <input type='text' 
-                     value={this.state.username} 
-                     onChange={this.handleInput('username')}/>
+                  <label className={usernameErr ? 'error' : ''}>USERNAME
+                     <span className='errorMessage'>{usernameMsg}</span>
+                     <input type='text'
+                        value={this.state.username}
+                        onChange={this.handleInput('username')} />
                   </label>
 
-                  <label className={errors}>PASSWORD
-                     <span className='errorMessage'>{errMsg}</span>
-                     <input type='password' 
-                     value={this.state.password} 
-                     onChange={this.handleInput('password')}/>
+                  <label className={passwordErr ? 'error' : ''}>PASSWORD
+                     <span className='errorMessage'>{passwordMsg}</span>
+                     <input type='password'
+                        value={this.state.password}
+                        onChange={this.handleInput('password')} />
                   </label>
 
-                  <input className='submit' type='submit' value='Continue'/>
+                  <input className='submit' type='submit' value='Continue' />
                </form>
                <Link to='/'>Already have an account?</Link>
             </div>
