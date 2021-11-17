@@ -7,6 +7,7 @@ class ChatChannel < ApplicationCable::Channel
    # Implement error checking and validations later.
    def speak(data)
       post = Post.create(data.slice('server_id', 'channel_id', 'parent_id', 'body', 'author_id'))
+      return if !post.valid? 
       socket = {
          id: post.id, 
          channel_id: post.channel_id,

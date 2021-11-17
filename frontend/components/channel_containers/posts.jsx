@@ -14,6 +14,7 @@ export default class Posts extends React.Component {
          author_id: this.props.currentUser.id,
          body: '',
       }
+      this.auth_message = 'Only members of this server have permission to create posts.'
       this.channel_id = null;
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleInput = this.handleInput.bind(this);
@@ -36,6 +37,12 @@ export default class Posts extends React.Component {
 
    componentDidUpdate() {
       var element = document.getElementById("offset");
+      this.serverId = parseInt(this.props.match.params.id);
+      if (this.state.server_id !== this.serverId) {
+         this.setState({
+            server_id: this.serverId,
+         })
+      }
       element.scrollTop = element.scrollHeight;
       if (this.state.author_id !== this.props.currentUser.id) this.setState({author_id: this.props.currentUser.id});
    }
@@ -43,7 +50,6 @@ export default class Posts extends React.Component {
    handleSubmit(e) {
       e.preventDefault();
       if (!this.state.body.trim()) return;
-      this.serverId = parseInt(this.props.match.params.id.substring(0, 10));
       App.cable.subscriptions.subscriptions[1].speak(this.state);
       this.setState({
          server_id: this.serverId,
@@ -105,6 +111,16 @@ export default class Posts extends React.Component {
       }
       this.channel_id = this.props.posts.currentChannelId;
       let currentUser = this.props.currentUser;
+      let isMember = false;
+      let input = document.getElementById('post-input')
+
+      // Check if current user is server member.
+      if (currentUser.allServers.includes(this.state.server_id)) {
+         isMember = true;
+         if (input) input.removeAttribute('readonly'); // Remove read only attr from post input
+      } else {
+         if (input) input.setAttribute('readonly', ''); // Add read only attr to post input
+      }
 
       return (
          <div id='posts-component'>
@@ -147,8 +163,9 @@ export default class Posts extends React.Component {
             <form onSubmit={this.handleSubmit}>
                <input
                   id='post-input'
+                  className= {isMember ? '' : 'post-input-deny'}
                   type='text'
-                  value={this.state.body}
+                  value={ isMember? this.state.body : this.auth_message}
                   autoComplete="off"
                   onChange={this.handleInput('body')}
                   onKeyDown={(e) =>{ if (e.key ==='Escape') e.currentTarget.blur()}}
@@ -161,7 +178,9 @@ export default class Posts extends React.Component {
                      helper.style.display = 'none';
                   }}
                />
-               <p id='submit-helper' className='show-edit-help'>Press <span id='edit-escape'>Escape </span>to cancel. <span id='edit-confirm'>Enter </span>to save.</p>
+               <p id={isMember ? 'submit-helper' : 'submit-helper-deny'} className='show-edit-help'>
+                  Press <span id='edit-escape'>Escape </span>to cancel. <span id='edit-confirm'>Enter </span>to save.
+               </p>
             </form>
          </div>
       )
