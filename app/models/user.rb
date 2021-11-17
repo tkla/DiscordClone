@@ -12,8 +12,9 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-   validates :email, presence: true, uniqueness: true
-   validates :username, length: {minimum: 2, maximum: 32} 
+   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP,
+      message: 'invalid format'} 
+   validates :username, length: {minimum: 2, maximum: 32}, uniqueness: { case_sensitive: false }
    validates :password_digest, presence: true
    validates :password, length: {minimum: 6}, allow_nil: true
    after_initialize :ensure_session_token 

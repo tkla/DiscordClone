@@ -12,7 +12,7 @@
 #
 class Channel < ApplicationRecord
    validates :server_id, :author_id, :name, presence: true 
-   validates :name, uniqueness: {scope: :server_id,
+   validates :name, uniqueness: {scope: :server_id, case_sensitive: false,
       message: "already exists on this server"
    } 
    validates :voice_channel, inclusion: [true, false]
