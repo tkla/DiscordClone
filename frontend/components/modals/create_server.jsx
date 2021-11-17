@@ -96,6 +96,11 @@ export default class CreateServer extends React.Component {
    render() {
       let errors = '';
       let errMsg = '';
+      if (this.props.errors.length) {
+         errors = 'error'
+         errMsg = " - " + this.props.errors.join(' ')
+      }
+      
       let avatar = <div className='avatar' id='display-profile' onClick={() => this.file_input.click()}><i id='to' className="far fa-save"></i></div>;
       if (this.state.avatar_url) avatar = <img
          className='profile-picture'
@@ -104,10 +109,6 @@ export default class CreateServer extends React.Component {
          alt={this.state.avatar_url}
       />
 
-      if (this.props.errors.length) {
-         errors = 'error'
-         errMsg = " - " + this.props.errors.join(' ')
-      }
 
       let header = <h1>Server Settings</h1>;
       let subHeader = <p className='gray-text'>Edit server information.</p>;

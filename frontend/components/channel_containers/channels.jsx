@@ -143,7 +143,7 @@ export default class Channel extends React.Component {
                <div className='collapse' id='channels'>
                   <div id='channel-header' onClick={(e) => this.toggle('hideText')}>
                      <h2>Text Channels</h2>
-                     <button id='create-channel' onClick={(e) => { e.stopPropagation(); return this.props.openNewChannel() }} hidden={!isAuthor}>
+                     <button id='create-channel' onClick={(e) => { e.stopPropagation(); return this.props.createTextChannel() }} hidden={!isAuthor}>
                         <i className="fas fa-plus"></i>
                      </button>
                   </div>
@@ -170,7 +170,7 @@ export default class Channel extends React.Component {
 
                   <div id='channel-header' onClick={() => this.toggle('hideVoice')}>
                      <h2>Voice Channels</h2>
-                     <button id='create-channel' onClick={() => this.props.openNewChannel()} hidden={!isAuthor}>
+                     <button id='create-channel' onClick={() => this.props.createVoiceChannel()} hidden={!isAuthor}>
                         <i className="fas fa-plus"></i>
                      </button>
                   </div>

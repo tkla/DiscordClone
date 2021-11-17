@@ -25,7 +25,8 @@ const mapDispatch = (dispatch) => ({
    // Receive updated user from backend
    getUserShow: userId => dispatch(getUserShow(userId)),
    // Modals
-   openNewChannel: () => dispatch(openModal('createChannel')),
+   createTextChannel: () => dispatch(openModal('createTextChannel')),
+   createVoiceChannel: () => dispatch(openModal('createVoiceChannel')),
    openServerEdit: () => dispatch(openModal('editServer')),
 })
 

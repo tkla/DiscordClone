@@ -13,7 +13,7 @@
 class Channel < ApplicationRecord
    validates :server_id, :author_id, :name, presence: true 
    validates :name, uniqueness: {scope: :server_id,
-      message: ": Channel name has already been taken"
+      message: "already exists on this server"
    } 
    validates :voice_channel, inclusion: [true, false]
    after_save :welcome_post 

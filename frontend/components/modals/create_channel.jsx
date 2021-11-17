@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import React from 'react'
 import { closeModal } from '../../actions/modal_actions';
 import { getChannelCreate } from '../../actions/channel_actions';
+import { clearErrors } from '../../actions/session_actions';
 
 class CreateChannel extends React.Component {
    constructor(props){
@@ -14,15 +15,19 @@ class CreateChannel extends React.Component {
          server_id: this.serverId,
          name: '',
          author_id: this.props.currentUser.id,
-         voice_channel: false,
+         voice_channel: (this.props.type === 'voice' ? true : false),
       }
    }
 
    // TODO error handling
    handleSubmit(e) {
       e.preventDefault();
-      this.props.getChannelCreate(this.state);
-      this.props.closeModal();
+      this.props.getChannelCreate(this.state).then(() => {
+         if (this.props.errors.length === 0) {
+            this.props.closeModal();
+         }
+      });
+      // this.props.closeModal();
    }
 
    handleInput(input){
@@ -34,23 +39,23 @@ class CreateChannel extends React.Component {
    }
 
    render(){ 
+      let errors = '';
+      let errMsg = '';
+      if (this.props.errors.length) {
+         errors = 'error'
+         errMsg = " - " + this.props.errors.join(' ')
+      }
+      // 
+      let header = 'Text';
+      if (this.state.voice_channel) header = 'Voice'
       return(
          <div className='base-modal'>
-            <h1> Create a Channel </h1>
-            <form className='registerForm' onSubmit={this.handleSubmit}>
-               <label>CHANNEL TYPE</label>
-
-               <div>
-                  <input type='radio' id='select-text' value='false' onClick={this.handleInput('voice_channel')}/>
-                  <label htmlFor='select-text'>Text Channel</label>
-
-                  <input type='radio' id='select-voice' value='true' onClick={this.handleInput('voice_channel')}/>
-                  <label htmlFor='select-voice'>Voice Channel</label>
-               </div>
-
-               <label htmlFor='input-channel-name'>CHANNEL NAME</label>
-               <input id='input-channel-name' autoComplete='off' type='text' value={this.state.name} onChange={this.handleInput('name')}/>
-               
+            <h1> Create {header} Channel </h1>
+            <form className='generic-form' onSubmit={this.handleSubmit}>
+               <label className={errors}>CHANNEL NAME
+                  <span className='errorMessage'>{errMsg}</span>
+                  <input id='input-channel-name' autoComplete='off' type='text' value={this.state.name} onChange={this.handleInput('name')}/>
+               </label>
                <input type='submit' value='Create Channel'/>
             </form>
          </div>
@@ -59,12 +64,14 @@ class CreateChannel extends React.Component {
 }
 
 const mapStateToProps = state => ({
-   currentUser: state.entities.users[state.session.currentUserId]
+   currentUser: state.entities.users[state.session.currentUserId],
+   errors: state.errors.session,
 })
 
 const mapDispatchToProps = dispatch => ({
    closeModal: () => dispatch(closeModal),
    getChannelCreate: form => dispatch(getChannelCreate(form)),
+   clearErrors: () => dispatch(clearErrors()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateChannel);
