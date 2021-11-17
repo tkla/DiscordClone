@@ -7,11 +7,12 @@ export default class Channel extends React.Component {
       super(props)
       this.serverId = -1;
       this.firstChannelId = null;
-      this.selectedChannel = 0;
+      this.selectedChannelId = 0;
       this.leaveServer = this.leaveServer.bind(this);
       this.loadPosts = this.loadPosts.bind(this);
       this.clickChannel = this.clickChannel.bind(this);
       this.handleDestroy = this.handleDestroy.bind(this);
+      this.handleChannelDelete = this.handleChannelDelete.bind(this);
       this.toggle = this.toggle.bind(this);
    
       this.state = {
@@ -27,7 +28,7 @@ export default class Channel extends React.Component {
    }
 
    componentDidMount() {
-      this.serverId = parseInt(this.props.match.params.id.substring(0, 10));
+      this.serverId = parseInt(this.props.match.params.id);
       this.props.getChannelsIndex(this.serverId);
    }
 
@@ -52,18 +53,38 @@ export default class Channel extends React.Component {
       this.props.getServerLeave(this.serverId).then(() => this.props.getUserShow(this.props.currentUser.id));
    }
 
-   clickChannel(e, id) {
-      this.selectedChannel = id;
+   clickChannel(id) {
+      this.selectedChannelId = id;
       if (this.props.channels[id].voice_channel) {
          // todo
       } else {
          this.loadPosts(id);
+         let channelItem = document.getElementById(id);
+         if (channelItem) channelItem.checked = true;
       }
    }
 
    handleDestroy(serverId) {
       this.props.getServerDestroy(serverId);
       this.props.history.push('/channels/@me');
+   }
+
+   // Update server state after channel deleted.
+   // If we did not delete the currently selected channel, return.
+   // Otherwise select the first text channel and switch to it.
+   handleChannelDelete(e, channelId){
+      e.stopPropagation();
+      this.props.getChannelDestroy(channelId).then(() => {
+         if (channelId !== this.selectedChannelId) return;              
+         this.props.getServerShow(this.serverId)
+
+         let channelsArray = Object.values(this.props.channels)
+         for (let i = 0; i < channelsArray.length; i++){
+            if (!channelsArray[i].voice_channel) return this.clickChannel(channelsArray[i].id);
+         }
+         // If after iterating through channels array there are no text channels left,
+         // Load posts with an id of -1 to flag post component that there are no text channels.
+      })
    }
 
    render() {
@@ -82,7 +103,7 @@ export default class Channel extends React.Component {
       Object.keys(channels).some(id => {
          if (this.firstChannelId != id) {
             this.firstChannelId = id;
-            this.selectedChannel = this.firstChannelId;
+            this.selectedChannelId = this.firstChannelId;
             this.props.getPostsIndex(id);
          }
          return true;
@@ -129,12 +150,12 @@ export default class Channel extends React.Component {
 
                   <ul className='channels-list' hidden={this.state.hideText}>{
                      Object.keys(channels).map(channelId => (channels[channelId].voice_channel ? null :
-                        <li key={channels[channelId].name} onClick={(e) => this.clickChannel(e, channelId)}>
-                           <input id={channelId} type='radio' name='channel-item' defaultChecked={this.selectedChannel === channelId} />
+                        <li key={channels[channelId].name} onClick={() => this.clickChannel(channelId)}>
+                           <input id={channelId} type='radio' name='channel-item' defaultChecked={this.selectedChannelId === channelId} />
                            <label htmlFor={channelId}>
                               {channels[channelId].name}
                               {isAuthor ?
-                                 <button className='destroy' onClick={() => this.props.getChannelDestroy(channelId)}>
+                                 <button className='destroy' onClick={(e) => this.handleChannelDelete(e, channelId)}>
                                     <i className="fas fa-trash"></i>
                                  </button>
                                  : null}
@@ -145,7 +166,7 @@ export default class Channel extends React.Component {
                </div>
 
                {/* Voice Channels */}
-               <div className='collapse' id='channels'>
+               {/* <div className='collapse' id='channels'>
 
                   <div id='channel-header' onClick={() => this.toggle('hideVoice')}>
                      <h2>Voice Channels</h2>
@@ -161,7 +182,7 @@ export default class Channel extends React.Component {
                            <label htmlFor={channelId}>
                               {channels[channelId].name}
                               {isAuthor ?
-                                 <button className='destroy' onClick={() => this.props.getChannelDestroy(channelId)}>
+                                 <button className='destroy' onClick={(e) => this.handleChannelDelete(e, channelId)}>
                                     <i className="fas fa-trash"></i>
                                  </button>
                                  : null}
@@ -169,7 +190,7 @@ export default class Channel extends React.Component {
                         </li>
                      ))
                   }</ul>
-               </div>
+               </div> */}
 
             </div>
          </div>

@@ -133,4 +133,21 @@
 .post-input-deny {
    text-align: center; 
    color: #70767D;
+   pointer-events: none;
+}
+
+.empty-post {
+   margin-top: auto; 
+}
+.empty-post, #ghost-icon {
+   align-self: center;
+   user-select: none;
+   justify-self: center;
+   color: #70767D;
+}
+
+#ghost-icon {
+   margin-top: 50px;
+   font-size: 500%;
+   margin-bottom: auto;
 }

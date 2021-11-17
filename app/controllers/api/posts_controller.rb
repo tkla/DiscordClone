@@ -10,16 +10,16 @@ class Api::PostsController < ApplicationController
       end 
    end 
 
-   # Add error checking later. Or maybe not, sometimes returning and empty object is correct?
+   # Add error checking later. Or maybe not, sometimes returning an empty object is correct?
    def index 
       @posts = Post.all.where('channel_id = ?', params[:channel_id]).includes(:user)
-      
-      render :index 
-      # if !@posts.empty? 
-      #    render :index 
-      # else 
-      #    render json: "Could not locate either posts or channel.", status: 404 
-      # end 
+
+      # render :index 
+      if !@posts.empty? 
+         render :index 
+      else 
+         render json: "Could not locate either posts or channel.", status: 404 
+      end 
    end 
 
    # There is not enough validations here. Need to check if server exists, channel exists, and if channel is part of server.

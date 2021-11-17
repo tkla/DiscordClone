@@ -96,7 +96,7 @@ class EditUser extends React.Component {
                      onChange={this.handleInput('username')} />
                </label>
 
-               <input type='file'onChange={this.handleFile} />
+               <input type='file' accept=".jpg, .png, .gif" onChange={this.handleFile} />
 
                <input className='submit' type='submit' value='Save' />
             </form>
@@ -108,7 +108,6 @@ class EditUser extends React.Component {
 const mapStateToProps = state => ({
    currentUser: state.entities.users[state.session.currentUserId],
    errors: state.errors.session,
-
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -34,15 +34,13 @@ class CreateChannel extends React.Component {
    }
 
    render(){ 
-
       return(
          <div className='base-modal'>
             <h1> Create a Channel </h1>
-            
             <form className='registerForm' onSubmit={this.handleSubmit}>
                <label>CHANNEL TYPE</label>
 
-               <div >
+               <div>
                   <input type='radio' id='select-text' value='false' onClick={this.handleInput('voice_channel')}/>
                   <label htmlFor='select-text'>Text Channel</label>
 
@@ -51,9 +49,8 @@ class CreateChannel extends React.Component {
                </div>
 
                <label htmlFor='input-channel-name'>CHANNEL NAME</label>
-               <input id='input-channel-name' type='text' value={this.state.name} onChange={this.handleInput('name')}/>
+               <input id='input-channel-name' autoComplete='off' type='text' value={this.state.name} onChange={this.handleInput('name')}/>
                
-
                <input type='submit' value='Create Channel'/>
             </form>
          </div>

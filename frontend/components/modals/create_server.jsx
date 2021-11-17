@@ -148,7 +148,7 @@ export default class CreateServer extends React.Component {
                   <input type='text' value={this.state.description} onChange={this.handleInput('description')} />
                </label>
 
-               <input type='file' onChange={this.handleFile} />
+               <input type='file' accept=".jpg, .png, .gif" onChange={this.handleFile} />
 
                <input className='submit' type='submit' value={this.props.form === 'create' ? 'Create' : 'Save'} />
             </form>
