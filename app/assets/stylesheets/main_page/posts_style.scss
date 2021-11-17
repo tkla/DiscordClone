@@ -128,3 +128,9 @@
    background-color: #40444B;
    border-radius: 10px;
 }
+
+// Styling for post input text box when user is not a server member. Prevent editing and submitting.
+.post-input-deny {
+   text-align: center; 
+   color: #70767D;
+}
