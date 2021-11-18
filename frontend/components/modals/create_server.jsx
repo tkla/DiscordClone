@@ -56,6 +56,7 @@ export default class CreateServer extends React.Component {
       }
    }
 
+   // TODO rewrite to use promises.
    handleSubmit(e) {
       e.preventDefault();
       const formData = new FormData();
