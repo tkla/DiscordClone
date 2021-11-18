@@ -86,6 +86,8 @@ export default class Posts extends React.Component {
                post.contentEditable = false;
                helper.style.display = 'none';
                return;
+            case 'Shift':
+               return;
             case 'Enter': 
                post.blur();
                post.style.background = 'none';
@@ -96,6 +98,7 @@ export default class Posts extends React.Component {
                this.props.getPostEdit(id, editState); // Todo Error handling
                helper.style.display = 'none';
                return;
+            
             default: return 
          }
       })
