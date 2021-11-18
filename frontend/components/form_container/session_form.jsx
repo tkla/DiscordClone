@@ -30,7 +30,7 @@ export default class SessionForm extends React.Component {
       this.props.clearErrors();
    }
 
-   componentDidUpdate(prevProps, prevState) {
+   componentDidUpdate() {
       let is_error = false;
       
       if (this.usernameErr && this.submitting){
@@ -149,7 +149,7 @@ export default class SessionForm extends React.Component {
                <div id='loginGreeting'>
                   <h2>Discord Clone</h2>
                   <p>A project aiming to replicate the browser version of Discord by Kenny La</p>
-                  <a href='https://github.com/tkla/DiscordClone'><i className="fab fa-github"></i></a>
+                  <a href='https://github.com/tkla' target="_blank" rel="noopener noreferrer"><i className="fab fa-github" ></i></a>
                </div>
 
             </div>
