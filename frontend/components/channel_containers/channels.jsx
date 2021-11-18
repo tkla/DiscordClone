@@ -65,8 +65,9 @@ export default class Channel extends React.Component {
    }
 
    handleDestroy(serverId) {
-      this.props.getServerDestroy(serverId);
-      this.props.history.push('/channels/@me');
+      this.props.getServerDestroy(serverId).then(() => {
+         this.props.history.push('/channels/@me');
+      });
    }
 
    // Update server state after channel deleted.

@@ -36,18 +36,6 @@ export default class CreateServer extends React.Component {
       this.file_input = document.querySelector("input[type=file]");
    }
 
-   componentDidUpdate(prevProps) {
-      // If prev server prop does not equal current server, assume server has updated successfully and close modal.
-      if (this.state.submit && prevProps.servers[this.props.serverId] !== this.props.servers[this.props.serverId])
-         this.props.closeModal();
-      // If prev server state is lesser length than current server state, assume creation successfull.
-      if (this.props.form === 'create') {
-         if (this.state.submit && Object.keys(prevProps.servers).length < Object.keys(this.props.servers).length) {
-            this.props.closeModal();
-         }
-      }
-   }
-
    handleInput(input) {
       return (e) => {
          this.setState({
@@ -56,7 +44,6 @@ export default class CreateServer extends React.Component {
       }
    }
 
-   // TODO rewrite to use promises.
    handleSubmit(e) {
       e.preventDefault();
       const formData = new FormData();
@@ -68,8 +55,16 @@ export default class CreateServer extends React.Component {
          formData.append('server[avatar]', this.state.avatar);
       }
 
-      if (this.props.form === 'edit') this.props.getServerEdit(this.state.id, formData);
-      else this.props.getServerCreate(formData);
+      if (this.props.form === 'edit') this.props.getServerEdit(this.state.id, formData)
+         .then(()=>{
+            if (this.props.errors.length === 0) this.props.closeModal();
+         });
+      else this.props.getServerCreate(formData)
+         .then(()=>{
+            if (this.props.errors.length === 0){ 
+               this.props.closeModal();
+            }
+         });
 
       this.setState({
          submit: true,
