@@ -63,6 +63,8 @@
 .server-display-details * {
    margin-bottom: 10px; 
    font-weight: normal;
+   overflow: auto;
+   overflow-wrap: anywhere;
 }
 
 .server-description {
@@ -70,13 +72,13 @@
    font-size: 15px;
 }
 
-.server-description {
-   overflow:  auto;
-   overflow-wrap: anywhere;
-}
+// .server-description {
+//    overflow:  auto;
+//    overflow-wrap: anywhere;
+// }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.server-description::-webkit-scrollbar {
+.server-description::-webkit-scrollbar, .server-display-details > h2::-webkit-scrollbar {
   display: none;
 }
 
