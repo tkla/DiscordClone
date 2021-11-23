@@ -80,6 +80,11 @@ export default class Servers extends React.Component {
             <a className='server-item' href='https://github.com/tkla' id='download-apps' target="_blank" rel="noopener noreferrer">
                <i className="fab fa-github"></i>
             </a>
+
+            <a className='server-item' href='https://www.linkedin.com/in/thong-la-78aa58177/' id='download-apps' target="_blank" rel="noopener noreferrer">
+               <i className="fab fa-linkedin"></i>
+            </a>
+
             <Link className='server-item' to='/' onClick={this.props.logout}>
                <i className="fas fa-sign-out-alt"></i>
             </Link>
