@@ -56,9 +56,10 @@ export default class CreateServer extends React.Component {
       }
 
       if (this.props.form === 'edit') this.props.getServerEdit(this.state.id, formData)
-         .then(()=>{
-            if (this.props.errors.length === 0) this.props.closeModal();
-         });
+         .then(
+            () => this.props.closeModal(),
+            err => console.log(err), 
+         );
       else this.props.getServerCreate(formData)
          .then(()=>{
             if (this.props.errors.length === 0){ 
