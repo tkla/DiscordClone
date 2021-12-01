@@ -147,8 +147,9 @@ export default class SessionForm extends React.Component {
                </div>
 
                <div id='loginGreeting'>
-                  <h2>Discord Clone</h2>
-                  <p>A project aiming to replicate the browser version of Discord by Kenny La</p>
+                  <h2>TL-Cord</h2>
+                  <p>A project aiming to replicate the browser version of Discord by Thong K. La.</p>
+                  <p>This project is not affiliated with the official Discord app.</p>
                   <a href='https://github.com/tkla' target="_blank" rel="noopener noreferrer"><i className="fab fa-github" ></i></a>
                </div>
 
