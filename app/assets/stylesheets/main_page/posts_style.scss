@@ -10,7 +10,6 @@
 }
 
 #offset{
-   padding-bottom: 40px;
    overflow:  auto;
    height: 90%;
    overflow-wrap: anywhere;
@@ -150,4 +149,13 @@
    margin-top: 50px;
    font-size: 500%;
    margin-bottom: auto;
+}
+
+// Firefox scrollbar 
+#offset {
+   /* width */
+   scrollbar-width: thin;
+   
+    /* Track */
+   scrollbar-color: #202225, #2E3338; 
 }
