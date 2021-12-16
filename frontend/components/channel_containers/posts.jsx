@@ -68,7 +68,7 @@ export default class Posts extends React.Component {
       }
    }
 
-   handleEdit(id){
+   handleEdit(id) {
       let post = document.getElementById('post-' + id);
       let originalText = post.innerHTML;
       post.contentEditable = true;
