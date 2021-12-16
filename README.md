@@ -7,7 +7,7 @@ Discord clone is a small project aimed at replicating some of the base functiona
 
 It aims to reproduce some of the expected behaviours and features from Discord such as server creation, registration of users, joining communities and making posts within.
 
-Please check it out at http://tl-cord.herokuapp.com/#/
+Feel free to try it out at http://tl-cord.herokuapp.com/#/
 
 ## Servers 
 Users can currently browse through their current channels. By selecting their channel icon on the left side bar they can view a server's channels and member list. 
