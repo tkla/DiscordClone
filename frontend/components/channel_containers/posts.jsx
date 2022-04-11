@@ -106,7 +106,7 @@ export default class Posts extends React.Component {
 
    formatTime(time) {
       let date = new Date(time);
-      let dateTime = date.toLocaleDateString('en-US') + ' at ' + date.toLocaleTimeString('en-US');
+      let dateTime = date.toLocaleDateString('en-US') + ' at ' + date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
       return dateTime;
    }
 
