@@ -68,7 +68,7 @@ export default class Posts extends React.Component {
       }
    }
 
-   handleEdit(id){
+   handleEdit(id) {
       let post = document.getElementById('post-' + id);
       let originalText = post.innerHTML;
       post.contentEditable = true;
@@ -102,6 +102,12 @@ export default class Posts extends React.Component {
             default: return 
          }
       })
+   }
+
+   formatTime(time) {
+      let date = new Date(time);
+      let dateTime = date.toLocaleDateString('en-US') + ' at ' + date.toLocaleTimeString('en-US');
+      return dateTime;
    }
 
    render() {
@@ -167,7 +173,7 @@ export default class Posts extends React.Component {
                                  <span>{posts[p.parent_id].body}</span>
                               </p>
                               : ''}</div>
-                           <p className='username'>{p.username} <span className='time'>{p.created_at}</span></p>
+                           <p className='username'>{p.username} <span className='time'>{this.formatTime(p.created_at)}</span></p>
                            <p id={'post-'+ p.id} className='post-body' contentEditable={false}>{p.body}</p>
                            <p id={'helper-'+p.id} className='show-edit-help'>Press <span id='edit-escape'>Escape</span>to cancel. <span id='edit-confirm'>Enter</span>to save.</p>
                         </div>

@@ -14,8 +14,7 @@
 #
 class Post < ApplicationRecord
    validates :server_id, :channel_id, :author_id, presence: true 
-   validate :check_same_channel
-   validate :check_belong_server # Check if user belongs to server
+   validate :check_same_channel, :check_belong_server, :check_space_only, :check_char_limit
    after_initialize :ensure_original_body
 
    belongs_to :channel 
@@ -54,6 +53,18 @@ class Post < ApplicationRecord
       return false if !user 
       if !user.is_member?(self.server_id) 
          errors.add(:user, "You are not a member of this server.")
+      end
+   end
+
+   def check_space_only 
+      if self.body.blank? then 
+         errors.add(:post, "Post cannot be blank.")
+      end
+   end
+
+   def check_char_limit 
+      if self.body.length > 2000 then
+         errors.add(:post, "Post cannot exceed 2000 characters.")
       end
    end
 end
