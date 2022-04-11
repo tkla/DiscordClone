@@ -14,6 +14,7 @@ class Server < ApplicationRecord
    validates :name, length: {minimum: 2, maximum: 100}
    validates :description, length: {maximum: 500}, allow_nil: true
    validates :author_id, presence: true  
+   validate :max_file_size
    after_save :add_global_admin, :add_default_channel
    after_initialize :generate_invite_url
 
@@ -54,5 +55,14 @@ class Server < ApplicationRecord
 
    def generate_invite_url 
       self.invite_url ||= SecureRandom::urlsafe_base64
+   end
+
+   def max_file_size
+      if self.avatar.byte_size > 10000000 
+         errors.add(:Image, "10 MB file size limit exceeded.")
+         return false 
+      else 
+         return true
+      end
    end
 end

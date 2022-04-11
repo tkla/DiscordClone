@@ -17,6 +17,7 @@ class User < ApplicationRecord
    validates :username, length: {minimum: 2, maximum: 32}, uniqueness: { case_sensitive: false }
    validates :password_digest, presence: true
    validates :password, length: {minimum: 6}, allow_nil: true
+   validate :max_file_size
    after_initialize :ensure_session_token 
 
    attr_reader :password
@@ -80,5 +81,15 @@ class User < ApplicationRecord
 
    def ensure_session_token  
       self.session_token ||= SecureRandom::urlsafe_base64
+   end
+
+   private 
+   def max_file_size
+      if self.avatar.byte_size > 10000000 
+         errors.add(:Image, "10 MB file size limit exceeded.")
+         return false 
+      else 
+         return true
+      end
    end
 end
